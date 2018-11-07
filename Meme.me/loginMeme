@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="cssLogin.css">
+</head>
+<body>
+	<form>
+	<label for="email" id="email">
+		Email:
+	</label>
+	<input type="text" id="email" placeholder="Digite seu Email">
+	<label for="senha" id="senha">
+		Senha:
+	</label>
+	<input type="text" id="senha" placeholder="Digite sua senha">
+	<input type="submit" name="Enviar" placeholder="Enviar tudo" id="enviar"/> 
+	</form>
+</body>
+</html>
