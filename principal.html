@@ -15,27 +15,30 @@
   </head>
   <style type="text/css">
 
+    html{
+      background-color: #f8f8f8;
+    }
     #fundo1{
       background-color: #28bfa0;
     }
     .vertical-menu {
-    width: 200px;
+    width: 250px;
     position: fixed;
     top: 80px;
+    color: #7b7b7b;
     }
-
     .vertical-menu a {
-      background-color: #f8f8f8;
+      background-color: #28bfa0;
       color: black;
       display: block;
-      padding: 12px;
+      padding: 13px;
       text-decoration: none;
+      color: #f5f6f7;
     }
-
     .vertical-menu a:hover {
       background-color: #ccc;
+      color: #000;
     }
-
     .vertical-menu a.active {
       background-color: #28bfa0;
       color: white;
@@ -49,9 +52,9 @@
       background-color: #3f3f3f;
       position: absolute;
       left: 200px;
-      border: 200px;
       width: 1500px;
-      height:  2000px;
+      height:  2100px;
+      top: 80px;
 
     }
     .padrao{
@@ -86,9 +89,12 @@
     }
     .postagem{
       position: relative;
-      left: 300px;
+      left: 280px;
+      background-color: #f8f8f8;
+      width: 603px;
+      border-top: solid  20px #3f3f3f;
+      color: #7b7b7b;
       padding: 2px;
-      top: 100px;
     }
     #menu{
       z-index: 3;
@@ -115,15 +121,26 @@
                   Sair
                 </button>
               </li>
+              <li>
+                  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large" id="botao2">
+                    <a href="publicar.html">
+                      Publicar
+                    </a>
+                  </button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>  
     <div class="vertical-menu">
-      <a href="principal.html" class="active">Feed</a>
+      <img src="foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+      <br>
+      <span style="position: relative;left: 17px;">
+        Simone Florincy
+      </span>
+      <a href="principal.html">Feed</a>
       <a href="perfil.html">Perfil</a>
-      <a href="publicar.html">Publicar</a>
     </div>
     <div id="feed">
       <div class="postagem" id="postagem2">
@@ -153,11 +170,9 @@
         <span class="legenda">
           Só li verdades! 
         </span>
-        <br>
       </div>
 
       <div class="postagem">
-        <br>
         <img src="foto-perfil.jpg" class="perfil">
         Simone Florincy
         <br>

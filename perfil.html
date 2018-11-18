@@ -14,30 +14,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <style type="text/css">
- td {
-    padding: 5px;
-    text-align: left;    
-}
-
+    td{
+      padding: 5px;
+      text-align: left;    
+    }
     #fundo1{
       background-color: #28bfa0;
     }
     .vertical-menu {
-    width: 200px;
-    position: fixed;
-    top: 80px;
+      width: 200px;
+      position: fixed;
+      top: 80px;
+      color: #7b7b7b;
     }
-
     .vertical-menu a {
-      background-color: #f8f8f8;
+      background-color: #28bfa0;
       color: black;
       display: block;
-      padding: 12px;
+      padding: 13px;
       text-decoration: none;
+      color: #f5f6f7;
     }
 
     .vertical-menu a:hover {
       background-color: #ccc;
+      color: #000;
     }
 
     .vertical-menu a.active {
@@ -113,6 +114,7 @@
     #nome-usuario{
       position: relative;
       left: 40px;
+      text-align: center;
     }
     #bio-usuario{
       position: relative;
@@ -125,6 +127,13 @@
     #galeria{
       position: relative;
       right: 400px;
+    }
+    .inf {
+      text-align: center;
+    }
+    #infMeme{
+      position: relative;
+      right: 37px;
     }
   </style>
   <body>
@@ -146,27 +155,72 @@
                   Sair
                 </button>
               </li>
+              <li>
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large" id="botao2">
+                  <a href="publicar.html">
+                    Publicar
+                  </a>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>  
     <div class="vertical-menu">
-      <a href="principal.html" class="active">Feed</a>
-      <a href="perfil.html">Perfil</a>
-      <a href="publicar.html">Publicar</a>
+      <img src="foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+      <br>
+      <span style="position: relative;left: 17px;">
+        Simone Florincy
+      </span>
+      <a href="principal.html">
+        Feed
+      </a>
+      <a href="perfil.html">
+        Perfil
+      </a>
     </div>
     <div id="feed">
       <div id="perfilbloco">
         <span id="nome-usuario">
-        Simone Florincy
-        <br>
+          Simone Florincy
+          <br>
         </span>
         <img src="foto-perfil.jpg" class="fotoperfil">
         <br>
         <span id="bio-usuario">
-        Zoeira hoje, zoeira amanhã, zoeira sempre.
+          Zoeira hoje, zoeira amanhã, zoeira sempre.
         </span>
+        <table id="infMeme">
+          <tr>
+            <td class="inf">
+              <b>
+                500
+              </b>
+            </td>
+            <td class="inf">
+              <b>
+                200
+              </b>
+            </td>
+            <td class="inf">
+              <b>
+                12
+              </b>
+            </td>
+          </tr>
+          <tr>
+            <td class="inf">
+              Seguidores
+            </td>
+            <td class="inf">
+              Seguindo
+            </td>
+            <td class="inf">
+              Postagens
+            </td>
+          </tr>
+        </table>
         <table id="galeria">
           <tr>
             <td><img src="meme3.jpg" class="fotos-galeria"></td>
@@ -185,7 +239,7 @@
             <td><img src="meme12.jpg" class="fotos-galeria"></td>
             <td><img src="meme13.jpg" class="fotos-galeria"></td>
             <td><img src="meme14.png" class="fotos-galeria"></td>
-          </tr
+          </tr>
         </table>
       </div>
     </div>
