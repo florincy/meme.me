@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -7,9 +7,7 @@
 
 -- Started on 2018-11-27 01:12:37 -02
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -183,8 +181,7 @@ ALTER TABLE public.user_meme OWNER TO postgres;
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -193,8 +190,7 @@ COPY public.comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: complaint; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, ds_description) FROM stdin;
-\.
+
 
 
 --
@@ -203,8 +199,7 @@ COPY public.complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_use
 -- Data for Name: follow; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.follow (cd_follow, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -213,8 +208,7 @@ COPY public.follow (cd_follow, user_cd_user_meme) FROM stdin;
 -- Data for Name: followers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.followers (cd_followers, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -223,8 +217,7 @@ COPY public.followers (cd_followers, user_cd_user_meme) FROM stdin;
 -- Data for Name: like; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -233,8 +226,7 @@ COPY public."like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.post (cd_post, user_cd_user_meme, dt_moments, tm_moments, ds_post) FROM stdin;
-\.
+
 
 
 --
@@ -243,8 +235,6 @@ COPY public.post (cd_post, user_cd_user_meme, dt_moments, tm_moments, ds_post) F
 -- Data for Name: share; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
 
 
 --
@@ -253,8 +243,7 @@ COPY public.share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: user_adm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, dt_birth, ds_country) FROM stdin;
-\.
+
 
 
 --
@@ -263,8 +252,7 @@ COPY public.user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_pass
 -- Data for Name: user_meme; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_meme (cd_user_meme, nm_first, nm_last, ds_nick, ds_email, dt_birth, ds_country, tp_private, ds_bios) FROM stdin;
-\.
+
 
 
 --

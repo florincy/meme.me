@@ -5,11 +5,49 @@
  */
 package br.edu.iff.meme.me;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+
 /**
  *
  * @author aluno
  */
-public class UsuarioMeme {
+@Entity
+@Table(name = "user_meme")
+public class UsuarioMeme implements Serializable {
+
+    /**
+     * @return the cdUsuarioMeme
+     */
+    public Integer getCdUsuarioMeme() {
+        return cdUsuarioMeme;
+    }
+
+    /**
+     * @param cdUsuarioMeme the cdUsuarioMeme to set
+     */
+    public void setCdUsuarioMeme(Integer cdUsuarioMeme) {
+        this.cdUsuarioMeme = cdUsuarioMeme;
+    }
+
+    /**
+     * @return the nascimento
+     */
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    /**
+     * @param nascimento the nascimento to set
+     */
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
 
     /**
      * @return the email
@@ -122,14 +160,28 @@ public class UsuarioMeme {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    @Column (name="ds_email")
     private String email;
+    @Column(name = "nm_first")
     private String nome;
+    @Column (name="nm_last")
     private String sobrenome;
+    @Column (name="ds_nick")
     private String nick;
+    @Column (name="ds_password")
     private String senha;
+    @Column (name="ds_country")
     private String pais;
+    @Column(name="tp_private")
     private boolean privatePublic;
+    @Column(name="ds_bios")
     private String bio;
+    @Column(name="dt_birth")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date nascimento;
+    @Id
+    @Column(name="cd_user_meme")
+    private Integer cdUsuarioMeme;
     
     
 }
