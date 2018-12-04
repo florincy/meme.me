@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+html{
+	background-color: #008B8B;
+}
+label, input[type="submit"]{
+	display: block;
+}
+form{
+	background: white;
+	margin: 100px 550px;
+	padding: 20px;
+	border: 5px inset #F4A460;
+	font-size: 15px;
+}
+h2{
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+}

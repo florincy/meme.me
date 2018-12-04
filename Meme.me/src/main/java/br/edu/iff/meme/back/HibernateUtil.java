@@ -9,6 +9,7 @@ import br.edu.iff.meme.me.UsuarioMeme;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.SettingsFactory;
 
@@ -20,6 +21,7 @@ public class HibernateUtil {
         try {
             concreteSessionFactory = new AnnotationConfiguration()
                     .configure()
+                    .addAnnotatedClass(UsuarioMeme.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
@@ -33,9 +35,29 @@ public class HibernateUtil {
 
     public static void main(String... args) {
         Session session = getSession();
-        session.beginTransaction();
+        Transaction tr = session.beginTransaction();
         UsuarioMeme user = (UsuarioMeme) session.get(UsuarioMeme.class, new Integer(1));
-        System.out.println(user.getNome());
+        if (user == null) {
+            System.out.println("Usuário não encontrado.");
+        } else {
+            System.out.println("Nome: "+user.getNome());
+        }
+        
+        UsuarioMeme usuario = new UsuarioMeme();
+        usuario.setBio("Sou eu!");
+        usuario.setCdUsuarioMeme(2);
+        usuario.setEmail("eu@g.c");
+        //usuario.setNascimento(Date.);
+        usuario.setNick("Eu");
+        usuario.setNome("Eu");
+        usuario.setSobrenome("Mesmo");
+        usuario.setPais("Brasil");
+        usuario.setPrivatePublic(true);
+        usuario.setSenha("123");
+        
+        session.save(usuario);
+        tr.commit();
+        
         session.close();
     }
 }
