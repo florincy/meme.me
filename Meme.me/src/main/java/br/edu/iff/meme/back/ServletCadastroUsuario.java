@@ -10,12 +10,14 @@ import br.edu.iff.meme.me.UsuarioMeme;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import sun.font.ScriptRun;
 
 /**
  *
@@ -91,7 +93,6 @@ public class ServletCadastroUsuario extends HttpServlet {
         session.save(user);
         tr.commit();
         session.close();
-        
         response.sendRedirect("cadastroOK.html");
     }
 
