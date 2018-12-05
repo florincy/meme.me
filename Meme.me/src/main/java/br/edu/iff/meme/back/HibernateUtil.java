@@ -6,6 +6,8 @@
 package br.edu.iff.meme.back;
 
 import br.edu.iff.meme.me.UsuarioMeme;
+import java.time.Instant;
+import java.util.Date;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,7 +48,7 @@ public class HibernateUtil {
         UsuarioMeme usuario = new UsuarioMeme();
         usuario.setBio("Sou eu!");
         usuario.setEmail("eu@g.c");
-        //usuario.setNascimento(Date.);
+        //usuario.setNascimento(Date.); consertar AQUI
         usuario.setNick("Eu");
         usuario.setNome("Eu 2");
         usuario.setSobrenome("Mesmo");
