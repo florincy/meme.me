@@ -75,10 +75,14 @@ public class ServletCadastroUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UsuarioMeme user = new UsuarioMeme();
+        user.setEmail(request.getParameter("email"));
+        user.setNome(request.getParameter("nome"));
+        user.setSobrenome(request.getParameter("sobrenome"));
+        user.setNick(request.getParameter("nick"));
+        user.setSenha(request.getParameter("senha"));
+        user.setPais(request.getParameter("pais"));
+        user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
-        
-        user.setPrivado(Boolean.parseBoolean(request.getParameter("privatePublic")));
-        
         //todos os atributos SETados
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
