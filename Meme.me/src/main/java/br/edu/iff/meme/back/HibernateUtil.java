@@ -45,14 +45,13 @@ public class HibernateUtil {
         
         UsuarioMeme usuario = new UsuarioMeme();
         usuario.setBio("Sou eu!");
-        usuario.setCdUsuarioMeme(2);
         usuario.setEmail("eu@g.c");
         //usuario.setNascimento(Date.);
         usuario.setNick("Eu");
-        usuario.setNome("Eu");
+        usuario.setNome("Eu 2");
         usuario.setSobrenome("Mesmo");
         usuario.setPais("Brasil");
-        usuario.setPrivatePublic(true);
+        usuario.setPrivado(true);
         usuario.setSenha("123");
         
         session.save(usuario);

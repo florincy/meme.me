@@ -5,7 +5,6 @@
  */
 package br.edu.iff.meme.back;
 
-import static br.edu.iff.meme.back.HibernateUtil.getSession;
 import br.edu.iff.meme.me.UsuarioMeme;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,14 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *
  * @author aluno
  */
-public class ServletCadastroUsuario extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +38,10 @@ public class ServletCadastroUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletCadastroUsuario</title>");            
+            out.println("<title>Servlet ServletLogin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletCadastroUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletLogin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,19 +73,25 @@ public class ServletCadastroUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UsuarioMeme user = new UsuarioMeme();
-        user.setBio(request.getParameter("bio"));
         
-        user.setPrivado(Boolean.parseBoolean(request.getParameter("privatePublic")));
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
         
-        //todos os atributos SETados
         Session session = HibernateUtil.getSession();
-        Transaction tr = session.beginTransaction();
-        session.save(user);
-        tr.commit();
+        UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
         session.close();
         
-        response.sendRedirect("cadastroOK.html");
+        if (user == null) {
+            response.sendRedirect("erroLogin.html");
+        } else {
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("usuarioLogado", user);
+            httpSession.setAttribute("nome", user.getNome());
+            response.sendRedirect("principal.jsp");
+        }
+        
+        
+        
     }
 
     /**

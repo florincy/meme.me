@@ -9,7 +9,10 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -136,15 +139,15 @@ public class UsuarioMeme implements Serializable {
     /**
      * @return the privatePublic
      */
-    public boolean isPrivatePublic() {
-        return privatePublic;
+    public boolean isPrivado() {
+        return privado;
     }
 
     /**
      * @param privatePublic the privatePublic to set
      */
-    public void setPrivatePublic(boolean privatePublic) {
-        this.privatePublic = privatePublic;
+    public void setPrivado(boolean privatePublic) {
+        this.privado = privatePublic;
     }
 
     /**
@@ -173,7 +176,7 @@ public class UsuarioMeme implements Serializable {
     @Column (name="ds_country")
     private String pais;
     @Column(name="tp_private")
-    private boolean privatePublic;
+    private boolean privado;
     @Column(name="ds_bios")
     private String bio;
     @Column(name="dt_birth")
@@ -181,6 +184,8 @@ public class UsuarioMeme implements Serializable {
     private Date nascimento;
     @Id
     @Column(name="cd_user_meme")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
+    @SequenceGenerator(name = "sequence_user_meme", sequenceName = "sq_cd_user_meme")
     private Integer cdUsuarioMeme;
     
     
