@@ -85,7 +85,9 @@ public class ServletLogin extends HttpServlet {
             response.sendRedirect("erroLogin.html");
         } else {
             HttpSession httpSession = request.getSession();
+            //definitivo
             httpSession.setAttribute("usuarioLogado", user);
+            //provisorio
             httpSession.setAttribute("nome", user.getNome());
             response.sendRedirect("principal.jsp");
         }
