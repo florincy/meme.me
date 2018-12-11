@@ -9,7 +9,12 @@ import static br.edu.iff.meme.back.HibernateUtil.getSession;
 import br.edu.iff.meme.me.UsuarioMeme;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -81,7 +86,13 @@ public class ServletCadastroUsuario extends HttpServlet {
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
-        //Consertar AQUI user.setNascimento(Date.parseDate(request.getParameter("bith")));
+        //Consertar AQUI 
+        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        try {
+            user.setNascimento(df.parse(request.getParameter("birth")));
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         user.setNick(request.getParameter("nick"));
         user.setSenha(request.getParameter("senha"));
         user.setPais(request.getParameter("pais"));
