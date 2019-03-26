@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -171,8 +171,6 @@ ALTER TABLE user_meme OWNER TO postgres;
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
 
 
 --
@@ -181,8 +179,7 @@ COPY comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: complaint; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, ds_description) FROM stdin;
-\.
+
 
 
 --
@@ -191,8 +188,6 @@ COPY complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, 
 -- Data for Name: follow; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin;
-\.
 
 
 --
@@ -201,8 +196,6 @@ COPY follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin
 -- Data for Name: like; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
 
 
 --
@@ -211,8 +204,7 @@ COPY "like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY post (cd_post, user_cd_user_meme, ts_moments, ds_post) FROM stdin;
-\.
+
 
 
 --
@@ -221,8 +213,7 @@ COPY post (cd_post, user_cd_user_meme, ts_moments, ds_post) FROM stdin;
 -- Data for Name: share; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -231,8 +222,7 @@ COPY share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: user_adm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, dt_birth, ds_country) FROM stdin;
-\.
+
 
 
 --
@@ -241,8 +231,7 @@ COPY user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, d
 -- Data for Name: user_meme; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY user_meme (cd_user_meme, nm_first, nm_last, ds_nick, ds_email, dt_birth, ds_country, tp_private, ds_bios, ds_password) FROM stdin;
-\.
+
 
 
 --

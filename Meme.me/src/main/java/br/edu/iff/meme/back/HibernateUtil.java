@@ -48,7 +48,7 @@ public class HibernateUtil {
         UsuarioMeme usuario = new UsuarioMeme();
         usuario.setBio("Sou eu!");
         usuario.setEmail("eu@g.c");
-        //usuario.setNascimento(Date.); consertar AQUI
+       // usuario.setNascimento("20"); //consertar AQUI
         usuario.setNick("Eu");
         usuario.setNome("Eu 2");
         usuario.setSobrenome("Mesmo");
