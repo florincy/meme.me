@@ -179,8 +179,8 @@ public class UsuarioMeme implements Serializable {
     private boolean privado;
     @Column(name="ds_bios")
     private String bio;
-    @Column(name="dt_birth")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    //@Column(name="dt_birth")
+    //@Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
     @Id
     @Column(name="cd_user_meme")

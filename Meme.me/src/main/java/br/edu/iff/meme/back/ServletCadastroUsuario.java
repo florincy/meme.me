@@ -83,28 +83,31 @@ public class ServletCadastroUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UsuarioMeme user = new UsuarioMeme();
+        
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
         //Consertar AQUI 
-        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
-        try {
-            user.setNascimento(df.parse(request.getParameter("birth")));
-        } catch (ParseException ex) {
-            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        //try {
+          //  user.setNascimento(df.parse(request.getParameter("birth")));
+        //} catch (ParseException ex) {
+          //  Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        //}
         user.setNick(request.getParameter("nick"));
         user.setSenha(request.getParameter("senha"));
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
         //todos os atributos SETados
+        
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
         session.save(user);
         tr.commit();
         session.close();
         response.sendRedirect("cadastroOK.html");
+        
     }
 
     /**

@@ -44,7 +44,7 @@ public class HibernateUtil {
         } else {
             System.out.println("Nome: "+user.getNome());
         }
-        
+        /*
         UsuarioMeme usuario = new UsuarioMeme();
         usuario.setBio("Sou eu!");
         usuario.setEmail("eu@g.c");
@@ -60,5 +60,6 @@ public class HibernateUtil {
         tr.commit();
         
         session.close();
+*/
     }
 }
