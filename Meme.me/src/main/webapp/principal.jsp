@@ -126,7 +126,7 @@
             <a class="navbar-brand" href="index.html">Meme.Me</a>
             <div id="barra-busca">
               <input type="text" placeholder="Procurar" name="search" style="color: black;">
-              <button type="submit"><img src="lupa.png" class="icone"></button>
+              <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
             </div>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
@@ -149,34 +149,34 @@
       </nav>
     </div>  
     <div class="vertical-menu">
-      <img src="foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+      <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
       <br>
       <span style="position: relative;left: 17px;">
         <%=session.getAttribute("nome")%>
       </span>
-      <a href="principal.html">Feed</a>
+      <a href="principal.jsp">Feed</a>
       <a href="perfil.html">Perfil</a>
     </div>
     <div id="feed">
       <div class="postagem" id="postagem2">
-        <img src="foto-perfil.jpg" class="perfil">
-        Simone Florincy
+        <img src="imagens/foto-perfil.jpg" class="perfil">
+        <%=session.getAttribute("nome")%>
         <br>
-        <img src="meme1.jpeg" class="padrao">
+        <img src="imagens/meme-novoo.jpg" class="padrao">
         <br>
         <div class="opcoes">
           <ul>
             <li>
-              <img src="curtir.png" class="icone">
+              <img src="imagens/curtir.png" class="icone">
             </li>
             <li>
-              <img src="compartilhar.png" class="icone">
+              <img src="imagens/compartilhar.png" class="icone">
             </li>
             <li>
-              <img src="comentar.png" class="icone">
+              <img src="imagens/comentar.png" class="icone">
             </li>
             <li>
-              <img src="denuncia.png" class="icone">
+              <img src="imagens/denuncia.png" class="icone">
             </li>
             <li>
               <span class="dataHora">
@@ -191,24 +191,24 @@
       </div>
 
       <div class="postagem">
-        <img src="foto-perfil.jpg" class="perfil">
-        Simone Florincy
+        <img src="imagens/foto-perfil.jpg" class="perfil">
+        <%=session.getAttribute("nome")%>
         <br>
-        <img src="meme2.png" class="padrao">
+        <img src="imagens/meme-new.jpg" class="padrao">
         <br>
         <div class="opcoes">
           <ul>
             <li>
-              <img src="curtir.png" class="icone">
+              <img src="imagens/curtir.png" class="icone">
             </li>
             <li>
-              <img src="compartilhar.png" class="icone">
+              <img src="imagens/compartilhar.png" class="icone">
             </li>
             <li>
-              <img src="comentar.png" class="icone">
+              <img src="imagens/comentar.png" class="icone">
             </li>
             <li>
-              <img src="denuncia.png" class="icone">
+              <img src="imagens/denuncia.png" class="icone">
             </li>
             <li>
               <span class="dataHora">

@@ -87,12 +87,14 @@ public class ServletCadastroUsuario extends HttpServlet {
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
         //Consertar AQUI 
+        /*
         DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
         try {
             user.setNascimento(df.parse(request.getParameter("birth")));
         } catch (ParseException ex) {
             Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
         user.setNick(request.getParameter("nick"));
         user.setSenha(request.getParameter("senha"));
         user.setPais(request.getParameter("pais"));
