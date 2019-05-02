@@ -41,15 +41,13 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button w3-large" id="botao1">
+                            <button onclick="window.location.replace('index.html')" class="w3-button w3-large" id="botao1" >
                                 Sair
                             </button>
                         </li>
                         <li>
-                            <button onclick="document.getElementById('id01').style.display = 'block'" class="w3-button w3-large" id="botao2">
-                                <a href="publicar.html">
-                                    Publicar
-                                </a>
+                            <button onclick="window.location.replace('publicar.html')"class="w3-button w3-large" id="botao2">
+                                Publicar   
                             </button>
                         </li>
                     </ul>
@@ -63,7 +61,7 @@
         <span style="position: relative;left: 17px;">
             <%=session.getAttribute("nome")%>
         </span>
-        <a href="principal.html">Feed</a>
+        <a href="principal.jsp">Feed</a>
         <a href="perfil.html">Perfil</a>
     </div>
     <div id="feed">
@@ -85,7 +83,7 @@
                         <img src="imagens/comentar.png" class="icone">
                     </li>
                     <li>
-                        <img src="imagens/denuncia.png" class="icone">
+                        <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
                     </li>
                     <li>
                         <span class="dataHora">
@@ -117,7 +115,7 @@
                         <img src="imagens/comentar.png" class="icone">
                     </li>
                     <li>
-                        <img src="imagens/denuncia.png" class="icone">
+                        <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
                     </li>
                     <li>
                         <span class="dataHora">
