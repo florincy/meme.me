@@ -59,15 +59,15 @@
         <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
         <br>
         <span style="position: relative;left: 17px;">
-            <%=session.getAttribute("nome")%>
+            <%=request.getAttribute("nick")%>
         </span>
         <a href="principal.jsp">Feed</a>
-        <a href="perfil.html">Perfil</a>
+        <a href="perfil.jps">Perfil</a>
     </div>
     <div id="feed">
         <div class="postagem" id="postagem2">
             <img src="imagens/foto-perfil.jpg" class="perfil">
-            Simone Florincy
+            <%=session.getAttribute("nick")%>
             <br>
             <img src="imagens/meme1.jpeg" class="padrao">
             <br>

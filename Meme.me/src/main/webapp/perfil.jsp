@@ -1,3 +1,10 @@
+<%-- 
+    Document   : perfil
+    Created on : 18/06/2019, 11:45:00
+    Author     : aluno
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
     <head>
@@ -55,7 +62,7 @@
             <a href="principal.jsp">
                 Feed
             </a>
-            <a href="perfil.html">
+            <a href="perfil.jpsFFF">
                 Perfil
             </a>
         </div>
