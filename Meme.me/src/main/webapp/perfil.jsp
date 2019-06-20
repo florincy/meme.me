@@ -1,3 +1,10 @@
+<%-- 
+    Document   : perfil
+    Created on : 20/06/2019, 00:58:14
+    Author     : florincy
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
     <head>
@@ -55,7 +62,7 @@
             <a href="principal.jsp">
                 Feed
             </a>
-            <a href="perfil.html">
+            <a href="perfil.jsp">
                 Perfil
             </a>
         </div>

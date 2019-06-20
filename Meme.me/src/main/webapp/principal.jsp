@@ -62,7 +62,7 @@
             <%=session.getAttribute("nome")%>
         </span>
         <a href="principal.jsp">Feed</a>
-        <a href="perfil.html">Perfil</a>
+        <a href="perfil.jsp">Perfil</a>
     </div>
     <div id="feed">
         <div class="postagem" id="postagem2">

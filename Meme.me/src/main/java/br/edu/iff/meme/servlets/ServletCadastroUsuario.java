@@ -3,23 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.iff.meme.back;
+package br.edu.iff.meme.servlets;
 
-import br.edu.iff.meme.me.UsuarioMeme;
+import br.edu.iff.meme.utilidades.HibernateUtil;
+import static br.edu.iff.meme.utilidades.HibernateUtil.getSession;
+import br.edu.iff.meme.entidades.UsuarioMeme;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import sun.font.ScriptRun;
 
 /**
  *
  * @author aluno
  */
-public class ServletLogin extends HttpServlet {
+public class ServletCadastroUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +48,10 @@ public class ServletLogin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletLogin</title>");            
+            out.println("<title>Servlet ServletCadastroUsuario</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletLogin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletCadastroUsuario at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,27 +83,31 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        
-        Session session = HibernateUtil.getSession();
-        UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
-        session.close();
-        
-        if (user == null) {
-            response.sendRedirect("erroLogin.html");
-        } else {
-            HttpSession httpSession = request.getSession();
-            //definitivo
-            httpSession.setAttribute("usuarioLogado", user);
-            //provisorio
-            httpSession.setAttribute("nome", user.getNome());
-            response.sendRedirect("principal.jsp");
+        UsuarioMeme user = new UsuarioMeme();
+        user.setEmail(request.getParameter("email"));
+        user.setNome(request.getParameter("nome"));
+        user.setSobrenome(request.getParameter("sobrenome"));
+        //Consertar AQUI 
+        /*
+        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        try {
+            user.setNascimento(df.parse(request.getParameter("birth")));
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+        */
+        user.setNick(request.getParameter("nick"));
+        user.setSenha(request.getParameter("senha"));
+        user.setPais(request.getParameter("pais"));
+        user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
+        user.setBio(request.getParameter("bio"));
+        //todos os atributos SETados
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
+        session.save(user);
+        tr.commit();
+        session.close();
+        response.sendRedirect("cadastroOK.html");
     }
 
     /**
