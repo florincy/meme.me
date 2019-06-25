@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import static javax.swing.UIManager.getString;
 
 /**
  *
@@ -163,6 +164,11 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    
+   //Em breve @Override
+   // getString {
+    
+//}
     @Column (name="ds_email")
     private String email;
     @Column(name = "nm_first")

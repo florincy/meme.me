@@ -8,7 +8,7 @@
     <!-- DB Driver -->
     <property name="connection.username">postgres</property>
     <!-- DB User -->
-    <property name="connection.password">81027005</property>
+    <property name="connection.password">postgres</property>
     <!-- DB Password -->
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <!-- DB Dialect -->

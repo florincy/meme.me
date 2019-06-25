@@ -4,6 +4,7 @@
     Author     : aluno
 --%>
 
+<%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
@@ -23,6 +24,7 @@
 
 </style>
 <body>
+    <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
     <div id="fundo1">
         <nav class="navbar navbar-default" id="menu">
             <div class="container">
@@ -59,7 +61,7 @@
         <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
         <br>
         <span style="position: relative;left: 17px;">
-            <%=session.getAttribute("nome")%>
+            <%=user.getNick()%>
         </span>
         <a href="principal.jsp">Feed</a>
         <a href="perfil.jsp">Perfil</a>
@@ -67,7 +69,7 @@
     <div id="feed">
         <div class="postagem" id="postagem2">
             <img src="imagens/foto-perfil.jpg" class="perfil">
-            Simone Florincy
+            <%=user.getNick()%>
             <br>
             <img src="imagens/meme1.jpeg" class="padrao">
             <br>
@@ -99,7 +101,7 @@
 
         <div class="postagem">
             <img src="imagens/foto-perfil.jpg" class="perfil">
-            Simone Florincy
+            <%=user.getNick()%>
             <br>
             <img src="imagens/meme2.png" class="padrao">
             <br>

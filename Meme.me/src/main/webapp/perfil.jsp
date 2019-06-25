@@ -4,6 +4,7 @@
     Author     : florincy
 --%>
 
+<%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
@@ -21,6 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
         <div id="fundo1">
             <nav class="navbar navbar-default" id="menu">
                 <div class="container">
@@ -57,7 +59,7 @@
             <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
             <span style="position: relative;left: 17px;">
-                Simone Florincy
+                <%=user.getNick()%>
             </span>
             <a href="principal.jsp">
                 Feed
@@ -69,13 +71,13 @@
         <div id="feed">
             <div id="perfilbloco">
                 <span id="nome-usuario">
-                    Simone Florincy
+                    <%=user.getNick()%>
                 </span>
                 <br>
                 <img src="imagens/foto-perfil.jpg" class="fotoperfil">
                 <br>
                 <span id="bio-usuario">
-                    Zoeira hoje, zoeira amanhã, zoeira sempre.
+                    <%=user.getBio()%>
                 </span>
                 <table id="infMeme">
                     <tr>
