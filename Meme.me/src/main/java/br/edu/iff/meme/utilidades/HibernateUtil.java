@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.iff.meme.back;
+package br.edu.iff.meme.utilidades;
 
-import br.edu.iff.meme.me.UsuarioMeme;
-import java.time.Instant;
-import java.util.Date;
+import br.edu.iff.meme.entidades.UsuarioMeme;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.SettingsFactory;
 
 public class HibernateUtil {
 
@@ -25,7 +22,7 @@ public class HibernateUtil {
                     .configure()
                     .addAnnotatedClass(UsuarioMeme.class)
                     .buildSessionFactory();
-        } catch (Throwable ex) {
+        } catch (HibernateException ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -38,27 +35,14 @@ public class HibernateUtil {
     public static void main(String... args) {
         Session session = getSession();
         Transaction tr = session.beginTransaction();
-        UsuarioMeme user = (UsuarioMeme) session.get(UsuarioMeme.class, new Integer(1));
+        UsuarioMeme user = (UsuarioMeme) session.get(UsuarioMeme.class, 1);
         if (user == null) {
             System.out.println("Usuário não encontrado.");
         } else {
             System.out.println("Nome: "+user.getNome());
         }
         
-        UsuarioMeme usuario = new UsuarioMeme();
-        usuario.setBio("Sou eu!");
-        usuario.setEmail("eu@g.c");
-       // usuario.setNascimento("20"); //consertar AQUI
-        usuario.setNick("Eu");
-        usuario.setNome("Eu 2");
-        usuario.setSobrenome("Mesmo");
-        usuario.setPais("Brasil");
-        usuario.setPrivado(true);
-        usuario.setSenha("123");
-        
-        session.save(usuario);
         tr.commit();
-        
         session.close();
     }
 }

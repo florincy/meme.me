@@ -62,7 +62,11 @@
             <%=request.getAttribute("nick")%>
         </span>
         <a href="principal.jsp">Feed</a>
+<<<<<<< HEAD
         <a href="perfil.jps">Perfil</a>
+=======
+        <a href="perfil.jsp">Perfil</a>
+>>>>>>> fe9c26bc116fc5c1bc8a5cf993d66b334428bff5
     </div>
     <div id="feed">
         <div class="postagem" id="postagem2">

@@ -1,7 +1,12 @@
 <%-- 
     Document   : perfil
+<<<<<<< HEAD:Meme.me/src/main/webapp/perfil.jsp
     Created on : 18/06/2019, 11:45:00
     Author     : aluno
+=======
+    Created on : 20/06/2019, 00:58:14
+    Author     : florincy
+>>>>>>> fe9c26bc116fc5c1bc8a5cf993d66b334428bff5:Meme.me/src/main/webapp/perfil.jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -62,7 +67,11 @@
             <a href="principal.jsp">
                 Feed
             </a>
+<<<<<<< HEAD:Meme.me/src/main/webapp/perfil.jsp
             <a href="perfil.jpsFFF">
+=======
+            <a href="perfil.jsp">
+>>>>>>> fe9c26bc116fc5c1bc8a5cf993d66b334428bff5:Meme.me/src/main/webapp/perfil.jsp
                 Perfil
             </a>
         </div>
