@@ -79,6 +79,7 @@
                 <span id="bio-usuario">
                     <%=user.getBio()%>
                 </span>
+                <button type="button" onclick="document.getElementById('alterar').style.display = 'block'" class="w3-button w3-large" id="botao1">Editar perfil</button>
                 <table id="infMeme">
                     <tr>
                         <td class="inf">

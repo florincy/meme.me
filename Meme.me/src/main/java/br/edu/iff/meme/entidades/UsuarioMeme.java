@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import static javax.swing.UIManager.getString;
+
 
 /**
  *
@@ -38,21 +38,8 @@ public class UsuarioMeme implements Serializable {
     public void setCdUsuarioMeme(Integer cdUsuarioMeme) {
         this.cdUsuarioMeme = cdUsuarioMeme;
     }
-
-    /**
-     * @return the nascimento
-     */
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    /**
-     * @param nascimento the nascimento to set
-     */
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
+    
+    
     /**
      * @return the email
      */
