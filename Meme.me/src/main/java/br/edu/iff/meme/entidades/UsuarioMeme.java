@@ -26,6 +26,20 @@ import javax.persistence.Temporal;
 public class UsuarioMeme implements Serializable {
 
     /**
+     * @return the nascimento
+     */
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    /**
+     * @param nascimento the nascimento to set
+     */
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    /**
      * @return the cdUsuarioMeme
      */
     public Integer getCdUsuarioMeme() {
@@ -172,9 +186,8 @@ public class UsuarioMeme implements Serializable {
     private boolean privado;
     @Column(name="ds_bios")
     private String bio;
-    @Column(name="dt_birth")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date nascimento;
+    @Column(name="nm_birth")
+    private String nascimento;
     @Id
     @Column(name="cd_user_meme")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
