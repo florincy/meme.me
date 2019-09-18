@@ -1,0 +1,6 @@
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/servlets/AtualizarUsuario.java
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletLogin.java
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroUsuario.java
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/entidades/UserAdm.java
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/utilidades/HibernateUtil.java
+/home/florincy/Não/Meme_me/src/main/java/br/edu/iff/meme/entidades/UsuarioMeme.java

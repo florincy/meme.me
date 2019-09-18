@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+#botao1{
+    background-color: #28bfa0;
+}
+#botao2{
+    background-color: orange;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #f5f6f7;
+    font-family: 'Montserrat', sans-serif;
+}
+p {
+    font-size: 16px;
+}
+.margin {
+    margin-bottom: 45px;
+}
+.bg-1 { 
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+}
+.bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.bg-4 { 
+    background-color: #f8f8f8;/* Black Gray */
+
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+#footer{
+    color: #5e5e5e;
+}
+form{
+    color: black;
+}
+
+html{
+    background-color: #f8f8f8;
+}
+#fundo1{
+    background-color: #28bfa0;
+}
+.vertical-menu {
+    width: 250px;
+    position: fixed;
+    top: 80px;
+    color: #7b7b7b;
+}
+.vertical-menu a {
+    background-color: #28bfa0;
+    color: black;
+    display: block;
+    padding: 13px;
+    text-decoration: none;
+    color: #f5f6f7;
+}
+.vertical-menu a:hover {
+    background-color: #ccc;
+    color: #000;
+}
+.vertical-menu a.active {
+    background-color: #28bfa0;
+    color: white;
+}
+.perfil{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+#feed{
+    background-color: #3f3f3f;
+    position: absolute;
+    left: 200px;
+    width: 1500px;
+    height:  2100px;
+    top: 80px;
+    border: 200px;
+}
+.padrao{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    top: 20px;
+}
+.dataHora{
+    position: relative;
+    left: 130px;
+    font-size: 15px;
+}
+.legenda{
+    position: relative;
+    top: 10px;
+}
+.icone{
+    height: 30px;
+    width: 30px;
+}
+.opcoes ul li {
+    display: inline;
+    padding: 6px;
+}
+.opcoes{
+    position: relative;
+    right: 30px;
+    top: 20px;
+}
+.postagem{
+    position: relative;
+    left: 280px;
+    background-color: #f8f8f8;
+    width: 603px;
+    border-top: solid  20px #3f3f3f;
+    color: #7b7b7b;
+    padding: 2px;
+}
+#menu{
+    z-index: 3;
+    position: fixed;
+    width: 1500px;
+}
+#barra-busca{
+    position: absolute;
+    left: 800px;
+}
+td{
+    padding: 5px;
+    text-align: left;    
+}
+
+.dataHora{
+    position: relative;
+    left: 130px;
+    font-size: 15px;
+
+}
+.legenda{
+    position: relative;
+    top: 10px;
+}
+.icone{
+    height: 30px;
+    width: 30px;
+}
+.opcoes ul li {
+    display: inline;
+    padding: 6px;
+}
+.opcoes{
+    position: relative;
+    right: 30px;
+    top: 20px;
+}
+.postagem{
+    position: relative;
+    left: 300px;
+    padding: 2px;
+    top: 10px;
+}
+#menu{
+    z-index: 3;
+    position: fixed;
+    width: 1500px;
+}
+.fotoperfil{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+#perfilbloco{
+    position: relative;
+    left: 455px;
+    padding: 2px;
+    top: 10px;
+}
+#nome-usuario{
+    position: relative;
+    left: 40px;
+    text-align: center;
+}
+#bio-usuario{
+    position: relative;
+    right: 50px;
+}
+.fotos-galeria{
+    width: 250px;
+    height: 250px;
+}
+#galeria{
+    position: relative;
+    right: 400px;
+}
+.inf {
+    text-align: center;
+}
+#infMeme{
+    position: relative;
+    right: 37px;
+}
