@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -9,7 +9,7 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -187,8 +187,7 @@ ALTER TABLE public.user_meme OWNER TO postgres;
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -197,8 +196,7 @@ COPY public.comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: complaint; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, ds_description) FROM stdin;
-\.
+
 
 
 --
@@ -207,8 +205,7 @@ COPY public.complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_use
 -- Data for Name: follow; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -217,8 +214,7 @@ COPY public.follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FRO
 -- Data for Name: like; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -227,8 +223,7 @@ COPY public."like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.post (cd_post, user_cd_user_meme, ts_moments, ds_post) FROM stdin;
-\.
+
 
 
 --
@@ -237,8 +232,7 @@ COPY public.post (cd_post, user_cd_user_meme, ts_moments, ds_post) FROM stdin;
 -- Data for Name: share; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -247,8 +241,7 @@ COPY public.share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: user_adm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, dt_birth, ds_country) FROM stdin;
-\.
+
 
 
 --
@@ -257,30 +250,7 @@ COPY public.user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_pass
 -- Data for Name: user_meme; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.user_meme (cd_user_meme, nm_first, nm_last, ds_nick, ds_email, ds_country, ds_bios, ds_password, tp_private, nm_birth) FROM stdin;
-300	eee	eee	eee	simoneflorency@gmail.comee	Brasil	eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee	eee	t	\N
-350	q	q	q	q	Brasil	q	q	f	\N
-400	w	w	w	w	Brasil	w	w	t	\N
-450	a	a	a	a	Brasil	a	a	t	\N
-500	e	e	e	e	Brasil	e	e	t	\N
-501	eia	e	e	e	Brasil	e	e	f	\N
-550	teste	teste	teste	teste	Brasil	teste	teste	t	\N
-551	teste2	teste	teste	teste	Brasil	teste	teste	f	\N
-600	tt	tt	tt	tt	Brasil	tt	tt	t	\N
-650	d	d	d	d	Brasil	d	d	t	\N
-651	da	d	d	d	Brasil	d	d	f	\N
-700	da	d	d	d	Brasil	d	d	f	\N
-701	di	d	d	d	Brasil	d	d	f	\N
-750	g	g	g	g	Brasil	g	g	t	\N
-751	ga	g	g	g	Brasil	g	g	f	\N
-801	yy	y	y	yy	Brasil	y	yy	f	\N
-800	yq	y	y	y	Brasil	y	y	f	\N
-850	tt	tt	tt	tt	Brasil	tt	tt	t	\N
-900	z	z	z	z	Brasil	z	z	t	\N
-1050	j	j	jae	\N	Ãfrica do Sul	j	j	f	8888-08-08
-1100	p	p	p	\N	Albania	p	p	f	8888-08-08
-1150	h	h	h	h	AlbÃ¢nia	h	h	f	5555-05-05
-\.
+
 
 
 --

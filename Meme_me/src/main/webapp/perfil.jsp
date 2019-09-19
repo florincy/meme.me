@@ -110,7 +110,7 @@
                                     Perfil:
                                 </label>
                                 <input type="radio" name="private" value="true" id="true" <% if (user.isPrivado()) {
-                                        out.print("checked");%>/>Privado
+                                        out.print("checked");}%>/>Privado
                                 <input type="radio" name="private" value="false" id="false" <% if (!user.isPrivado()) {
                                         out.print("checked");
                                     }%>/>Público
@@ -138,9 +138,9 @@
                                 <label for="pais" id="pais">
                                     País:
                                 </label>
-                                <select id="selectid" name="pais">
-                                    <option value="africa do Sul">África do Sul</option>
-                                    <option value="Albania">>Albânia</option>
+                                <select style="width:150;font-size:11px" name="pais">
+                                    <option value="África do Sul">África do Sul</option>
+                                    <option value="Albânia">Albânia</option>
                                     <option value="Alemanha">Alemanha</option>
                                     <option value="Andorra">Andorra</option>
                                     <option value="Angola">Angola</option>
@@ -161,8 +161,9 @@
                                     <option value="Benin">Benin</option>
                                     <option value="Bermudas">Bermudas</option>
                                     <option value="Botsuana">Botsuana</option>
-                                    <option value="Brasil">Brasil</option>
-                                    <option value="Brunei">Brunei</option>
+                                    <option value="Brasil" <%//if(user.getPais()=="Brasil"){out.print("selected");}
+                                            %>>Brasil</option>
+                                    <option value="Brunei" <%// String pais = user.getPais(); if(pais=="Brunei"){out.print("selected");}%>>Brunei</option>
                                     <option value="Bulgária">Bulgária</option>
                                     <option value="Burkina Fasso">Burkina Fasso</option>
                                     <option value="botão">botão</option>
@@ -314,6 +315,7 @@
                                     <option value="Zâmbia">Zâmbia</option>
                                     <option value="Zimbábue">Zimbábue</option>
                                 </select>
+                                    <input type="text" value="<%=user.getPais()%>"/>
                                 <br>
                                 <input class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="Enviar">
                             </div>

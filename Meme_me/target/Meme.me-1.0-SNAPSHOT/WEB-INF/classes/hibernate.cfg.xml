@@ -1,4 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -38,19 +39,21 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost/meme_me</property> <!-- BD Mane -->
-        <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
-        <property name="connection.username">flo</property> <!-- DB User -->
-        <property name="connection.password">postgres</property> <!-- DB Password -->
-   		
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
-        <property name="show_sql">true</property> <!-- Show SQL in console -->
-        <property name="format_sql">true</property> <!-- Show SQL formatted -->
-	
-    </session-factory>
+  <session-factory>
+    <property name="connection.url">jdbc:postgresql://localhost/meme_me</property>
+    <!-- BD Mane -->
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <!-- DB Driver -->
+    <property name="connection.username">postgres</property>
+    <!-- DB User -->
+    <property name="connection.password">postgres</property>
+    <!-- DB Password -->
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <!-- DB Dialect -->
+    <property name="show_sql">true</property>
+    <!-- Show SQL in console -->
+    <property name="format_sql">true</property>
+    <!-- Show SQL formatted -->
+  </session-factory>
 </hibernate-configuration>
