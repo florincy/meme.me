@@ -9,6 +9,7 @@ import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.utilidades.HibernateUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import javax.script.*;
+import javax.servlet.RequestDispatcher;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,6 +78,7 @@ public class AtualizarUsuario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws javax.script.ScriptException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -91,26 +94,18 @@ public class AtualizarUsuario extends HttpServlet {
         String senhaAntiga = request.getParameter("senha");
         String senhaNova = request.getParameter("senhaNova");
         String senhaConf = request.getParameter("senhaConf");
-        if (senhaAtual.equals(senhaAntiga)) {
-            if (senhaNova.equals(senhaConf)) {
-                user.setSenha(senhaNova);
-               // ScriptEngineManager manager = new ScriptEngineManager();
-               // ScriptEngine engine = manager.getEngineByName("nashorn");
-               // engine.eval("print('Hello, World')");
-                //  JOptionPane.showMessageDialog(null, "Hello world!");
-            } else {
-            }
-        } else {
-            // response.sendRedirect("erroLogin.html");
+        String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
+        System.out.println(senhaAntiga);
+        if (!"erro".equals(senha)) {
+            user.setSenha(senha);
         }
+
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
         String data = request.getParameter("birth");
         user.setNascimento(data);
         user.setNick(request.getParameter("nick"));
-
-        //user.setSenha(request.getParameter("senha"));
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
@@ -120,7 +115,19 @@ public class AtualizarUsuario extends HttpServlet {
         session.saveOrUpdate(user);
         tr.commit();
         session.close();
-        response.sendRedirect("perfil.jsp");
+        if (senhaAntiga == null) {
+            response.sendRedirect("perfil.jsp");
+
+        } else if (!"erro".equals(senha)) {
+            response.sendRedirect("perfil.jsp");
+        } else {
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('Erro ao atualizar senha!');");
+            out.println("document.location=('perfil.jsp');");
+            out.println("</script>");
+        }
+
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("usuarioLogado", user);
 
@@ -135,5 +142,19 @@ public class AtualizarUsuario extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public String comparaSenha(String senhaAtual, String senhaAntiga, String senhaNova, String senhaConf) {
+
+        if (senhaAtual.equals(senhaAntiga)) {
+            if (senhaNova.equals(senhaConf)) {
+                String senha = senhaNova;
+                return senha;
+            } else {
+                return "erro";
+            }
+        } else {
+            return "erro";
+        }
+    }
 
 }

@@ -96,6 +96,10 @@
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
                         <form class="w3-container" action="AtualizarUsuario" method="POST">
                             <div class="w3-section">
+                                <label for="email" id="email">
+                                    Email:
+                                </label>
+                                <input type="text" id="email" placeholder="Digite seu Email" class="w3-input w3-border w3-margin-bottom" name="email" value="<%=user.getEmail()%>">
                                 <label for="nick" id="nick">
                                     Nick:
                                 </label>
