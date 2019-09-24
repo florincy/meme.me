@@ -6,6 +6,7 @@
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
+import static java.lang.System.out;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -165,11 +166,9 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
-    
-   //Em breve @Override
-   // getString {
-    
-//}
+  
+   
+
     @Column (name="ds_email")
     private String email;
     @Column(name = "nm_first")

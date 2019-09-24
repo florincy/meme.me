@@ -40,7 +40,7 @@ public class AtualizarUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AtualizarUsuario</title>");            
+            out.println("<title>Servlet AtualizarUsuario</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AtualizarUsuario at " + request.getContextPath() + "</h1>");
@@ -76,28 +76,46 @@ public class AtualizarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UsuarioMeme user = new UsuarioMeme();
+        user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
+        String idUsuario = request.getParameter("id");
+        String hql = "from UsuarioMeme u where u.id='" + idUsuario + "'";
+        user = (UsuarioMeme) session.createQuery(hql).uniqueResult();
+        String senhaAtual = user.getSenha();
+        String senhaAntiga = request.getParameter("senha");
+        String senhaNova = request.getParameter("senhaNova");
+        String senhaConf = request.getParameter("senhaConf");
+        if (senhaAtual.equals(senhaAntiga)) {
+            if (senhaNova.equals(senhaConf)) {
+                user.setSenha(senhaNova);
+            } else {
+                response.sendRedirect("erroLogin.html");
+            }
+        } else {
+            response.sendRedirect("erroLogin.html");
+        }
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
         String data = request.getParameter("birth");
         user.setNascimento(data);
         user.setNick(request.getParameter("nick"));
-        user.setSenha(request.getParameter("senha"));
+
+        //user.setSenha(request.getParameter("senha"));
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
-        user.setCdUsuarioMeme (Integer.parseInt(request.getParameter("id")));
-        
+        user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
+
         //todos os atributos SETados
-        Session session = HibernateUtil.getSession();
-        Transaction tr = session.beginTransaction();
         session.saveOrUpdate(user);
         tr.commit();
         session.close();
         response.sendRedirect("perfil.jsp");
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("usuarioLogado", user);
-        
+
     }
 
     /**

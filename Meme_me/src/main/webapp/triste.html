@@ -1,0 +1,42 @@
+<html>
+    <head>
+    <title>Reset de Senha</title>
+    <script>
+                function validarSenha()
+                    NovaSenha = document.FormSenha.NovaSenha.value;
+                    NovaSenha = document.FormSenha.CNovaSenha.value;
+
+                    if (NovaSenha != CNovaSenha) 
+                        alert("SENHAS DIFERENTES!\\nFAVOR DIGITAR SENHAS IGUAIS");
+            </script>
+            </head>
+        <body>
+
+    <div class="container-fluid container_reset">
+                <div class="row-fluid">
+                    <div class="well">
+                        <form action="troca_senha.php" method="POST" id="FormSenha" name="FormSenha">
+                            <div class="centraliza_reset">
+                                <fieldset>
+                                    <br /><br />
+                                    <div class="row">
+                                    <div class="span2"></div>
+                                    <div class="span3">Nova Senha:</div>
+                                    <div class="span6"><input type="password" maxlength="10" name="NovaSenha" /></div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="span2"></div>
+                                    <div class="span3">Confirme a nova Senha:</div>
+                                    <div class="span6"><input type="password" maxlength="10" name="CNovaSenha" /></div>
+                                    </div>
+
+                                    <button type="reset" class="btn btn-primary pull-left botao_limpar_senha">Limpar</button>
+                                    <button type="button" class="btn btn-primary pull-right botao_reset_senha" onClick="validarSenha()">Enviar</button>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
