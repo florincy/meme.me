@@ -9,6 +9,9 @@ import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.utilidades.HibernateUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import javax.script.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,11 +94,14 @@ public class AtualizarUsuario extends HttpServlet {
         if (senhaAtual.equals(senhaAntiga)) {
             if (senhaNova.equals(senhaConf)) {
                 user.setSenha(senhaNova);
+               // ScriptEngineManager manager = new ScriptEngineManager();
+               // ScriptEngine engine = manager.getEngineByName("nashorn");
+               // engine.eval("print('Hello, World')");
+                //  JOptionPane.showMessageDialog(null, "Hello world!");
             } else {
-                response.sendRedirect("erroLogin.html");
             }
         } else {
-            response.sendRedirect("erroLogin.html");
+            // response.sendRedirect("erroLogin.html");
         }
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));

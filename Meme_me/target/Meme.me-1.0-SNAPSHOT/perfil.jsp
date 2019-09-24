@@ -155,9 +155,7 @@
                                         var b = document.getElementById(valor);
                                         b.setAttribute("selected", "selected");
                                     }
-
                                 </script>
-
                                 <select>
                                     <option value="AfricaDoSul" id="AfricaDoSul">África do Sul</option>
                                     <option value="Albania" id="Albania">Albânia</option>
