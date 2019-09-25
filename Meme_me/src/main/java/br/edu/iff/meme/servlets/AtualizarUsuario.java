@@ -94,10 +94,16 @@ public class AtualizarUsuario extends HttpServlet {
         String senhaAntiga = request.getParameter("senha");
         String senhaNova = request.getParameter("senhaNova");
         String senhaConf = request.getParameter("senhaConf");
-        String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
-        System.out.println(senhaAntiga);
-        if (!"erro".equals(senha)) {
-            user.setSenha(senha);
+        
+        boolean tretaDeSenha = false;
+        if (!(senhaAntiga == null || "".equals(senhaAntiga))) {
+            String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
+            System.out.println(senhaAntiga);
+            if (!"erro".equals(senha)) {
+                user.setSenha(senha);
+            } else {
+                tretaDeSenha = true;
+            }
         }
 
         user.setEmail(request.getParameter("email"));
@@ -115,17 +121,15 @@ public class AtualizarUsuario extends HttpServlet {
         session.saveOrUpdate(user);
         tr.commit();
         session.close();
-        if (senhaAntiga == null) {
-            response.sendRedirect("perfil.jsp");
 
-        } else if (!"erro".equals(senha)) {
-            response.sendRedirect("perfil.jsp");
-        } else {
+        if (tretaDeSenha) {
             PrintWriter out = response.getWriter();
             out.println("<script>");
             out.println("alert('Erro ao atualizar senha!');");
             out.println("document.location=('perfil.jsp');");
             out.println("</script>");
+        } else {
+            response.sendRedirect("perfil.jsp");
         }
 
         HttpSession httpSession = request.getSession();

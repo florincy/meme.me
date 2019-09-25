@@ -160,7 +160,7 @@
                                         b.setAttribute("selected", "selected");
                                     }
                                 </script>
-                                <select>
+                                <select name="pais">
                                     <option value="AfricaDoSul" id="AfricaDoSul">África do Sul</option>
                                     <option value="Albania" id="Albania">Albânia</option>
                                     <option value="Alemanha" id="Alemanha">Alemanha</option>
