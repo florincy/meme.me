@@ -6,43 +6,40 @@
 package br.edu.iff.meme.utilidades;
 
 import br.edu.iff.meme.entidades.UsuarioMeme;
-import org.hibernate.HibernateException;
+import br.edu.iff.meme.entidades.Post;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory concreteSessionFactory;
+//    private static final SessionFactory sessionFactory;
+//    static {
+//        try {
+//            sessionFactory = new AnnotationConfiguration()
+//                    .configure().buildSessionFactory();
+//        } catch (Throwable ex) {
+//            // Log exception!
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//    }
+//
+//    public static Session getSession()
+//            throws HibernateException {
+//        return sessionFactory.openSession();
+//    }
+    
+    private static SessionFactory factory;
 
     static {
-        try {
-            concreteSessionFactory = new AnnotationConfiguration()
-                    .configure()
-                    .addAnnotatedClass(UsuarioMeme.class)
-                    .buildSessionFactory();
-        } catch (HibernateException ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
+        AnnotationConfiguration cfg = new AnnotationConfiguration();
+        cfg.configure();
+        cfg.addAnnotatedClass(UsuarioMeme.class);
+        cfg.addAnnotatedClass(Post.class);
+        factory = cfg.buildSessionFactory();
     }
 
-    public static Session getSession()
-            throws HibernateException {
-        return concreteSessionFactory.openSession();
-    }
-
-    public static void main(String... args) {
-        Session session = getSession();
-        Transaction tr = session.beginTransaction();
-        UsuarioMeme user = (UsuarioMeme) session.get(UsuarioMeme.class, 1);
-        if (user == null) {
-            System.out.println("Usuário não encontrado.");
-        } else {
-            System.out.println("Nome: "+user.getNome());
-        }
-        
-        tr.commit();
-        session.close();
+    public static Session getSession() {
+        return factory.openSession();
     }
 }

@@ -7,16 +7,18 @@ package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
 import static java.lang.System.out;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -53,8 +55,7 @@ public class UsuarioMeme implements Serializable {
     public void setCdUsuarioMeme(int cdUsuarioMeme) {
         this.cdUsuarioMeme = cdUsuarioMeme;
     }
-    
-    
+
     /**
      * @return the email
      */
@@ -166,32 +167,43 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
-  
-   
 
-    @Column (name="ds_email")
+    @OneToMany(mappedBy = "userCdUserMeme")
+    private Collection<Post> postCollection;
+    @Column(name = "tp_private")
+    private boolean privado;
+    @Column(name = "ds_email")
     private String email;
     @Column(name = "nm_first")
     private String nome;
-    @Column (name="nm_last")
+    @Column(name = "nm_last")
     private String sobrenome;
-    @Column (name="ds_nick")
+    @Column(name = "ds_nick")
     private String nick;
-    @Column (name="ds_password")
+    @Column(name = "ds_password")
     private String senha;
-    @Column (name="ds_country")
+    @Column(name = "ds_country")
     private String pais;
-    @Column(name="tp_private")
-    private boolean privado;
-    @Column(name="ds_bios")
+    @Column(name = "ds_bios")
     private String bio;
-    @Column(name="nm_birth")
+    @Column(name = "nm_birth")
     private String nascimento;
     @Id
-    @Column(name="cd_user_meme")
+    @Column(name = "cd_user_meme")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
     @SequenceGenerator(name = "sequence_user_meme", sequenceName = "sq_cd_user_meme")
     private int cdUsuarioMeme;
-    
-    
+
+    public UsuarioMeme() {
+    }
+
+    @XmlTransient
+    public Collection<Post> getPostCollection() {
+        return postCollection;
+    }
+
+    public void setPostCollection(Collection<Post> postCollection) {
+        this.postCollection = postCollection;
+    }
+
 }

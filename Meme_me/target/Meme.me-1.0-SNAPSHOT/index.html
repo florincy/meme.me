@@ -85,12 +85,12 @@
                                                         <label for="sobrenome" id="sobrenome">
                                                             Sobrenome
                                                         </label>
-                                                        
+
                                                         <label for="date" id="data">
                                                             Data de nascimento
                                                         </label>
                                                         <input type="date" name="birth">
-                                                        
+
                                                         <input type="text" id="sobrenome" placeholder="Digite seu sobrenome" class="w3-input w3-border w3-margin-bottom" name="sobrenome">
                                                         <label for="nick" id="nick">
                                                             Nick:
@@ -293,6 +293,8 @@
                                                         <br>
                                                         <textarea placeholder="Digite sua Bio" name="bio"></textarea>
                                                         <br>
+                                                        <input type="file" name="imagem" id="input" onchange="handleFiles(this.files)" accept="image/*">
+                                                        <br>
                                                         <input type="submit" value="Enviar" class="w3-button w3-block w3-green w3-section w3-padding">
                                                     </div>
                                                 </form>
@@ -325,4 +327,4 @@
                                 </p> 
                             </footer>
                             </body>
-</html>
+                            </html>

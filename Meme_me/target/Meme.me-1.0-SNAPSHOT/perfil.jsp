@@ -55,7 +55,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button onclick="window.location.replace('publicar.html')" class="w3-button w3-large" id="botao2">
+                                <button onclick="window.location.replace('publicar.jsp')" class="w3-button w3-large" id="botao2">
                                     Publicar   
                                 </button>
                             </li>
