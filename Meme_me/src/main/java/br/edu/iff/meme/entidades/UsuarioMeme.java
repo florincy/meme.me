@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -27,6 +28,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "user_meme")
 public class UsuarioMeme implements Serializable {
+
+    
+    @Lob
+    @Column(name = "bb_photo")
+    private byte[] bbPhoto;
 
     /**
      * @return the nascimento
@@ -167,11 +173,10 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
-
+    @Column(name="tp_private")
+    private boolean privado;
     @OneToMany(mappedBy = "userCdUserMeme")
     private Collection<Post> postCollection;
-    @Column(name = "tp_private")
-    private boolean privado;
     @Column(name = "ds_email")
     private String email;
     @Column(name = "nm_first")
@@ -204,6 +209,18 @@ public class UsuarioMeme implements Serializable {
 
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
+    }
+
+   
+
+ 
+
+    public byte[] getBbPhoto() {
+        return bbPhoto;
+    }
+
+    public void setBbPhoto(byte[] bbPhoto) {
+        this.bbPhoto = bbPhoto;
     }
 
 }

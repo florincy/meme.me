@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -38,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Post.findByTsMoments", query = "SELECT p FROM Post p WHERE p.tsMoments = :tsMoments")
     , @NamedQuery(name = "Post.findByDsPost", query = "SELECT p FROM Post p WHERE p.dsPost = :dsPost")})
 public class Post implements Serializable {
+
+    @Column(name = "ds_path")
+    private String dsPath;
 
     /**
      * @return the dsPost
@@ -62,9 +66,6 @@ public class Post implements Serializable {
     private Date tsMoments;
     @Column(name = "ds_post")
     private String dsPost;
-    @Lob
-    @Column(name = "bb_image")
-    private byte[] bbImage;
     @JoinColumn(name = "user_cd_user_meme", referencedColumnName = "cd_user_meme")
     @ManyToOne
     private UsuarioMeme userCdUserMeme;
@@ -93,13 +94,6 @@ public class Post implements Serializable {
     }
 
 
-    public byte[] getBbImage() {
-        return bbImage;
-    }
-
-    public void setBbImage(byte[] bbImage) {
-        this.bbImage = bbImage;
-    }
 
     public UsuarioMeme getUserCdUserMeme() {
         return userCdUserMeme;
@@ -132,6 +126,14 @@ public class Post implements Serializable {
     @Override
     public String toString() {
         return "br.edu.iff.meme.entidades.Post[ cdPost=" + cdPost + " ]";
+    }
+
+    public String getDsPath() {
+        return dsPath;
+    }
+
+    public void setDsPath(String dsPath) {
+        this.dsPath = dsPath;
     }
     
 }

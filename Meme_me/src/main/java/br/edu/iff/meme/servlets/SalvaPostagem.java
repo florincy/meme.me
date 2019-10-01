@@ -31,7 +31,7 @@ import org.hibernate.Transaction;
  * @author florincy
  */
 @MultipartConfig
-        //(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+//(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class SalvaPostagem extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -74,7 +74,7 @@ public class SalvaPostagem extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   /* @Override
+    /* @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -107,7 +107,7 @@ public class SalvaPostagem extends HttpServlet {
 
     }*/
 
-    /*static String getFilename( Part part) {
+ /*static String getFilename( Part part) {
         for (String cd : part.getHeader("content-disposition").split(";")) {
             if (cd.trim().startsWith("filename")) {
                 int meio = cd.indexOf('=');
@@ -117,66 +117,78 @@ public class SalvaPostagem extends HttpServlet {
         }
         return null;
     }*/
-    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-     response.setContentType("text/html;charset=UTF-8");
-
-    // Create path components to save the file
-    final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens";//request.getParameter("destination");
-    final Part filePart = request.getPart("imagem");
-    final String fileName = getFileName(filePart);
+        Post postagem = new Post();
+        response.setContentType("text/html;charset=UTF-8");
+        UsuarioMeme user = new UsuarioMeme();
+        user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
+        String idUsuario = request.getParameter("id");
+        String hql = "from UsuarioMeme u where u.id='" + idUsuario + "'";
+        user = (UsuarioMeme) session.createQuery(hql).uniqueResult();
+        postagem.setUserCdUserMeme(user);
+        postagem.setDsPost(request.getParameter("descricao"));
+        // Create path components to save the file
+        final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/post";//request.getParameter("destination");
+        final Part filePart = request.getPart("imagem");
+        final String fileName = getFileName(filePart);
 
         OutputStream out = null;
-    InputStream filecontent = null;
-    final PrintWriter writer = response.getWriter();
+        InputStream filecontent = null;
+        final PrintWriter writer = response.getWriter();
 
-    try {
-        out = new FileOutputStream(new File(path + File.separator
-                + fileName));
-        filecontent = filePart.getInputStream();
+        try {
+            out = new FileOutputStream(new File(path + File.separator
+                    + fileName));
+            filecontent = filePart.getInputStream();
 
-        int read = 0;
-        final byte[] bytes = new byte[1024];
+            int read = 0;
+            final byte[] bytes = new byte[1024];
 
-        while ((read = filecontent.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
-        }
-        writer.println("New file " + fileName + " created at " + path + "<br><img src=\"imagens/"+fileName+"\" class=\"padrao\">");
-        System.out.println("New file " + fileName + " created at " + path);
-    } catch (FileNotFoundException fne) {
-        writer.println("You either did not specify a file to upload or are "
-                + "trying to upload a file to a protected or nonexistent "
-                + "location.");
-        writer.println("<br/> ERROR: " + fne.getMessage());
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            writer.println("New file " + fileName + " created at " + path + "<br><img src=\"imagens/post" + fileName + "\" class=\"padrao\">");
+            System.out.println("New file " + fileName + " created at " + path);
+            String pathImage = path+"/"+fileName;
+            postagem.setDsPath(pathImage);
+        } catch (FileNotFoundException fne) {
+            writer.println("You either did not specify a file to upload or are "
+                    + "trying to upload a file to a protected or nonexistent "
+                    + "location.");
+            writer.println("<br/> ERROR: " + fne.getMessage());
 
-        System.out.println("Problems during file upload. Error: "+ fne.getMessage());
-    } finally {
-        if (out != null) {
-            out.close();
+            System.out.println("Problems during file upload. Error: " + fne.getMessage());
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
+            }
+            if (writer != null) {
+                writer.close();
+            }
         }
-        if (filecontent != null) {
-            filecontent.close();
-        }
-        if (writer != null) {
-            writer.close();
-        }
+        session.save(postagem);
+        tr.commit();
+        session.close();
     }
-}
 
-private String getFileName(final Part part) {
-    final String partHeader = part.getHeader("content-disposition");
-    System.out.println("Part Header = "+ partHeader);
-    for (String content : part.getHeader("content-disposition").split(";")) {
-        if (content.trim().startsWith("filename")) {
-            return content.substring(
-                    content.indexOf('=') + 1).trim().replace("\"", "");
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        System.out.println("Part Header = " + partHeader);
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
         }
+        return null;
     }
-    return null;
-}
-     
+
     /**
      * Returns a short description of the servlet.
      *
