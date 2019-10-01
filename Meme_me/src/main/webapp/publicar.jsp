@@ -48,9 +48,9 @@
         </div>  
         <div id="feed">
             <!--enctype="multipart/form-data"-->
-            <form method="post" action="SalvaPostagem">
+            <form method="post" action="SalvaPostagem" enctype="multipart/form-data">
                 <input name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>
-                <input id="imagem" name="image" type="file" accept=".gif,.jpg,.jpeg,.png">
+                <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" >
                 <textarea name="descricao"></textarea>
                 <input  type="submit" value="Postar"/>           
             </form>
