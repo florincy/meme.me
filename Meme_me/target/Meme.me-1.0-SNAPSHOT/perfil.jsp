@@ -4,7 +4,14 @@
     Author     : florincy
 --%>
 
+<jsp:directive.page import="java.util.*" />
+<%@page import="org.hibernate.Transaction"%>
+<%@page import="br.edu.iff.meme.entidades.Post"%>
+<%@page import="br.edu.iff.meme.utilidades.HibernateUtil"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="java.util.List"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
+<%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
@@ -19,6 +26,7 @@
         </style>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
         <title>Meme.Me</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,7 +39,16 @@
 
     </head>
     <body>
-        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
+        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
+            Session session1 = HibernateUtil.getSession();
+            Transaction tr = session1.beginTransaction();
+            String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+            //Post postagem = (Post) session1.createQuery(hql).list();
+            List<Post> lista = (List) session1.createQuery(hql).list();
+            request.setAttribute("postagens", lista);
+            System.out.println(lista);
+            tr.commit();
+        %>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
                 <div class="container">
@@ -375,28 +392,109 @@
                         </td>
                     </tr>
                 </table>
-                <table id="galeria">
-                    <tr>
-                        <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-neww.jpg" class="fotos-galeria"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="imagens/meme-novoo.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                        <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                    </tr>
-                </table>
+
+                <!--
+               <table id="galeria">
+                   <tr>
+                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
+                   </tr>
+                   <tr>
+                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-neww.jpg" class="fotos-galeria"></td>
+                   </tr>
+                   <tr>
+                       <td><img src="imagens/meme-novoo.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
+                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
+                   </tr>
+               </table>
+                -->
             </div>
-        </div>
+                                //aquiiiiiiiiiiiiiiiiiii
+                                
+                                
+                                
+                                
+                                
+                                
+            <display:table name="postagens">
+                <display:column property="tsMoments" title="descricao"/>
+                 <display:setProperty name="basic.msg.empty_list" value="Sem post" />
+            </display:table>
+            <div id="feed2">
+                <div class="postagem" id="postagem2">
+                    <img src="imagens/foto-perfil.jpg" class="perfil">
+                    <%=user.getNick()%>
+                    <br>
+                    
+                    <!-- Publicações -->
+                    <img src="imagens/meme1.jpeg" class="padrao">
+                    <br>
+                    <div class="opcoes">
+                        <ul>
+                            <li>
+                                <img src="imagens/curtir.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/compartilhar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/comentar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
+                            </li>
+                            <li>
+                                <span class="dataHora">
+                                    19:45 13/11/2018
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="legenda">
+                        Só li verdades! 
+                    </span>
+                </div>
+
+                <div class="postagem">
+                    <img src="imagens/foto-perfil.jpg" class="perfil">
+                    <%=user.getNick()%>
+                    <br>
+                    <img src="imagens/meme2.png" class="padrao">
+                    <br>
+                    <div class="opcoes">
+                        <ul>
+                            <li>
+                                <img src="imagens/curtir.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/compartilhar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/comentar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
+                            </li>
+                            <li>
+                                <span class="dataHora">
+                                    21:26 13/11/2018
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="legenda">
+                        The zoeira never ends!
+                    </span>
+                    <br>
+                </div>
+            </div>
 
     </body>
 </html>

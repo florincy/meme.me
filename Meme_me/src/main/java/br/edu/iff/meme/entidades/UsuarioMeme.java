@@ -30,9 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class UsuarioMeme implements Serializable {
 
     
-    @Lob
-    @Column(name = "bb_photo")
-    private byte[] bbPhoto;
+  
 
     /**
      * @return the nascimento
@@ -215,12 +213,5 @@ public class UsuarioMeme implements Serializable {
 
  
 
-    public byte[] getBbPhoto() {
-        return bbPhoto;
-    }
-
-    public void setBbPhoto(byte[] bbPhoto) {
-        this.bbPhoto = bbPhoto;
-    }
 
 }

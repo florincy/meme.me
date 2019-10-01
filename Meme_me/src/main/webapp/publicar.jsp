@@ -27,11 +27,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="login_css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-           // var absolutePath = $("imagem").attr("src");
+        <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+        <script type="text/javascript">
+            function loaded(){
+                now = new Date;
+                var a = now.getMonth().toString();
+                document.getElementById("date").value = a;
+            }
         </script>
     </head>
-    <body>
+    <body onload="loaded()">
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
@@ -48,11 +53,12 @@
         </div>  
         <div id="feed">
             <!--enctype="multipart/form-data"-->
-            <form method="post" action="SalvaPostagem" enctype="multipart/form-data">
-                <input name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>
-                <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" >
-                <textarea name="descricao"></textarea>
-                <input  type="submit" value="Postar"/>           
+            <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
+                <center>  <input name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>    </center> <br>
+                <center>  <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" >  </center> <br>
+                <center>  <textarea name="descricao"></textarea>                                        </center> 
+             <!--   <input  type="text" id="date">                                                 -->
+                <center>  <input  type="submit" value="Postar"/>                                        </center> <br>  
             </form>
         </div>
 
