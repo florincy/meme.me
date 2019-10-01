@@ -11,12 +11,10 @@
 <html lang="en" >
     <head>
         <style type="text/css">
-
             #selectid{
                 width:150;
                 font-size:11px;
             }
-
         </style>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
         <title>Meme.Me</title>
@@ -49,7 +47,8 @@
             </nav>
         </div>  
         <div id="feed">
-            <form method="GET" action="SalvaPostagem">
+            <!--enctype="multipart/form-data"-->
+            <form method="post" action="SalvaPostagem">
                 <input name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>
                 <input id="imagem" name="image" type="file" accept=".gif,.jpg,.jpeg,.png">
                 <textarea name="descricao"></textarea>
