@@ -1,7 +1,7 @@
 <%-- 
     Document   : publicar
     Created on : 29/09/2019, 18:26:06
-    Author     : florincy
+    Author     : guilhermePV
 --%>
 
 <%@page import="javax.swing.JFileChooser"%>
@@ -36,31 +36,56 @@
             }
         </script>
     </head>
+   
+    
+    
+    
+    
     <body onload="loaded()">
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
-                <div class="container">
+                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="index.html">Meme.Me</a>       
+                        <a class="navbar-brand" href="index.html">Meme.Me</a>
+                    </div>
                     </div>
             </nav>
-        </div>  
-        <div id="feed">
-            <!--enctype="multipart/form-data"-->
-            <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
-                <center>  <input name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>    </center> <br>
-                <center>  <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" >  </center> <br>
-                <center>  <textarea name="descricao"></textarea>                                        </center> 
-             <!--   <input  type="text" id="date">                                                 -->
-                <center>  <input  type="submit" value="Postar"/>                                        </center> <br>  
-            </form>
+            
+            <div class="vertical-menu">
+
+            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+            <br>
+            <span style="position: relative;left: 17px;">
+                <%=user.getNick()%>
+            </span>
+            <a href="principal.jsp">
+                Feed
+            </a>
+            <a href="perfil.jsp">Perfil</a>
+            
         </div>
+  </div>
+        </div>  
+            <section id="feed">
+  
+                <center><h1 style="position: relative; left: -400px">Publicação</h1></center> 
+            <article>
+   
+    <p >  <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
+                <center> <input  name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>  </center>   <br>
+                <center>  <input   style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
+                <center>  <textarea cols="30" rows="5"  style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
+             <!--   <input  type="text" id="date">                                                 -->
+               <center>   <input style="position: relative; left: -400px"  type="submit" value="Postar"/>                                     </center>  <br>  
+            </form></p>
+  </article>
+</section>
 
     </body>
 </html>
