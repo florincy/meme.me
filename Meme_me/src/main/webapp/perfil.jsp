@@ -432,12 +432,33 @@
                    </tr>
                </table>
                 -->
-                <display:table name="postagens">
-                    <br>
-                    <display:column property="dsPost" title="Descrição"/>
-                    <display:column property="tsMoments" title="Tempo"/>
-                    <display:caption>Postagens</display:caption>
-                </display:table>
+                <div id="tabela" style="#tabela{
+                         background-color: pink;
+                     }
+                     .tr{
+                         background-color: #de2020;
+                     }
+                     .td{
+                         background-color: blue;
+                     }
+                     ">
+                    <table>
+                        <td class="td">
+                            <display:table name="postagens">
+                                <br>
+                            <tr class="tr">
+                                <display:column property="dsPost" title="Descrição"/>
+                            </tr>
+                            <tr class="tr">
+                                <display:column property="tsMoments" title="Tempo"/>
+                            </tr>
+                            <tr class="tr">
+                                <display:caption>Postagens</display:caption>
+                                </tr>
+                        </display:table>
+                        </td>
+                    </table>
+                </div>
             </div>              
 
             <div id="feed2">
