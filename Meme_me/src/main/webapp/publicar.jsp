@@ -80,7 +80,7 @@
     <p >  <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
                 <center> <input  name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>  </center>   <br>
                 <center>  <input   style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
-                <center>  <textarea cols="30" rows="5"  style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
+                <center>  <textarea placeholder="Comentar..." cols="30" rows="5" style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
              <!--   <input  type="text" id="date">                                                 -->
                <center>   <input style="position: relative; left: -400px"  type="submit" value="Postar"/>                                     </center>  <br>  
             </form></p>
