@@ -45,7 +45,7 @@ Contributor(s):
     <!-- BD Mane -->
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <!-- DB Driver -->
-    <property name="connection.username">flo</property>
+    <property name="connection.username">postgres</property>
     <!-- DB User -->
     <property name="connection.password">postgres</property>
     <!-- DB Password -->

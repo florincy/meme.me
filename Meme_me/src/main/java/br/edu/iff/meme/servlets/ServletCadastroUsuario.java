@@ -6,7 +6,6 @@
 package br.edu.iff.meme.servlets;
 
 import br.edu.iff.meme.utilidades.HibernateUtil;
-import static br.edu.iff.meme.utilidades.HibernateUtil.getSession;
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,13 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import sun.font.ScriptRun;
 
 /**
  *
@@ -91,7 +82,10 @@ public class ServletCadastroUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         UsuarioMeme user = new UsuarioMeme();
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
@@ -102,7 +96,7 @@ public class ServletCadastroUsuario extends HttpServlet {
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
-        final String path = "/home/florincy/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
+        final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
         final Part filePart = request.getPart("imagem");
         final String fileName = getFileName(filePart);
 
@@ -123,7 +117,7 @@ public class ServletCadastroUsuario extends HttpServlet {
             }
             //writer.println("New file " + fileName + " created at " + path + "<br><img src=\"imagens/" + fileName + "\" class=\"padrao\">");
             System.out.println("New file " + fileName + " created at " + path);
-            String pathImage = path + fileName;
+            String pathImage = fileName;
             user.setDsPhoto(pathImage);
         } catch (FileNotFoundException fne) {
             // writer.println("You either did not specify a file to upload or are "
@@ -142,8 +136,6 @@ public class ServletCadastroUsuario extends HttpServlet {
 
         }
         //todos os atributos SETados
-        Session session = HibernateUtil.getSession();
-        Transaction tr = session.beginTransaction();
         session.save(user);
         tr.commit();
         session.close();

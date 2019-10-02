@@ -36,9 +36,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="login_css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script>
+            function muda() {
+                var imagem = document.getElementById('fotoPerfil');
+                var imagem2 = document.getElementById('fotoBio');
+                var imagem3 = document.getElementById('fotoPerfil3');
+                var imagem4 = document.getElementById('fotoPerfil4');
+                var caminho = document.getElementById('caminho').innerHTML.trim();
+                var pasta = "imagens/";
+                var junto = pasta + caminho;
+                imagem.src = junto;
+                imagem2.src = junto;
+                imagem3.src = junto;
+                imagem4.src = junto;
+            }
+        </script>
     </head>
-    <body>
+    <body onload="muda()">
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             Session session1 = HibernateUtil.getSession();
             Transaction tr = session1.beginTransaction();
@@ -80,9 +94,12 @@
                     </div>
                 </div>
             </nav>
-        </div>  
+        </div> 
+        <span id="caminho" hidden>
+            <%=user.getDsPhoto()%>
+        </span> 
         <div class="vertical-menu">
-            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+            <img src="imagens/caderno.png" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
             <br>
             <span style="position: relative;left: 17px;">
                 <%=user.getNick()%>
@@ -100,13 +117,12 @@
                     <%=user.getNick()%>
                 </span>
                 <br>
-                <img src="imagens/foto-perfil.jpg" class="fotoperfil">
+                <img src="imagens/foto-perfil.jpg" class="fotoperfil" id="fotoBio">
                 <br>
                 <span id="bio-usuario">
                     <%=user.getBio()%>
                 </span>
                 <br>
-
                 <button type="button" onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; left: 60px" >
                     Editar perfil
                 </button>
@@ -426,7 +442,7 @@
 
             <div id="feed2">
                 <div class="postagem" id="postagem2">
-                    <img src="imagens/foto-perfil.jpg" class="perfil">
+                    <img src="imagens/foto-perfil.jpg" class="perfil" id="fotoPerfil3">
                     <%=user.getNick()%>
                     <br>
 
@@ -460,7 +476,7 @@
                 </div>
 
                 <div class="postagem">
-                    <img src="imagens/foto-perfil.jpg" class="perfil">
+                    <img src="imagens/foto-perfil.jpg" class="perfil" id="fotoPerfil4">
                     <%=user.getNick()%>
                     <br>
                     <img src="imagens/meme2.png" class="padrao">
