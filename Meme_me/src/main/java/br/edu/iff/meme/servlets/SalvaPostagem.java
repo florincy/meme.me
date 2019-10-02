@@ -134,7 +134,7 @@ public class SalvaPostagem extends HttpServlet {
         Date agora = new Date();
         postagem.setTsMoments(agora);
         // Create path components to save the file
-        final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
+        final String path = "/home/florincy/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
         final Part filePart = request.getPart("imagem");
         final String fileName = getFileName(filePart);
 
@@ -155,7 +155,7 @@ public class SalvaPostagem extends HttpServlet {
             }
             //writer.println("New file " + fileName + " created at " + path + "<br><img src=\"imagens/" + fileName + "\" class=\"padrao\">");
             System.out.println("New file " + fileName + " created at " + path);
-            String pathImage = path + "/" + fileName;
+            String pathImage = path + fileName;
             postagem.setDsPath(pathImage);
         } catch (FileNotFoundException fne) {
            // writer.println("You either did not specify a file to upload or are "

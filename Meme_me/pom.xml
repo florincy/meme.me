@@ -17,14 +17,8 @@
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -34,25 +28,19 @@
             <classifier>dist</classifier>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.26</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>3.5.6-Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.1.Final</version>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.4</version>
+            <groupId>unknown.binary</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>derby</artifactId>
+            <version>SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>displaytag</groupId>
@@ -63,7 +51,7 @@
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
-            <type>jar</type>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -116,5 +104,11 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 </project>

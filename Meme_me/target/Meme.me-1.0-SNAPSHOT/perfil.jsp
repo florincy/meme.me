@@ -106,6 +106,7 @@
                     <%=user.getBio()%>
                 </span>
                 <br>
+
                 <button type="button" onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; left: 60px" >
                     Editar perfil
                 </button>
@@ -415,24 +416,20 @@
                    </tr>
                </table>
                 -->
-            </div>
-                                //aquiiiiiiiiiiiiiiiiiii
-                                
-                                
-                                
-                                
-                                
-                                
-            <display:table name="postagens">
-                <display:column property="tsMoments" title="descricao"/>
-                 <display:setProperty name="basic.msg.empty_list" value="Sem post" />
-            </display:table>
+                <display:table name="postagens">
+                    <br>
+                    <display:column property="dsPost" title="Descrição"/>
+                    <display:column property="tsMoments" title="Tempo"/>
+                    <display:caption>Postagens</display:caption>
+                </display:table>
+            </div>              
+
             <div id="feed2">
                 <div class="postagem" id="postagem2">
                     <img src="imagens/foto-perfil.jpg" class="perfil">
                     <%=user.getNick()%>
                     <br>
-                    
+
                     <!-- Publicações -->
                     <img src="imagens/meme1.jpeg" class="padrao">
                     <br>

@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -28,6 +29,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "user_meme")
 public class UsuarioMeme implements Serializable {
+
+    
+    
+    @Size(max = 2147483647)
+    @Column(name = "ds_photo")
+    private String dsPhoto;
 
     
   
@@ -207,6 +214,15 @@ public class UsuarioMeme implements Serializable {
 
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
+    }
+  
+
+    public String getDsPhoto() {
+        return dsPhoto;
+    }
+
+    public void setDsPhoto(String dsPhoto) {
+        this.dsPhoto = dsPhoto;
     }
 
    
