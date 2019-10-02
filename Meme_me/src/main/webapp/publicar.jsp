@@ -29,37 +29,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
         <script type="text/javascript">
-            function loaded(){
-                now = new Date;
-                var a = now.getMonth().toString();
-                document.getElementById("date").value = a;
+            function muda() {
+                var imagem = document.getElementById('fotoPerfil');
+                var caminho = document.getElementById('caminho').innerHTML.trim();
+                var pasta = "imagens/";
+                var junto = pasta + caminho;
+                imagem.src = junto;
             }
         </script>
-    </head>
-   
-    
-    
-    
-    
-    <body onload="loaded()">
-        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
-        <div id = "fundo1">
-            <nav class="navbar navbar-default" id="menu">
-                 <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>                        
-                        </button>
-                        <a class="navbar-brand" href="index.html">Meme.Me</a>
-                    </div>
-                    </div>
-            </nav>
-            
-            <div class="vertical-menu">
+    </script>
+</head>
 
-            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
+
+
+
+
+<body onload="muda()">
+    <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
+    <div id = "fundo1">
+        <span id="caminho" hidden>
+            <%=user.getDsPhoto()%>
+        </span>
+        <nav class="navbar navbar-default" id="menu">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="index.html">Meme.Me</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="vertical-menu">
+
+            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
             <br>
             <span style="position: relative;left: 17px;">
                 <%=user.getNick()%>
@@ -68,24 +74,24 @@
                 Feed
             </a>
             <a href="perfil.jsp">Perfil</a>
-            
+
         </div>
-  </div>
-        </div>  
-            <section id="feed">
-  
-                <center><h1 style="position: relative; left: -400px">Publicação</h1></center> 
-            <article>
-   
-    <p >  <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
-                <center> <input  name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>  </center>   <br>
-                <center>  <input   style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
-                <center>  <textarea placeholder="Comentar..." cols="30" rows="5" style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
-             <!--   <input  type="text" id="date">                                                 -->
-               <center>   <input style="position: relative; left: -400px"  type="submit" value="Postar"/>                                     </center>  <br>  
-            </form></p>
-  </article>
+    </div>
+</div>  
+<section id="feed">
+
+    <center><h1 style="position: relative; left: -400px">Publicação</h1></center> 
+    <article>
+
+        <p >  <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
+            <center> <input  name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>  </center>   <br>
+            <center>  <input   style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
+            <center>  <textarea placeholder="Comentar..." cols="30" rows="5" style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
+            <!--   <input  type="text" id="date">                                                 -->
+            <center>   <input style="position: relative; left: -400px"  type="submit" value="Postar"/>                                     </center>  <br>  
+        </form></p>
+    </article>
 </section>
 
-    </body>
+</body>
 </html>

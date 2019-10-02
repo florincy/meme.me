@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -189,8 +189,7 @@ ALTER TABLE user_meme OWNER TO postgres;
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -199,8 +198,7 @@ COPY comment (cd_comment, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: complaint; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, ds_description) FROM stdin;
-\.
+
 
 
 --
@@ -209,8 +207,7 @@ COPY complaint (cd_complaint, post_cd_post, user_cd_user_meme, adm_cd_user_adm, 
 -- Data for Name: follow; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -219,8 +216,7 @@ COPY follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin
 -- Data for Name: like; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
+
 
 
 --
@@ -229,14 +225,6 @@ COPY "like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
 -- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY post (cd_post, user_cd_user_meme, ts_moments, ds_post, ds_path) FROM stdin;
-2050	2000	\N		\N
-2051	2000	\N	ffff	\N
-2150	2000	2019-10-02 09:11:00.782-03	cadernin	\N
-2200	2000	2019-10-02 09:14:02.407-03	yyyyyyyyyyyyyyyyyyyyy	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/imagem.jpg
-2250	2000	2019-10-02 09:29:00.668-03	tttt	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/caderno.png
-2550	2500	2019-10-02 10:56:57.948-03	lisyy	imagem.jpg
-\.
 
 
 --
@@ -245,8 +233,6 @@ COPY post (cd_post, user_cd_user_meme, ts_moments, ds_post, ds_path) FROM stdin;
 -- Data for Name: share; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY share (cd_share, post_cd_post, user_cd_user_meme) FROM stdin;
-\.
 
 
 --
@@ -264,8 +250,6 @@ SELECT pg_catalog.setval('sq_cd_user_meme', 51, true);
 -- Data for Name: user_adm; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, dt_birth, ds_country) FROM stdin;
-\.
 
 
 --
@@ -274,15 +258,7 @@ COPY user_adm (cd_user_adm, nm_first, nm_last, ds_nick, ds_email, ds_password, d
 -- Data for Name: user_meme; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY user_meme (cd_user_meme, nm_first, nm_last, ds_nick, ds_email, ds_country, ds_bios, ds_password, tp_private, nm_birth, bb_photo, ds_photo) FROM stdin;
-1950	y	y	y	yy	Brasil	y	y	t		\N	\N
-2000	a	a	a	a	Brasil	a	a	t		\N	\N
-2300	o	o	o	o	Brasil	o	o	t		\N	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/imagem.jpg
-2350	i	i	i	i	Brasil	i	i	t		\N	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/imagem.jpg
-2400	j	j	j	j	Brasil	j	j	t		\N	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/caderno.png
-2450	w	w	w	w	Brasil	w	w	t		\N	/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/imagem.jpg
-2500	v	v	v	v	Brasil	v	v	t		\N	imagem.jpg
-\.
+
 
 
 --
