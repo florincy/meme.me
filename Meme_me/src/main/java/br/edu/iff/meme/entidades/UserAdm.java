@@ -42,7 +42,7 @@ public class UserAdm implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_useradm")
-    @SequenceGenerator(name = "sequence_useradm", sequenceName = "sq_useradm")
+    @SequenceGenerator(name = "sequence_useradm", sequenceName = "sq_cd_user_adm")
     @Column(name = "cd_user_adm")
     private Integer cdUserAdm;
     @Size(max = 2147483647)
@@ -64,7 +64,7 @@ public class UserAdm implements Serializable {
     @Column(name = "ds_country")
     private String dsCountry;
     @Size(max = 2147483647)
-    @Column(name = "nm_birth")
+    @Column(name = "dt_birth")
     private String nmBirth;
 
     public UserAdm() {

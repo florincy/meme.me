@@ -1,8 +1,8 @@
 br/edu/iff/meme/servlets/ServletCadastroUsuario.class
 br/edu/iff/meme/servlets/SalvaPostagem.class
 br/edu/iff/meme/servlets/ServletLogin.class
-br/edu/iff/meme/entidades/UsuarioMeme.class
 br/edu/iff/meme/entidades/Post.class
+br/edu/iff/meme/entidades/UsuarioMeme.class
 br/edu/iff/meme/utilidades/HibernateUtil.class
 br/edu/iff/meme/servlets/AtualizarUsuario.class
 br/edu/iff/meme/servlets/ServletCadastroAdm.class
