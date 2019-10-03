@@ -6,23 +6,23 @@
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author florincy
+ * @author mandin
  */
 @Entity
 @Table(name = "user_adm")
@@ -35,14 +35,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "UserAdm.findByDsNick", query = "SELECT u FROM UserAdm u WHERE u.dsNick = :dsNick")
     , @NamedQuery(name = "UserAdm.findByDsEmail", query = "SELECT u FROM UserAdm u WHERE u.dsEmail = :dsEmail")
     , @NamedQuery(name = "UserAdm.findByDsPassword", query = "SELECT u FROM UserAdm u WHERE u.dsPassword = :dsPassword")
-    , @NamedQuery(name = "UserAdm.findByDtBirth", query = "SELECT u FROM UserAdm u WHERE u.dtBirth = :dtBirth")
-    , @NamedQuery(name = "UserAdm.findByDsCountry", query = "SELECT u FROM UserAdm u WHERE u.dsCountry = :dsCountry")})
+    , @NamedQuery(name = "UserAdm.findByDsCountry", query = "SELECT u FROM UserAdm u WHERE u.dsCountry = :dsCountry")
+    , @NamedQuery(name = "UserAdm.findByNmBirth", query = "SELECT u FROM UserAdm u WHERE u.nmBirth = :nmBirth")})
 public class UserAdm implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_useradm")
+    @SequenceGenerator(name = "sequence_useradm", sequenceName = "sq_useradm")
     @Column(name = "cd_user_adm")
     private Integer cdUserAdm;
     @Size(max = 2147483647)
@@ -60,12 +60,12 @@ public class UserAdm implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "ds_password")
     private String dsPassword;
-    @Column(name = "dt_birth")
-    @Temporal(TemporalType.DATE)
-    private Date dtBirth;
     @Size(max = 2147483647)
     @Column(name = "ds_country")
     private String dsCountry;
+    @Size(max = 2147483647)
+    @Column(name = "nm_birth")
+    private String nmBirth;
 
     public UserAdm() {
     }
@@ -122,20 +122,20 @@ public class UserAdm implements Serializable {
         this.dsPassword = dsPassword;
     }
 
-    public Date getDtBirth() {
-        return dtBirth;
-    }
-
-    public void setDtBirth(Date dtBirth) {
-        this.dtBirth = dtBirth;
-    }
-
     public String getDsCountry() {
         return dsCountry;
     }
 
     public void setDsCountry(String dsCountry) {
         this.dsCountry = dsCountry;
+    }
+
+    public String getNmBirth() {
+        return nmBirth;
+    }
+
+    public void setNmBirth(String nmBirth) {
+        this.nmBirth = nmBirth;
     }
 
     @Override

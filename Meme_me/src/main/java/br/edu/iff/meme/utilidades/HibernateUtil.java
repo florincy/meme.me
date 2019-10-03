@@ -7,6 +7,7 @@ package br.edu.iff.meme.utilidades;
 
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.entidades.Post;
+import br.edu.iff.meme.entidades.UserAdm;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -36,6 +37,7 @@ public class HibernateUtil {
         cfg.configure();
         cfg.addAnnotatedClass(UsuarioMeme.class);
         cfg.addAnnotatedClass(Post.class);
+        cfg.addAnnotatedClass(UserAdm.class);
         factory = cfg.buildSessionFactory();
     }
 
