@@ -19,7 +19,7 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author armando gostoso
+ * @author armando idiota, vai te catar
  */
 public class ServletCadastroAdm extends HttpServlet {
 
