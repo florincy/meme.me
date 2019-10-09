@@ -64,7 +64,7 @@ public class UserAdm implements Serializable {
     @Column(name = "ds_country")
     private String dsCountry;
     @Size(max = 2147483647)
-    @Column(name = "dt_birth")
+    @Column(name = "nm_birth")
     private String nmBirth;
 
     public UserAdm() {
