@@ -30,14 +30,18 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "user_meme")
 public class UsuarioMeme implements Serializable {
 
-    
-    
+    @Column(name = "bb_photo")
+    private byte[] bbPhoto;
+    @Size(max = 2147483647)
+    @Column(name = "ds_extensao")
+    private String dsExtensao;
+    @Size(max = 2147483647)
+    @Column(name = "ds_extension")
+    private String dsExtension;
+
     @Size(max = 2147483647)
     @Column(name = "ds_photo")
     private String dsPhoto;
-
-    
-  
 
     /**
      * @return the nascimento
@@ -178,8 +182,6 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
-    @Column(name="tp_private")
-    private boolean privado;
     @OneToMany(mappedBy = "userCdUserMeme")
     private Collection<Post> postCollection;
     @Column(name = "ds_email")
@@ -203,6 +205,8 @@ public class UsuarioMeme implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
     @SequenceGenerator(name = "sequence_user_meme", sequenceName = "sq_cd_user_meme")
     private int cdUsuarioMeme;
+    @Column(name = "tp_private")
+    private boolean privado;
 
     public UsuarioMeme() {
     }
@@ -215,7 +219,6 @@ public class UsuarioMeme implements Serializable {
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
     }
-  
 
     public String getDsPhoto() {
         return dsPhoto;
@@ -227,7 +230,28 @@ public class UsuarioMeme implements Serializable {
 
    
 
- 
+    public byte[] getBbPhoto() {
+        return bbPhoto;
+    }
 
+    public void setBbPhoto(byte[] bbPhoto) {
+        this.bbPhoto = bbPhoto;
+    }
+
+    public String getDsExtensao() {
+        return dsExtensao;
+    }
+
+    public void setDsExtensao(String dsExtensao) {
+        this.dsExtensao = dsExtensao;
+    }
+
+    public String getDsExtension() {
+        return dsExtension;
+    }
+
+    public void setDsExtension(String dsExtension) {
+        this.dsExtension = dsExtension;
+    }
 
 }
