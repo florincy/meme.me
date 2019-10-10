@@ -30,6 +30,34 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "user_meme")
 public class UsuarioMeme implements Serializable {
 
+    /**
+     * @return the photo
+     */
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    /**
+     * @param photo the photo to set
+     */
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    /**
+     * @return the extensao
+     */
+    public String getExtensao() {
+        return extensao;
+    }
+
+    /**
+     * @param extensao the extensao to set
+     */
+    public void setExtensao(String extensao) {
+        this.extensao = extensao;
+    }
+
     
     
     @Size(max = 2147483647)
@@ -178,6 +206,7 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    private String extensao;
     @Column(name="tp_private")
     private boolean privado;
     @OneToMany(mappedBy = "userCdUserMeme")
@@ -203,6 +232,8 @@ public class UsuarioMeme implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
     @SequenceGenerator(name = "sequence_user_meme", sequenceName = "sq_cd_user_meme")
     private int cdUsuarioMeme;
+    @Column(name="bb_photo")
+    private byte[] photo;
 
     public UsuarioMeme() {
     }
