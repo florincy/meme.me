@@ -28,7 +28,7 @@ import org.hibernate.Transaction;
  *
  * @author aluno
  */
-//@MultipartConfig
+@MultipartConfig
 public class ServletCadastroUsuario extends HttpServlet {
 
     /**
@@ -83,10 +83,7 @@ public class ServletCadastroUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         UsuarioMeme user = new UsuarioMeme();
-        Session session = HibernateUtil.getSession();
-        Transaction tr = session.beginTransaction();
         user.setEmail(request.getParameter("email"));
         user.setNome(request.getParameter("nome"));
         user.setSobrenome(request.getParameter("sobrenome"));
@@ -97,13 +94,13 @@ public class ServletCadastroUsuario extends HttpServlet {
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
-        Part filePart = request.getPart("imagem");
-        if (filePart != null) {
-            InputStream inputStream = filePart.getInputStream();
-            user.setPhoto(IOUtils.toByteArray(inputStream));
-            user.setExtensao(filePart.getContentType());
+       final Part filePart = request.getPart("imagem");
+      if (filePart != null) {
+           InputStream inputStream = filePart.getInputStream();
+           user.setFoto(IOUtils.toByteArray(inputStream));
+          user.setExtensao(filePart.getContentType());
         }
-            /* final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
+        /* final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
         final Part filePart = request.getPart("imagem");
         final String fileName = getFileName(filePart);
 
@@ -142,16 +139,17 @@ public class ServletCadastroUsuario extends HttpServlet {
             }
 
         }
-             */
-            //todos os atributos SETados
-            session.save(user);
-            tr.commit();
-            session.close();
-            response.sendRedirect("cadastroOK.html");
-        }
+         */
+        //todos os atributos SETados
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
+        session.save(user);
+        tr.commit();
+        session.close();
+        response.sendRedirect("cadastroOK.html");
+    }
 
-    
-/*
+    /*
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
         System.out.println("Part Header = " + partHeader);
@@ -163,8 +161,7 @@ public class ServletCadastroUsuario extends HttpServlet {
         }
         return null;
     }
-    */
-
+     */
     /**
      * Returns a short description of the servlet.
      *

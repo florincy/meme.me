@@ -40,8 +40,33 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Post.findByDsPost", query = "SELECT p FROM Post p WHERE p.dsPost = :dsPost")})
 public class Post implements Serializable {
 
-    @Column(name = "ds_path")
-    private String dsPath;
+    /**
+     * @return the cdPost
+     */
+    public Integer getCdPost() {
+        return cdPost;
+    }
+
+    /**
+     * @param cdPost the cdPost to set
+     */
+    public void setCdPost(Integer cdPost) {
+        this.cdPost = cdPost;
+    }
+
+    /**
+     * @return the tsMoments
+     */
+    public Date getTsMoments() {
+        return tsMoments;
+    }
+
+    /**
+     * @param tsMoments the tsMoments to set
+     */
+    public void setTsMoments(Date tsMoments) {
+        this.tsMoments = tsMoments;
+    }
 
     /**
      * @return the dsPost
@@ -56,6 +81,48 @@ public class Post implements Serializable {
     public void setDsPost(String dsPost) {
         this.dsPost = dsPost;
     }
+
+    /**
+     * @return the userCdUserMeme
+     */
+    public UsuarioMeme getUserCdUserMeme() {
+        return userCdUserMeme;
+    }
+
+    /**
+     * @param userCdUserMeme the userCdUserMeme to set
+     */
+    public void setUserCdUserMeme(UsuarioMeme userCdUserMeme) {
+        this.userCdUserMeme = userCdUserMeme;
+    }
+
+    /**
+     * @return the extensao
+     */
+    public String getExtensao() {
+        return extensao;
+    }
+
+    /**
+     * @param extensao the extensao to set
+     */
+    public void setExtensao(String extensao) {
+        this.extensao = extensao;
+    }
+
+    /**
+     * @return the foto
+     */
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
     @Id
     @Column(name = "cd_post")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
@@ -69,44 +136,18 @@ public class Post implements Serializable {
     @JoinColumn(name = "user_cd_user_meme", referencedColumnName = "cd_user_meme")
     @ManyToOne
     private UsuarioMeme userCdUserMeme;
+    @Column(name="nm_extension")
+    private String extensao;
+    @Column(name="bb_photo")
+    private byte[] foto;
 
-    public Post() {
-    }
-
-    public Post(Integer cdPost) {
-        this.cdPost = cdPost;
-    }
-
-    public Integer getCdPost() {
-        return cdPost;
-    }
-
-    public void setCdPost(Integer cdPost) {
-        this.cdPost = cdPost;
-    }
-
-    public Date getTsMoments() {
-        return tsMoments;
-    }
-
-    public void setTsMoments(Date tsMoments) {
-        this.tsMoments = tsMoments;
-    }
-
-
-
-    public UsuarioMeme getUserCdUserMeme() {
-        return userCdUserMeme;
-    }
-
-    public void setUserCdUserMeme(UsuarioMeme userCdUserMeme) {
-        this.userCdUserMeme = userCdUserMeme;
-    }
+  
+   
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cdPost != null ? cdPost.hashCode() : 0);
+        hash += (getCdPost() != null ? getCdPost().hashCode() : 0);
         return hash;
     }
 
@@ -117,7 +158,7 @@ public class Post implements Serializable {
             return false;
         }
         Post other = (Post) object;
-        if ((this.cdPost == null && other.cdPost != null) || (this.cdPost != null && !this.cdPost.equals(other.cdPost))) {
+        if ((this.getCdPost() == null && other.getCdPost() != null) || (this.getCdPost() != null && !this.cdPost.equals(other.cdPost))) {
             return false;
         }
         return true;
@@ -125,15 +166,7 @@ public class Post implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.iff.meme.entidades.Post[ cdPost=" + cdPost + " ]";
+        return "br.edu.iff.meme.entidades.Post[ cdPost=" + getCdPost() + " ]";
     }
 
-    public String getDsPath() {
-        return dsPath;
-    }
-
-    public void setDsPath(String dsPath) {
-        this.dsPath = dsPath;
-    }
-    
 }

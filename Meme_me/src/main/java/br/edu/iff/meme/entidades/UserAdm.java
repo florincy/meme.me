@@ -6,6 +6,7 @@
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,6 +41,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "UserAdm.findByDsCountry", query = "SELECT u FROM UserAdm u WHERE u.dsCountry = :dsCountry")
     , @NamedQuery(name = "UserAdm.findByNmBirth", query = "SELECT u FROM UserAdm u WHERE u.nmBirth = :nmBirth")})
 public class UserAdm implements Serializable {
+
+    @Column(name = "dt_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dtBirth;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -161,6 +168,14 @@ public class UserAdm implements Serializable {
     @Override
     public String toString() {
         return "br.edu.iff.meme.entidades.UserAdm[ cdUserAdm=" + cdUserAdm + " ]";
+    }
+
+    public Date getDtBirth() {
+        return dtBirth;
+    }
+
+    public void setDtBirth(Date dtBirth) {
+        this.dtBirth = dtBirth;
     }
     
 }

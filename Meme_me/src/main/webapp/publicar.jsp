@@ -4,6 +4,7 @@
     Author     : guilhermePV
 --%>
 
+<%@page import="java.util.Base64"%>
 <%@page import="javax.swing.JFileChooser"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,24 +29,14 @@
         <link rel="stylesheet" type="text/css" href="login_css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
-        <script type="text/javascript">
-            function muda() {
-                var imagem = document.getElementById('fotoPerfil');
-                var caminho = document.getElementById('caminho').innerHTML.trim();
-                var pasta = "imagens/";
-                var junto = pasta + caminho;
-                imagem.src = junto;
-            }
-        </script>
+
     </script>
 </head>
-
-
-
-
-
-<body onload="muda()">
-    <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
+<body>
+    <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
+        byte[] foto = user.getFoto();
+        String encodedImage = Base64.getEncoder().encodeToString(foto);
+    %>
     <div id = "fundo1">
         <span id="caminho" hidden>
             <%=user.getDsPhoto()%>
@@ -65,7 +56,7 @@
 
         <div class="vertical-menu">
 
-            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
+            <img src="data:image/png;base64,<%=encodedImage%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
             <span style="position: relative;left: 17px;">
                 <%=user.getNick()%>
@@ -85,7 +76,7 @@
 
         <p >  <form method="post" action="SalvaPostagem" enctype="multipart/form-data">                   
             <center> <input  name="id" type="text" value="<%=user.getCdUsuarioMeme()%>" hidden/>  </center>   <br>
-            <center>  <input   style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
+            <center>  <input style="position: relative; left: -400px" max-height: 50px" id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > </center>  <br>
             <center>  <textarea placeholder="Comentar..." cols="30" rows="5" style="position: relative; left: -400px" name="descricao"></textarea>                                   </center> <br>    
             <!--   <input  type="text" id="date">                                                 -->
             <center>   <input style="position: relative; left: -400px"  type="submit" value="Postar"/>                                     </center>  <br>  

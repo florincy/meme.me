@@ -4,10 +4,11 @@
     Author     : aluno
 --%>
 
+<%@page import="java.util.Base64"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" >
+<html>
     <head>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
         <title>Meme.Me</title>
@@ -20,22 +21,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="login_css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-            function muda() {
-                var imagem = document.getElementById('fotoPerfil');
-                var imagem2 = document.getElementById('fotoBio');
-                var imagem3 = document.getElementById('fotoBio2');
-                var caminho = document.getElementById('caminho').innerHTML.trim();
-                var pasta = "imagens/";
-                var junto = pasta + caminho;
-                imagem.src = junto;
-                imagem2.src = junto;
-                imagem3.src = junto;
-            }
-        </script>
     </head>
     <body onload="muda()">
-        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");%>
+        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
+            byte[] foto = user.getFoto();
+            String encodedImage = Base64.getEncoder().encodeToString(foto);
+        %>
         <div id="fundo1">
             <nav class="navbar navbar-default" id="menu">
                 <div class="container">
@@ -69,7 +60,7 @@
             </nav>
         </div>  
         <div class="vertical-menu">
-            <img src="imagens/foto-perfil.jpg" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
+            <img src="data:image/png;base64,<%=encodedImage%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
             <br>
             <span style="position: relative;left: 17px;">
                 <%=user.getNick()%>
@@ -78,11 +69,8 @@
             <a href="perfil.jsp">Perfil</a>
         </div>
         <div id="feed">
-            <span id="caminho" hidden>
-                <%=user.getDsPhoto()%>
-            </span>
             <div class="postagem" id="postagem2">
-                <img src="imagens/foto-perfil.jpg" class="perfil" id="fotoBio">
+                <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
                 <%=user.getNick()%>
                 <br>
                 <img src="imagens/meme1.jpeg" class="padrao">
@@ -114,7 +102,7 @@
             </div>
 
             <div class="postagem">
-                <img src="imagens/foto-perfil.jpg" class="perfil" id="fotoBio2">
+                <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
                 <%=user.getNick()%>
                 <br>
                 <img src="imagens/meme2.png" class="padrao">

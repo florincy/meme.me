@@ -14,7 +14,7 @@
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" >
+<html>
     <head>
         <style type="text/css">
 
@@ -36,32 +36,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="login_css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-            function muda() {
-                var imagem = document.getElementById('fotoPerfil');
-                var imagem2 = document.getElementById('fotoBio');
-                var imagem3 = document.getElementById('fotoPerfil3');
-                var imagem4 = document.getElementById('fotoPerfil4');
-                var caminho = document.getElementById('caminho').innerHTML.trim();
-                var pasta = "imagens/";
-                var junto = pasta + caminho;
-                imagem.src = junto;
-                imagem2.src = junto;
-                imagem3.src = junto;
-                imagem4.src = junto;
-            }
-        </script>
     </head>
-    <body onload="muda()">
+    <body>
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
-            Session session1 = HibernateUtil.getSession();
-            Transaction tr = session1.beginTransaction();
-            String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
-            //Post postagem = (Post) session1.createQuery(hql).list();
-            List<Post> lista = (List) session1.createQuery(hql).list();
-            request.setAttribute("postagens", lista);
-            System.out.println(lista);
-            tr.commit();
+            byte[] fotoPerfil = user.getFoto();
+            String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
         %>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
@@ -99,7 +78,7 @@
             <%=user.getDsPhoto()%>
         </span> 
         <div class="vertical-menu">
-            <img src="imagens/caderno.png" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
+            <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
             <span style="position: relative;left: 17px;">
                 <%=user.getNick()%>
@@ -117,7 +96,7 @@
                     <%=user.getNick()%>
                 </span>
                 <br>
-                <img src="imagens/foto-perfil.jpg" class="fotoperfil" id="fotoBio">
+                <img src="data:image/png;base64,<%=perfilFoto%>" class="fotoperfil">
                 <br>
                 <span id="bio-usuario">
                     <%=user.getBio()%>
@@ -410,98 +389,8 @@
                     </tr>
                 </table>
 
-                <!--
-               <table id="galeria">
-                   <tr>
-                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                   </tr>
-                   <tr>
-                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-newww.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-neww.jpg" class="fotos-galeria"></td>
-                   </tr>
-                   <tr>
-                       <td><img src="imagens/meme-novoo.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-novooo.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-novo.jpg" class="fotos-galeria"></td>
-                       <td><img src="imagens/meme-new.jpg" class="fotos-galeria"></td>
-                   </tr>
-               </table>
-                -->
-
-<% for(Iterator it = postagens.iterator(); it.hasNext(); ) {
-    Postagem post = (Postagem) it.next;
-%>
-
-div
-etc
-código html de cada postagem aqui <%=post.getTitulo()>
-
-  <%  
-   }%>
-
-
-                <display:table name="postagens">
-
-
-                    <display:column property="dsPost" title="Descrição"/>
-
-
-                    <display:column property="tsMoments" title="Tempo"/>
-
-
-                    <display:caption>Postagens</display:caption>
-
-                </display:table>
-
-
-
+               
             </div>              
-
-            <div id="feed2">
-                <div class="postagem" id="postagem2">
-                    <img src="imagens/foto-perfil.jpg" class="perfil" id="fotoPerfil3">
-                    <%=user.getNick()%>
-                    <br>
-
-                    <!-- PublicaÃ§Ãµes -->
-                    <img src="imagens/meme1.jpeg" class="padrao">
-                    <br>
-                    <div class="opcoes">
-                        <ul>
-                            <li>
-                                <img src="imagens/curtir.png" class="icone">
-                            </li>
-                            <li>
-                                <img src="imagens/compartilhar.png" class="icone">
-                            </li>
-                            <li>
-                                <img src="imagens/comentar.png" class="icone">
-                            </li>
-                            <li>
-                                <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
-                            </li>
-                            <li>
-                                <span class="dataHora">
-                                    19:45 13/11/2018
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <span class="legenda">
-                        Só li verdades! 
-                    </span>
-                </div>
-
-
-            </div>
         </div>
-
-
-
     </body>
 </html>

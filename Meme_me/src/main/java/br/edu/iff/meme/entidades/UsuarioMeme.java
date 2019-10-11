@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
@@ -31,17 +27,17 @@ import javax.xml.bind.annotation.XmlTransient;
 public class UsuarioMeme implements Serializable {
 
     /**
-     * @return the photo
+     * @return the foto
      */
-    public byte[] getPhoto() {
-        return photo;
+    public byte[] getFoto() {
+        return foto;
     }
 
     /**
-     * @param photo the photo to set
+     * @param foto the foto to set
      */
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
 
     /**
@@ -206,6 +202,9 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    @Column(name="bb_photo")
+    private byte[] foto;
+    @Column(name="nm_extension")
     private String extensao;
     @Column(name="tp_private")
     private boolean privado;
@@ -232,8 +231,6 @@ public class UsuarioMeme implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
     @SequenceGenerator(name = "sequence_user_meme", sequenceName = "sq_cd_user_meme")
     private int cdUsuarioMeme;
-    @Column(name="bb_photo")
-    private byte[] photo;
 
     public UsuarioMeme() {
     }
@@ -255,10 +252,6 @@ public class UsuarioMeme implements Serializable {
     public void setDsPhoto(String dsPhoto) {
         this.dsPhoto = dsPhoto;
     }
-
-   
-
- 
 
 
 }
