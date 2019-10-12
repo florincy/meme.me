@@ -8,6 +8,7 @@ package br.edu.iff.meme.servlets;
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.utilidades.HibernateUtil;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.net.URL;
@@ -22,12 +23,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import javax.script.*;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author florincy
  */
+@MultipartConfig
 public class AtualizarUsuario extends HttpServlet {
 
     /**
@@ -94,7 +99,7 @@ public class AtualizarUsuario extends HttpServlet {
         String senhaAntiga = request.getParameter("senha");
         String senhaNova = request.getParameter("senhaNova");
         String senhaConf = request.getParameter("senhaConf");
-        
+
         boolean tretaDeSenha = false;
         if (!(senhaAntiga == null || "".equals(senhaAntiga))) {
             String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
@@ -116,6 +121,12 @@ public class AtualizarUsuario extends HttpServlet {
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
         user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
+        final Part filePart = request.getPart("imagem");
+        if (filePart != null) {
+            InputStream inputStream = filePart.getInputStream();
+            user.setFoto(IOUtils.toByteArray(inputStream));
+            user.setExtensao(filePart.getContentType());
+        }
 
         //todos os atributos SETados
         session.saveOrUpdate(user);

@@ -49,7 +49,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="index.html">Meme.Me</a>
+                        <a class="navbar-brand" href="index.jsp">Meme.Me</a>
                         <div id="barra-busca">
                             <input type="text" placeholder="Procurar" name="search" style="color: black;">
                             <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
@@ -58,7 +58,7 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <button onclick="window.location.replace('index.html')" class="w3-button w3-large" id="botao1" >
+                                <button onclick="window.location.replace('index.jsp')" class="w3-button w3-large" id="botao1" >
                                     Sair
                                 </button>
                             </li>
@@ -108,7 +108,7 @@
                 </button>
                 <div id="alterar" class="w3-modal">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
-                        <form class="w3-container" action="AtualizarUsuario" method="POST">
+                        <form class="w3-container" action="AtualizarUsuario" method="POST" enctype="multipart/form-data">
                             <div class="w3-section">
                                 <label for="email" id="email">
                                     Email:
@@ -348,6 +348,11 @@
                                     <option value="Zambia" id="Zambia" >Zâmbia</option>
                                     <option value="Zimbabue"id="Zimbabue" >Zimbábue</option>
                                 </select>
+                                <br>
+                                <label for="imagem">
+                                    Foto de Perfil:
+                                </label>
+                                <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" > 
                                 <br>
                                 <input class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="Enviar">
                             </div>

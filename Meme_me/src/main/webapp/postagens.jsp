@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="index.html">Meme.Me</a>
+                    <a class="navbar-brand" href="index.jsp">Meme.Me</a>
                     <div id="barra-busca">
                         <input type="text" placeholder="Procurar" name="search" style="color: black;">
                         <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
@@ -49,7 +49,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button onclick="window.location.replace('index.html')" class="w3-button w3-large" id="botao1" >
+                            <button onclick="window.location.replace('index.jsp')" class="w3-button w3-large" id="botao1" >
                                 Sair
                             </button>
                         </li>

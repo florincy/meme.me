@@ -27,7 +27,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="index.html">Meme.Me</a>
+                    <a class="navbar-brand" href="index.jsp">Meme.Me</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
@@ -90,13 +90,13 @@
                                                         <label for="sobrenome" id="sobrenome">
                                                             Sobrenome
                                                         </label>
-
+                                                        <input type="text" id="sobrenome" placeholder="Digite seu sobrenome" class="w3-input w3-border w3-margin-bottom" name="sobrenome">
                                                         <label for="date" id="data">
                                                             Data de nascimento
                                                         </label>
                                                         <input type="date" name="birth">
 
-                                                        <input type="text" id="sobrenome" placeholder="Digite seu sobrenome" class="w3-input w3-border w3-margin-bottom" name="sobrenome">
+                                                        <br>
                                                         <label for="nick" id="nick">
                                                             Nick:
                                                         </label>
@@ -296,6 +296,9 @@
                                                         <br>
                                                         <textarea placeholder="Digite sua Bio" name="bio"></textarea>
                                                         <br>
+                                                        <label for="imagem">
+                                                            Foto de Perfil:
+                                                        </label>
                                                         <input id="imagem" name="imagem" type="file" accept=".gif,.jpg,.jpeg,.png" >                                                          <br>
                                                         <input type="submit" value="Enviar" class="w3-button w3-block w3-green w3-section w3-padding">
                                                     </div>
