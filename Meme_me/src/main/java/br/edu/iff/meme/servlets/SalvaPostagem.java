@@ -145,7 +145,7 @@ public class SalvaPostagem extends HttpServlet {
         session.save(postagem);
         tr.commit();
         session.close();
-        response.sendRedirect("perfil.jsp");
+        response.sendRedirect("postagens.jsp");
 
     }
 

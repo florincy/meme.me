@@ -89,6 +89,9 @@
             <a href="perfil.jsp">
                 Perfil
             </a>
+             <a href="postagens.jsp">
+                Postagens
+            </a>
         </div>
         <div id="feed">
             <div id="perfilbloco">
@@ -102,7 +105,7 @@
                     <%=user.getBio()%>
                 </span>
                 <br>
-                <button type="button" onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; left: 60px" >
+                <button type="button" onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; left: 60px;background-color: #28bfa0;color: #f5f6f7;" >
                     Editar perfil
                 </button>
                 <div id="alterar" class="w3-modal">
@@ -163,7 +166,7 @@
                                 <input type="password" id="senhaAntiga" class="w3-input w3-border w3-margin-bottom" name="senhaConf">
 
                                 <label for="pais" id="pais">
-                                    PaÃ­s:
+                                    País:
                                 </label>
                                 <input type="text" value="<%=user.getPais()%>" id="pega" hidden/>
                                 <script type="text/javascript">

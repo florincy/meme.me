@@ -70,6 +70,7 @@ html{
     position: fixed;
     top: 80px;
     color: #7b7b7b;
+    background-color: #f8f8f8;
 }
 .vertical-menu a {
     background-color: #28bfa0;
@@ -143,6 +144,7 @@ html{
     z-index: 3;
     position: fixed;
     width: 1500px;
+    background-color: #f8f8f8;
 }
 #barra-busca{
     position: absolute;
@@ -223,6 +225,14 @@ td{
 #infMeme{
     position: relative;
     right: 37px;
+}
+#postagens{
+    background-color: #3f3f3f;
+    position: relative;
+    left: 200px;
+    top: 80px;
+    border-bottom-color: #3f3f3f;
+    border-bottom-width: 500px;
 }
 
 

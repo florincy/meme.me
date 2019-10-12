@@ -74,30 +74,34 @@
             <a href="perfil.jsp">
                 Perfil
             </a>
+            <a href="postagens.jsp">
+                Postagens
+            </a>
         </div>
-        <%
-            Session session1 = HibernateUtil.getSession();
-            Transaction tr = session1.beginTransaction();
-            String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
-            //Post postagem = (Post) session1.createQuery(hql).list();
-            List<Post> lista = (List) session1.createQuery(hql).list();
-            request.setAttribute("postagens", lista);
-            System.out.println(lista);
-            tr.commit();
-        %>
-        <%
-            Iterator<Post> it = lista.iterator();
-            while (it.hasNext()) {
-                Post postagem = it.next();
-                String codigo = postagem.getCdPost().toString();
-                byte[] fotoPostagem = postagem.getFoto();
-                String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
-                UsuarioMeme usuario = new UsuarioMeme();
-                usuario = postagem.getUserCdUserMeme();
-                
-        %>
-        <div id="feed">
-            <div class="postagem" id="postagem2">
+        <div id="postagens">
+            <%
+                Session session1 = HibernateUtil.getSession();
+                Transaction tr = session1.beginTransaction();
+                String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+                //Post postagem = (Post) session1.createQuery(hql).list();
+                List<Post> lista = (List) session1.createQuery(hql).list();
+                request.setAttribute("postagens", lista);
+                System.out.println(lista);
+                tr.commit();
+
+                for (Iterator it = lista.iterator(); it.hasNext();) {
+
+                    Post postagem = (Post) it.next();
+                    String codigo = postagem.getCdPost().toString();
+                    byte[] fotoPostagem = postagem.getFoto();
+                    String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
+                    UsuarioMeme usuario = new UsuarioMeme();
+                    usuario = postagem.getUserCdUserMeme();
+                    System.out.println(codigo);
+
+            %>
+
+            <div class="postagem">
                 <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil">
                 <span>
                     <%=usuario.getNick()%>
@@ -113,10 +117,10 @@
                             <img src="imagens/compartilhar.png" class="icone">
                         </li>
                         <li>
-                            <img src="imagens/comentar.png" class="icone">
+                            <img src="imagens/comentar.png" class="icone" >
                         </li>
                         <li>
-                            <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
+                            <img src="imagens/denuncia.png" class="icone">
                         </li>
                         <li>
                             <span class="dataHora">
@@ -127,12 +131,13 @@
                 </div>
                 <span class="legenda">
                     <%=postagem.getDsPost()%>
+                    
                 </span>
             </div>
+
+            <%
+                }
+            %>
         </div>
-        <%
-            
-            }
-        %>
     </body>
 </html>

@@ -67,6 +67,7 @@
             </span>
             <a href="principal.jsp">Feed</a>
             <a href="perfil.jsp">Perfil</a>
+             <a href="postagens.jsp">Postagens</a>
         </div>
         <div id="feed">
             <div class="postagem" id="postagem2">

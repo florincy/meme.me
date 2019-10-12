@@ -65,7 +65,9 @@
                 Feed
             </a>
             <a href="perfil.jsp">Perfil</a>
-
+             <a href="postagens.jsp">
+                Postagens
+            </a>
         </div>
     </div>
 </div>  
