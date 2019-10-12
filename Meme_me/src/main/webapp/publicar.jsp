@@ -7,7 +7,7 @@
 <%@page import="java.util.Base64"%>
 <%@page import="javax.swing.JFileChooser"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%><!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en" >
     <head>

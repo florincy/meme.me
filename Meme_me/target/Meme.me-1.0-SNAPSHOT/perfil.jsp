@@ -12,8 +12,7 @@
 <%@page import="java.util.List"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%><!DOCTYPE html>
 <html>
     <head>
         <style type="text/css">
@@ -26,7 +25,6 @@
         </style>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
         <title>Meme.Me</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -89,7 +87,7 @@
             <a href="perfil.jsp">
                 Perfil
             </a>
-             <a href="postagens.jsp">
+            <a href="postagens.jsp">
                 Postagens
             </a>
         </div>
@@ -392,7 +390,7 @@
                     </tr>
                 </table>
 
-               
+
             </div>              
         </div>
     </body>

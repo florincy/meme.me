@@ -1,9 +1,13 @@
+<%-- 
+    Document   : index
+    Created on : 12/10/2019, 12:17:01
+    Author     : florincy
+--%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Meme.Me</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -13,7 +13,7 @@
 <%@page import="java.util.Base64"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -97,8 +97,6 @@
                     String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
                     UsuarioMeme usuario = new UsuarioMeme();
                     usuario = postagem.getUserCdUserMeme();
-                    System.out.println(codigo);
-
             %>
 
             <div class="postagem">
