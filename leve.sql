@@ -9,7 +9,6 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -130,7 +129,7 @@ ALTER TABLE public.share OWNER TO postgres;
 
 --
 -- TOC entry 202 (class 1259 OID 25352)
--- Name: sq_cd_postagem; Type: SEQUENCE; Schema: public; Owner: flo
+-- Name: sq_cd_postagem; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.sq_cd_postagem
@@ -141,7 +140,7 @@ CREATE SEQUENCE public.sq_cd_postagem
     CACHE 1;
 
 
-ALTER TABLE public.sq_cd_postagem OWNER TO flo;
+ALTER TABLE public.sq_cd_postagem OWNER TO postgres;
 
 --
 -- TOC entry 203 (class 1259 OID 25354)
@@ -160,7 +159,7 @@ ALTER TABLE public.sq_cd_user_meme OWNER TO postgres;
 
 --
 -- TOC entry 204 (class 1259 OID 25356)
--- Name: sq_user_meme_not; Type: SEQUENCE; Schema: public; Owner: flo
+-- Name: sq_user_meme_not; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.sq_user_meme_not
@@ -171,7 +170,7 @@ CREATE SEQUENCE public.sq_user_meme_not
     CACHE 1;
 
 
-ALTER TABLE public.sq_user_meme_not OWNER TO flo;
+ALTER TABLE public.sq_user_meme_not OWNER TO postgres;
 
 --
 -- TOC entry 205 (class 1259 OID 25358)
@@ -291,7 +290,7 @@ ALTER TABLE public.user_meme OWNER TO postgres;
 --
 -- TOC entry 2993 (class 0 OID 0)
 -- Dependencies: 202
--- Name: sq_cd_postagem; Type: SEQUENCE SET; Schema: public; Owner: flo
+-- Name: sq_cd_postagem; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.sq_cd_postagem', 1, false);
@@ -309,7 +308,7 @@ SELECT pg_catalog.setval('public.sq_cd_user_meme', 26, true);
 --
 -- TOC entry 2995 (class 0 OID 0)
 -- Dependencies: 204
--- Name: sq_user_meme_not; Type: SEQUENCE SET; Schema: public; Owner: flo
+-- Name: sq_user_meme_not; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.sq_user_meme_not', 1, false);

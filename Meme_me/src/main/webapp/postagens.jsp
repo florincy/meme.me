@@ -81,14 +81,11 @@
         <div id="postagens">
             <%
                 Session session1 = HibernateUtil.getSession();
-                Transaction tr = session1.beginTransaction();
                 String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
                 //Post postagem = (Post) session1.createQuery(hql).list();
                 List<Post> lista = (List) session1.createQuery(hql).list();
                 request.setAttribute("postagens", lista);
                 System.out.println(lista);
-                tr.commit();
-
                 for (Iterator it = lista.iterator(); it.hasNext();) {
 
                     Post postagem = (Post) it.next();

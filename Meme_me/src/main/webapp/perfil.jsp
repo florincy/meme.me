@@ -4,6 +4,7 @@
     Author     : florincy
 --%>
 
+<%@page import="org.hibernate.Query"%>
 <jsp:directive.page import="java.util.*" />
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="br.edu.iff.meme.entidades.Post"%>
@@ -39,7 +40,21 @@
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
-        %>
+            Session session2 = HibernateUtil.getSession();
+            String hql = "select count(*) from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+            Query query = session2.createQuery(hql);
+            List listResult = query.list();
+            Number postagens = (Number) listResult.get(0);
+            System.out.println(postagens.intValue());
+            //String hql = " SELECT COUNT(post) FROM Post postagem";
+           // Query query = session2.createQuery(hql);
+            // Long a = query.uniqueResult();
+
+            //Post postagem = (Post) session1.createQuery(hql).list();
+            // List<Post> lista = (List) session2.createQuery(hql).list();
+            //  request.setAttribute("postagens", lista);
+            //  System.out.println(lista);
+%>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
                 <div class="container">
@@ -72,10 +87,7 @@
                 </div>
             </nav>
         </div> 
-        <span id="caminho" hidden>
-            <%=user.getDsPhoto()%>
-        </span> 
-        <div class="vertical-menu">
+        =        <div class="vertical-menu">
             <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
             <span style="position: relative;left: 17px;">
@@ -378,7 +390,7 @@
                         </td>
                         <td class="inf">
                             <b>
-                                12
+                                <%=postagens%>   
                             </b>
                         </td>
                     </tr>
