@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 #botao1{
     background-color: #28bfa0;
+    color: white;
 }
 #botao2{
     background-color: orange;
+    color: white;
 }
 h3{
     font-family: 'Montserrat', sans-serif;

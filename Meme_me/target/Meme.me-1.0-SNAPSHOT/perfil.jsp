@@ -17,12 +17,10 @@
 <html>
     <head>
         <style type="text/css">
-
             #selectid{
                 width:150;
                 font-size:11px;
             }
-
         </style>
         <!-- Theme Made By www.w3schools.com - No Copyright -->
         <title>Meme.Me</title>
@@ -46,14 +44,6 @@
             List listResult = query.list();
             Number postagens = (Number) listResult.get(0);
             System.out.println(postagens.intValue());
-            //String hql = " SELECT COUNT(post) FROM Post postagem";
-           // Query query = session2.createQuery(hql);
-            // Long a = query.uniqueResult();
-
-            //Post postagem = (Post) session1.createQuery(hql).list();
-            // List<Post> lista = (List) session2.createQuery(hql).list();
-            //  request.setAttribute("postagens", lista);
-            //  System.out.println(lista);
 %>
         <div id = "fundo1">
             <nav class="navbar navbar-default" id="menu">
@@ -73,21 +63,21 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <button onclick="window.location.replace('index.jsp')" class="w3-button w3-large" id="botao1" >
+                                <a href="ServletLogoutUsuarioMeme" class="w3-button w3-large" id="botao1">
                                     Sair
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button onclick="window.location.replace('publicar.jsp')" class="w3-button w3-large" id="botao2">
+                                <a href="publicar.jsp" class="w3-button w3-large" id="botao2">
                                     Publicar   
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div> 
-        =        <div class="vertical-menu">
+        <div class="vertical-menu">
             <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
             <span style="position: relative;left: 17px;">
@@ -121,7 +111,7 @@
                 <div id="alterar" class="w3-modal">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
                         <form class="w3-container" action="AtualizarUsuario" method="POST" enctype="multipart/form-data">
-                            <div class="w3-section">
+                            <div class="w3-section" style="font-size:15px;">
                                 <label for="email" id="email">
                                     Email:
                                 </label>
@@ -406,8 +396,6 @@
                         </td>
                     </tr>
                 </table>
-
-
             </div>              
         </div>
     </body>

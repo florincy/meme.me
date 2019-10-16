@@ -126,9 +126,6 @@ public class AtualizarUsuario extends HttpServlet {
             InputStream inputStream = filePart.getInputStream();
             user.setFoto(IOUtils.toByteArray(inputStream));
             user.setExtensao(filePart.getContentType());
-        }else{
-            byte[] foto = user.getFoto();
-            user.setFoto(foto);
         }
 
         //todos os atributos SETados

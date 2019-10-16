@@ -49,14 +49,14 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button onclick="window.location.replace('index.jsp')" class="w3-button w3-large" id="botao1" >
+                            <a href="ServletLogoutUsuarioMeme" class="w3-button w3-large" id="botao1">
                                 Sair
-                            </button>
+                            </a>
                         </li>
                         <li>
-                            <button onclick="window.location.replace('publicar.jsp')"class="w3-button w3-large" id="botao2">
+                            <a href="publicar.jsp" class="w3-button w3-large" id="botao2">
                                 Publicar   
-                            </button>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -126,7 +126,7 @@
                 </div>
                 <span class="legenda">
                     <%=postagem.getDsPost()%>
-                    
+
                 </span>
             </div>
 
