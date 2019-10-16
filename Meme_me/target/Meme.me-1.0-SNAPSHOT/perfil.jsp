@@ -56,8 +56,10 @@
                         </button>
                         <a class="navbar-brand" href="index.jsp">Meme.Me</a>
                         <div id="barra-busca">
-                            <input type="text" placeholder="Procurar" name="search" style="color: black;">
+                        <form method="post" action="ServletBusca">
+                            <input type="text" placeholder="Procurar" name="busca" style="color: black;">
                             <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
+                        </form>
                         </div>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">

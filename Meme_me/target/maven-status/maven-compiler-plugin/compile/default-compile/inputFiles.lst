@@ -1,6 +1,7 @@
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/Post.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/UserAdm.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroAdm.java
+/home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletLogoutUsuarioMeme.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/UsuarioMeme.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/AtualizarUsuario.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroUsuario.java

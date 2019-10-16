@@ -122,7 +122,8 @@ public class AtualizarUsuario extends HttpServlet {
         user.setBio(request.getParameter("bio"));
         user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
         final Part filePart = request.getPart("imagem");
-        if (filePart != null) {
+        long tamPart = filePart.getSize();
+        if (tamPart > 0) {
             InputStream inputStream = filePart.getInputStream();
             user.setFoto(IOUtils.toByteArray(inputStream));
             user.setExtensao(filePart.getContentType());
