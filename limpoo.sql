@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -87,14 +87,14 @@ ALTER TABLE follow OWNER TO postgres;
 -- Name: like; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE "like" (
+CREATE TABLE like (
     cd_like integer NOT NULL,
     post_cd_post integer,
     user_cd_user_meme integer
 );
 
 
-ALTER TABLE "like" OWNER TO postgres;
+ALTER TABLE like OWNER TO postgres;
 
 --
 -- TOC entry 185 (class 1259 OID 50635)
@@ -250,7 +250,7 @@ COPY follow (cd_follow, follower_cd_user_meme, followed_cd_user_meme) FROM stdin
 -- Data for Name: like; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "like" (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
+COPY like (cd_like, post_cd_post, user_cd_user_meme) FROM stdin;
 \.
 
 
@@ -353,7 +353,7 @@ ALTER TABLE ONLY follow
 -- Name: like_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY "like"
+ALTER TABLE ONLY like
     ADD CONSTRAINT like_pkey PRIMARY KEY (cd_like);
 
 
@@ -469,7 +469,7 @@ ALTER TABLE ONLY follow
 -- Name: like_post_cd_post_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY "like"
+ALTER TABLE ONLY like
     ADD CONSTRAINT like_post_cd_post_fkey FOREIGN KEY (post_cd_post) REFERENCES post(cd_post);
 
 
@@ -478,7 +478,7 @@ ALTER TABLE ONLY "like"
 -- Name: like_user_cd_user_meme_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY "like"
+ALTER TABLE ONLY like
     ADD CONSTRAINT like_user_cd_user_meme_fkey FOREIGN KEY (user_cd_user_meme) REFERENCES user_meme(cd_user_meme);
 
 
