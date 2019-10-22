@@ -79,6 +79,7 @@ public class ServletBusca extends HttpServlet {
         String hql = "from UsuarioMeme where ds_nick like'" + busca + "%'";
         System.out.println(hql);
         List<UsuarioMeme> lista = (List) session1.createQuery(hql).list();
+        request.setAttribute("buscas", lista);
         System.out.println(lista);
         response.sendRedirect("buscas.jsp");
     }
