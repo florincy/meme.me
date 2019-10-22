@@ -8,3 +8,4 @@
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletLogin.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/SalvaPostagem.java
 /home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/utilidades/HibernateUtil.java
+/home/aluno/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletBusca.java

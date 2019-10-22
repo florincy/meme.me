@@ -44,41 +44,8 @@
             List listResult = query.list();
             Number postagens = (Number) listResult.get(0);
             System.out.println(postagens.intValue());
-%>
-        <div id = "fundo1">
-            <nav class="navbar navbar-default" id="menu">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>                        
-                        </button>
-                        <a class="navbar-brand" href="index.jsp">Meme.Me</a>
-                        <div id="barra-busca">
-                        <form method="post" action="ServletBusca">
-                            <input type="text" placeholder="Procurar" name="busca" style="color: black;">
-                            <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
-                        </form>
-                        </div>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="ServletLogoutUsuarioMeme" class="w3-button w3-large" id="botao1">
-                                    Sair
-                                </a>
-                            </li>
-                            <li>
-                                <a href="publicar.jsp" class="w3-button w3-large" id="botao2">
-                                    Publicar   
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div> 
+        %>
+        <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <div class="vertical-menu">
             <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>

@@ -38,9 +38,6 @@
         String encodedImage = Base64.getEncoder().encodeToString(foto);
     %>
     <div id = "fundo1">
-        <span id="caminho" hidden>
-            <%=user.getDsPhoto()%>
-        </span>
         <nav class="navbar navbar-default" id="menu">
             <div class="container">
                 <div class="navbar-header">
@@ -85,6 +82,5 @@
         </form></p>
     </article>
 </section>
-
 </body>
 </html>

@@ -74,12 +74,13 @@ public class ServletBusca extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // Session session1 = HibernateUtil.getSession();
-        //String busca = request.getParameter("busca");
-       // String hql = "from UsuarioMeme where ds_nick" + busca + "'";
-       // List<UsuarioMeme> lista = (List) session1.createQuery(hql).list();
-       // System.out.println(lista);
-
+        Session session1 = HibernateUtil.getSession();
+        String busca = request.getParameter("busca");
+        String hql = "from UsuarioMeme where ds_nick like'" + busca + "%'";
+        System.out.println(hql);
+        List<UsuarioMeme> lista = (List) session1.createQuery(hql).list();
+        System.out.println(lista);
+        response.sendRedirect("buscas.jsp");
     }
 
     /**

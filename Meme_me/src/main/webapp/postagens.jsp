@@ -2,6 +2,7 @@
     Document   : postagens
     Created on : 09/10/2019, 12:12:02
     Author     : aluno
+    Tag com % é scriptlet
 --%>
 
 <%@page import="java.util.Iterator"%>
@@ -32,36 +33,7 @@
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
         %>
-        <nav class="navbar navbar-default" id="menu">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="index.jsp">Meme.Me</a>
-                    <div id="barra-busca">
-                        <input type="text" placeholder="Procurar" name="search" style="color: black;">
-                        <button type="submit"><img src="imagens/lupa.png" class="icone"></button>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="ServletLogoutUsuarioMeme" class="w3-button w3-large" id="botao1">
-                                Sair
-                            </a>
-                        </li>
-                        <li>
-                            <a href="publicar.jsp" class="w3-button w3-large" id="botao2">
-                                Publicar   
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <div class="vertical-menu">
             <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
             <br>
@@ -82,7 +54,7 @@
             <%
                 Session session1 = HibernateUtil.getSession();
                 String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
-              //  Post postagem = (Post) session1.createQuery(hql).list();
+                //  Post postagem = (Post) session1.createQuery(hql).list();
                 List<Post> lista = (List) session1.createQuery(hql).list();
                 request.setAttribute("postagens", lista);
                 System.out.println(lista);
