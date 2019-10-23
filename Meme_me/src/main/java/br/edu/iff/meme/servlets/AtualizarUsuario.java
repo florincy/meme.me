@@ -123,12 +123,12 @@ public class AtualizarUsuario extends HttpServlet {
         user.setCdUsuarioMeme(Integer.parseInt(request.getParameter("id")));
         final Part filePart = request.getPart("imagem");
         long tamPart = filePart.getSize();
+        System.out.println(tamPart);
         if (tamPart > 0) {
             InputStream inputStream = filePart.getInputStream();
             user.setFoto(IOUtils.toByteArray(inputStream));
             user.setExtensao(filePart.getContentType());
         }
-
         //todos os atributos SETados
         session.saveOrUpdate(user);
         tr.commit();

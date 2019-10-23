@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>
 
 <div id = "fundo1">
-    <nav class="navbar navbar-default" id="menu">
+    <nav class="navbar navbar-default menu">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

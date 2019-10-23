@@ -32,6 +32,7 @@
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
             List lista = (List) session.getAttribute("buscas");
+            System.out.println(lista);
         %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <div class="vertical-menu">
@@ -51,10 +52,29 @@
             </a>
         </div>
         <div id="feed">
-            Usuário
-            <ul>
-                <li><li>
-            </ul>
+            <div id="busca">
+                <ul style="list-style-type: none;" id="buscaUsuariosMeme">
+                    <li>Usuários</li>
+                        <%
+                            for (Iterator it = lista.iterator(); it.hasNext();) {
+                                UsuarioMeme usuario = (UsuarioMeme) it.next();
+                                String nick = usuario.getNick();
+                                System.out.println(nick);
+                                byte[] fotoPerfilBusca = usuario.getFoto();
+                                String perfilFotoBusca = Base64.getEncoder().encodeToString(fotoPerfilBusca);
+                        %>
+                    <li>
+                        <div class="linha">
+                            <img src="data:image/png;base64,<%=perfilFotoBusca%>" class="perfil">
+                            <span class="nick">
+                                <%=nick%>
+                            </span>
+                        </div
+                    <li>
+                        <%                        }
+                        %>
+                </ul>
+            </div>
         </div>
     </body>
 </html>

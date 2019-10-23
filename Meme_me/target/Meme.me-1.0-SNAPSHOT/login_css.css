@@ -145,7 +145,7 @@ html{
 #menu{
     z-index: 3;
     position: fixed;
-    width: 1500px;
+    width: 20000px;;
     background-color: #f8f8f8;
 }
 #barra-busca{
@@ -154,7 +154,7 @@ html{
 }
 
 td{
-   padding: 5px;
+    padding: 5px;
     text-align: left;    
 }
 
@@ -236,5 +236,24 @@ td{
     border-bottom-color: #3f3f3f;
     border-bottom-width: 500px;
 }
+.linha {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    background-color: #f8f8f8;
+    width: 50%;
+    color:#7b7b7b;
 
+}
+.nick{
+    margin-left: 3px;
+}
+#busca{
+    margin-top: 20px;
+    position: relative;
+    left: 20%;
 
+}
+#centro{
+    position: relative;
+    left: 20%;
+}

@@ -1,0 +1,19 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
+<%@page import="java.util.Base64"%>
+<%@ page pageEncoding="UTF-8" %>
+<%UsuarioMeme userr = (UsuarioMeme) session.getAttribute("usuarioLogado");
+    byte[] fotoo = userr.getFoto();
+    String encodedImagee = Base64.getEncoder().encodeToString(fotoo);
+%>
+<div class="vertical-menu">
+    <img src="data:image/png;base64,<%=encodedImagee%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
+    <br>
+    <span style="position: relative;left: 17px;">
+        <%=userr.getNick()%>
+    </span>
+    <a href="principal.jsp">Feed</a>
+    <a href="perfil.jsp">Perfil</a>
+    <a href="postagens.jsp">Postagens</a>
+</div>
+

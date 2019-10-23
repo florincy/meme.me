@@ -28,16 +28,7 @@
             String encodedImage = Base64.getEncoder().encodeToString(foto);
         %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
-        <div class="vertical-menu">
-            <img src="data:image/png;base64,<%=encodedImage%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;" id="fotoPerfil">
-            <br>
-            <span style="position: relative;left: 17px;">
-                <%=user.getNick()%>
-            </span>
-            <a href="principal.jsp">Feed</a>
-            <a href="perfil.jsp">Perfil</a>
-            <a href="postagens.jsp">Postagens</a>
-        </div>
+        <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="feed">
             <div class="postagem" id="postagem2">
                 <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">

@@ -26,7 +26,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="login_css.css">
-        <title>JSP Page</title>
+        <title>Postagens</title>
     </head>
     <body>
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
@@ -34,22 +34,7 @@
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
         %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
-        <div class="vertical-menu">
-            <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil" style="position: relative;left: 50px;width:100px;height:100px;">
-            <br>
-            <span style="position: relative;left: 17px;">
-                <%=user.getNick()%>
-            </span>
-            <a href="principal.jsp">
-                Feed
-            </a>
-            <a href="perfil.jsp">
-                Perfil
-            </a>
-            <a href="postagens.jsp">
-                Postagens
-            </a>
-        </div>
+        <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="postagens">
             <%
                 Session session1 = HibernateUtil.getSession();

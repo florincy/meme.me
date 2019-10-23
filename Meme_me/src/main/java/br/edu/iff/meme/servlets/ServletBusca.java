@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 
 /**
@@ -76,11 +77,13 @@ public class ServletBusca extends HttpServlet {
             throws ServletException, IOException {
         Session session1 = HibernateUtil.getSession();
         String busca = request.getParameter("busca");
-        String hql = "from UsuarioMeme where ds_nick like'" + busca + "%'";
+        String hql = "from UsuarioMeme where ds_nick like '%" + busca + "%'";
         System.out.println(hql);
         List<UsuarioMeme> lista = (List) session1.createQuery(hql).list();
-        request.setAttribute("buscas", lista);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("buscas", lista);
         System.out.println(lista);
+        session1.close();
         response.sendRedirect("buscas.jsp");
     }
 
