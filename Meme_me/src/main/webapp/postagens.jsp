@@ -35,7 +35,7 @@
         %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
-        <div id="postagens">
+        <div id="feed">
             <%
                 Session session1 = HibernateUtil.getSession();
                 String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";

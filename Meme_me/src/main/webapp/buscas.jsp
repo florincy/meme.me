@@ -62,14 +62,16 @@
                                 System.out.println(nick);
                                 byte[] fotoPerfilBusca = usuario.getFoto();
                                 String perfilFotoBusca = Base64.getEncoder().encodeToString(fotoPerfilBusca);
+                                HttpSession httpSession = request.getSession();
+                                httpSession.setAttribute("buscado", usuario);
                         %>
                     <li>
-                        <div class="linha">
+                        <div class="linha"onclick="window.location.replace('perfilBuscas.jsp')" >
                             <img src="data:image/png;base64,<%=perfilFotoBusca%>" class="perfil">
                             <span class="nick">
                                 <%=nick%>
                             </span>
-                        </div
+                        </div>
                     <li>
                         <%                        }
                         %>
