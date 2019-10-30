@@ -75,21 +75,21 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         Follow seguida = new Follow();
-        String seguidor = request.getParameter("seguidor");
-        String seguido = request.getParameter("seguido");
+        /*String seguidor = request.getParameter("seguidor");
+        String seguido = request.getParameter("seguido");*/
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
-        String hql = "from UsuarioMeme u where u.id='" + seguido + "'";
-        UsuarioMeme UserSeguido = (UsuarioMeme) session.createQuery(hql).uniqueResult();
-        String hql2 = "from UsuarioMeme u where u.id='" + seguidor + "'";
-        UsuarioMeme UserSeguidor = (UsuarioMeme) session.createQuery(hql2).uniqueResult();
+        UsuarioMeme UserSeguido = (UsuarioMeme) request.getSession().getAttribute("buscado");
+        UsuarioMeme UserSeguidor = (UsuarioMeme) request.getSession().getAttribute("usuarioLogado");
         seguida.setSeguido(UserSeguido);
         seguida.setSeguidor(UserSeguidor);
         session.saveOrUpdate(seguida);
         tr.commit();
         session.close();
         processRequest(request, response);
+        
     }
 
     /**

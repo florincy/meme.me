@@ -5,10 +5,11 @@
  */
 package br.edu.iff.meme.utilidades;
 
-import br.edu.iff.meme.entidades.Follow;
+
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.entidades.Post;
 import br.edu.iff.meme.entidades.UserAdm;
+import br.edu.iff.meme.entidades.Follow;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;

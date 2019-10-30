@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "follow")
 public class Follow implements Serializable{
+    
 
     /**
      * @return the cdFollow
@@ -66,11 +69,13 @@ public class Follow implements Serializable{
     @Id
     @Column(name = "cd_follow")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_follow")
-    @SequenceGenerator(name = "sequence_cd_follow", sequenceName = "sq_cd_follow")
+    @SequenceGenerator(name = "sequence_follow", sequenceName = "sq_cd_follow")
     private int cdFollow;
-    @Column(name = "followed_cd_user_meme")
+    @JoinColumn(name = "followed_cd_user_meme", referencedColumnName = "cd_user_meme")
+    @ManyToOne
     private UsuarioMeme seguido;
-    @Column(name = "follower_cd_user_meme")
+    @JoinColumn(name = "follower_cd_user_meme", referencedColumnName = "cd_user_meme")
+    @ManyToOne
     private UsuarioMeme seguidor;
 
      public Follow() {
