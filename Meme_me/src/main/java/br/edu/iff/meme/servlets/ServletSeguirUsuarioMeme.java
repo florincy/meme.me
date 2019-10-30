@@ -5,22 +5,23 @@
  */
 package br.edu.iff.meme.servlets;
 
-import br.edu.iff.meme.utilidades.HibernateUtil;
+import br.edu.iff.meme.entidades.Follow;
 import br.edu.iff.meme.entidades.UsuarioMeme;
+import br.edu.iff.meme.utilidades.HibernateUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author aluno
  */
-public class ServletLogin extends HttpServlet {
+public class ServletSeguirUsuarioMeme extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +40,10 @@ public class ServletLogin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletLogin</title>");            
+            out.println("<title>Servlet ServletSeguirUsuarioMeme</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletLogin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletSeguirUsuarioMeme at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,24 +75,21 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        Follow seguida = new Follow();
+        String seguidor = request.getParameter("seguidor");
+        String seguido = request.getParameter("seguido");
         Session session = HibernateUtil.getSession();
-        UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
+        Transaction tr = session.beginTransaction();
+        String hql = "from UsuarioMeme u where u.id='" + seguido + "'";
+        UsuarioMeme UserSeguido = (UsuarioMeme) session.createQuery(hql).uniqueResult();
+        String hql2 = "from UsuarioMeme u where u.id='" + seguidor + "'";
+        UsuarioMeme UserSeguidor = (UsuarioMeme) session.createQuery(hql2).uniqueResult();
+        seguida.setSeguido(UserSeguido);
+        seguida.setSeguidor(UserSeguidor);
+        session.saveOrUpdate(seguida);
+        tr.commit();
         session.close();
-        
-        if (user == null) {
-            response.sendRedirect("erroLogin.html");
-        } else {
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("usuarioLogado", user);
-           // httpSession.setAttribute("nome", user.getNome());
-            response.sendRedirect("principal.jsp");
-        }
-        
-        
-        
+        processRequest(request, response);
     }
 
     /**

@@ -1,4 +1,3 @@
-
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
@@ -233,7 +232,7 @@ public class UsuarioMeme implements Serializable {
     public UsuarioMeme() {
     }
 
-    @XmlTransient
+  /*  @XmlTransient
     public Collection<Post> getPostCollection() {
         return postCollection;
     }
@@ -241,9 +240,5 @@ public class UsuarioMeme implements Serializable {
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
     }
-  
-
-   
-
-
+  */
 }

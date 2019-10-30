@@ -209,7 +209,7 @@ td{
 }
 #perfilbloco{
     position: relative;
-    left: 455px;
+    left: 530px;
     padding: 2px;
     top: 10px;
 }
@@ -262,7 +262,7 @@ td{
     left: 20%;
 
 }
-#centro{
+.centro{
     position: relative;
-    left: 20%;
+    left: 5%;
 }

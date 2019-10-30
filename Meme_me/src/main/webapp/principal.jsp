@@ -30,69 +30,71 @@
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="feed">
-            <div class="postagem" id="postagem2">
-                <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
-                <%=user.getNick()%>
-                <br>
-                <img src="imagens/meme1.jpeg" class="padrao">
-                <br>
-                <div class="opcoes">
-                    <ul>
-                        <li>
-                            <img src="imagens/curtir.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/compartilhar.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/comentar.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
-                        </li>
-                        <li>
-                            <span class="dataHora">
-                                19:45 13/11/2018
-                            </span>
-                        </li>
-                    </ul>
+            <div class="centro">
+                <div class="postagem" id="postagem2">
+                    <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
+                    <%=user.getNick()%>
+                    <br>
+                    <img src="imagens/meme1.jpeg" class="padrao">
+                    <br>
+                    <div class="opcoes">
+                        <ul>
+                            <li>
+                                <img src="imagens/curtir.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/compartilhar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/comentar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
+                            </li>
+                            <li>
+                                <span class="dataHora">
+                                    19:45 13/11/2018
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="legenda">
+                        Só li verdades! 
+                    </span>
                 </div>
-                <span class="legenda">
-                    Só li verdades! 
-                </span>
-            </div>
 
-            <div class="postagem">
-                <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
-                <%=user.getNick()%>
-                <br>
-                <img src="imagens/meme2.png" class="padrao">
-                <br>
-                <div class="opcoes">
-                    <ul>
-                        <li>
-                            <img src="imagens/curtir.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/compartilhar.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/comentar.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
-                        </li>
-                        <li>
-                            <span class="dataHora">
-                                21:26 13/11/2018
-                            </span>
-                        </li>
-                    </ul>
+                <div class="postagem">
+                    <img src="data:image/png;base64,<%=encodedImage%>" class="perfil">
+                    <%=user.getNick()%>
+                    <br>
+                    <img src="imagens/meme2.png" class="padrao">
+                    <br>
+                    <div class="opcoes">
+                        <ul>
+                            <li>
+                                <img src="imagens/curtir.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/compartilhar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/comentar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/denuncia.png" class="icone" onclick="window.location.replace('denunciar.html')">
+                            </li>
+                            <li>
+                                <span class="dataHora">
+                                    21:26 13/11/2018
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="legenda">
+                        The zoeira never ends!
+                    </span>
+                    <br>
                 </div>
-                <span class="legenda">
-                    The zoeira never ends!
-                </span>
-                <br>
             </div>
         </div>
     </body>

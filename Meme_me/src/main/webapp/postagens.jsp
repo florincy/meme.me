@@ -32,64 +32,65 @@
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
-        %>
+            %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="feed">
-            <%
-                Session session1 = HibernateUtil.getSession();
-                String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
-                //  Post postagem = (Post) session1.createQuery(hql).list();
-                List<Post> lista = (List) session1.createQuery(hql).list();
-                request.setAttribute("postagens", lista);
-                System.out.println(lista);
-                for (Iterator it = lista.iterator(); it.hasNext();) {
+            <div class="centro">
+                <%                Session session1 = HibernateUtil.getSession();
+                    String hql = "from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+                    //  Post postagem = (Post) session1.createQuery(hql).list();
+                    List<Post> lista = (List) session1.createQuery(hql).list();
+                    request.setAttribute("postagens", lista);
+                    System.out.println(lista);
+                    for (Iterator it = lista.iterator(); it.hasNext();) {
 
-                    Post postagem = (Post) it.next();
-                    String codigo = postagem.getCdPost().toString();
-                    byte[] fotoPostagem = postagem.getFoto();
-                    String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
-                    UsuarioMeme usuario = new UsuarioMeme();
-                    usuario = postagem.getUserCdUserMeme();
-            %>
+                        Post postagem = (Post) it.next();
+                        String codigo = postagem.getCdPost().toString();
+                        byte[] fotoPostagem = postagem.getFoto();
+                        String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
+                        UsuarioMeme usuario = new UsuarioMeme();
+                        usuario = postagem.getUserCdUserMeme();
+                %>
 
-            <div class="postagem">
-                <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil">
-                <span>
-                    <%=usuario.getNick()%>
-                </span>
-                <img src="data:image/png;base64,<%=postagemFoto%>" class="padrao">
-                <br>
-                <div class="opcoes">
-                    <ul>
-                        <li>
-                            <img src="imagens/curtir.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/compartilhar.png" class="icone">
-                        </li>
-                        <li>
-                            <img src="imagens/comentar.png" class="icone" >
-                        </li>
-                        <li>
-                            <img src="imagens/denuncia.png" class="icone">
-                        </li>
-                        <li>
-                            <span class="dataHora">
-                                <%=postagem.getTsMoments()%>
-                            </span>
-                        </li>
-                    </ul>
+                <div class="postagem">
+                    <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil">
+                    <span>
+                        <%=usuario.getNick()%>
+                    </span>
+                    <img src="data:image/png;base64,<%=postagemFoto%>" class="padrao">
+                    <br>
+                    <div class="opcoes">
+                        <ul>
+                            <li>
+                                <img src="imagens/curtir.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/compartilhar.png" class="icone">
+                            </li>
+                            <li>
+                                <img src="imagens/comentar.png" class="icone" >
+                            </li>
+                            <li>
+                                <img src="imagens/denuncia.png" class="icone">
+                            </li>
+                            <li>
+                                <span class="dataHora">
+                                    <%=postagem.getTsMoments()%>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="legenda">
+                        <%=postagem.getDsPost()%>
+
+                    </span>
                 </div>
-                <span class="legenda">
-                    <%=postagem.getDsPost()%>
 
-                </span>
+                <%
+                    }
+                %>
             </div>
-
-            <%
-                }
-            %>
         </div>
     </body>
 </html>

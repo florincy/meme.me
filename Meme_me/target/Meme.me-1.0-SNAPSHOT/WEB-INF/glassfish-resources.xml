@@ -5,7 +5,7 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="5432"/>
         <property name="databaseName" value="meme_me"/>
-        <property name="User" value="flo"/>
+        <property name="User" value="postgres"/>
         <property name="Password" value="postgres"/>
         <property name="URL" value="jdbc:postgresql://localhost:5432/meme_me"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
@@ -41,5 +41,5 @@
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/dd" object-type="user" pool-name="post-gre-sql_meme_me_floPool_1"/>
-    <jdbc-resource enabled="true" jndi-name="java:app/essa" object-type="user" pool-name="post-gre-sql_meme_me_floPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/fonteee" object-type="user" pool-name="post-gre-sql_meme_me_postgresPool"/>
 </resources>

@@ -29,6 +29,7 @@
     </head>
     <body>
         <%
+            UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             UsuarioMeme usuario = (UsuarioMeme) session.getAttribute("buscado");
             byte[] fotoPerfilBusca = usuario.getFoto();
             String perfilFotoBusca = Base64.getEncoder().encodeToString(fotoPerfilBusca);
@@ -82,6 +83,13 @@
                         </td>
                     </tr>
                 </table>
+                <form action="ServletSeguirUsuarioMeme" method="post">
+                    <input type="hidden" value="<%=usuario.getCdUsuarioMeme()%>" name="seguido">
+                    <input type="hidden" value="<%=user.getCdUsuarioMeme()%>" name="seguidor">
+                    <button type="submit" class="w3-button w3-large" style="position: relative; left: 83px;background-color: #28bfa0;color: #f5f6f7;" >
+                        Seguir
+                    </button>
+                </form>
             </div>              
         </div>
     </body>

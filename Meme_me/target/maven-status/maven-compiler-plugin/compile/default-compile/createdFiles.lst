@@ -7,5 +7,7 @@ br/edu/iff/meme/utilidades/HibernateUtil.class
 br/edu/iff/meme/servlets/ServletLogin.class
 br/edu/iff/meme/entidades/Post.class
 br/edu/iff/meme/servlets/AtualizarUsuario.class
+br/edu/iff/meme/servlets/ServletSeguirUsuarioMeme.class
 br/edu/iff/meme/entidades/UserAdm.class
 br/edu/iff/meme/servlets/ServletCadastroAdm.class
+br/edu/iff/meme/entidades/Follow.class

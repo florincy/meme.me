@@ -5,6 +5,7 @@
  */
 package br.edu.iff.meme.utilidades;
 
+import br.edu.iff.meme.entidades.Follow;
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import br.edu.iff.meme.entidades.Post;
 import br.edu.iff.meme.entidades.UserAdm;
@@ -29,7 +30,6 @@ public class HibernateUtil {
 //            throws HibernateException {
 //        return sessionFactory.openSession();
 //    }
-    
     private static SessionFactory factory;
 
     static {
@@ -38,6 +38,7 @@ public class HibernateUtil {
         cfg.addAnnotatedClass(UsuarioMeme.class);
         cfg.addAnnotatedClass(Post.class);
         cfg.addAnnotatedClass(UserAdm.class);
+        cfg.addAnnotatedClass(Follow.class);
         factory = cfg.buildSessionFactory();
     }
 

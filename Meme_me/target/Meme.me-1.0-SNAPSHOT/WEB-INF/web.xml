@@ -28,6 +28,10 @@
         <servlet-name>ServletBusca</servlet-name>
         <servlet-class>br.edu.iff.meme.servlets.ServletBusca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSeguirUsuarioMeme</servlet-name>
+        <servlet-class>br.edu.iff.meme.servlets.ServletSeguirUsuarioMeme</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCadastroUsuario</servlet-name>
         <url-pattern>/ServletCadastroUsuario</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ServletBusca</servlet-name>
         <url-pattern>/ServletBusca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSeguirUsuarioMeme</servlet-name>
+        <url-pattern>/ServletSeguirUsuarioMeme</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
