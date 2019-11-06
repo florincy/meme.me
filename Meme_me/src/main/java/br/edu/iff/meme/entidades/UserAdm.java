@@ -42,10 +42,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "UserAdm.findByNmBirth", query = "SELECT u FROM UserAdm u WHERE u.nmBirth = :nmBirth")})
 public class UserAdm implements Serializable {
 
-    @Column(name = "dt_birth")
-    @Temporal(TemporalType.DATE)
-    private Date dtBirth;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_useradm")
@@ -170,12 +166,4 @@ public class UserAdm implements Serializable {
         return "br.edu.iff.meme.entidades.UserAdm[ cdUserAdm=" + cdUserAdm + " ]";
     }
 
-    public Date getDtBirth() {
-        return dtBirth;
-    }
-
-    public void setDtBirth(Date dtBirth) {
-        this.dtBirth = dtBirth;
-    }
-    
 }
