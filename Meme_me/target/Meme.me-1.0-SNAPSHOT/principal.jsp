@@ -23,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body onload="muda()">
-        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
+        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioMemeLogado");
             byte[] foto = user.getFoto();
             String encodedImage = Base64.getEncoder().encodeToString(foto);
         %>

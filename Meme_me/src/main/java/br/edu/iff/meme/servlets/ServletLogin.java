@@ -5,6 +5,7 @@
  */
 package br.edu.iff.meme.servlets;
 
+import br.edu.iff.meme.entidades.UserAdm;
 import br.edu.iff.meme.utilidades.HibernateUtil;
 import br.edu.iff.meme.entidades.UsuarioMeme;
 import java.io.IOException;
@@ -78,6 +79,7 @@ public class ServletLogin extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         String tipo = request.getParameter("tipo");
+        System.out.println("Tipo USUARIO: " + tipo);
         Session session = HibernateUtil.getSession();
         //equals.funcionando safe
         if ("meme".equals(tipo)) {
@@ -88,24 +90,26 @@ public class ServletLogin extends HttpServlet {
                 response.sendRedirect("erroLogin.html");
             } else {
                 HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("usuarioLogado", user);
+                httpSession.setAttribute("usuarioMemeLogado", user);
                 // httpSession.setAttribute("nome", user.getNome());
                 response.sendRedirect("principal.jsp");
             }
-/*        } else if ("adm".equals(tipo)) {
-            UserAdm userAdm = (UsuarioAdm) session.createQuery("from UsuarioAdm where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
+        } else if ("adm".equals(tipo)) {
+            UserAdm userAdm = (UserAdm) session.createQuery("from UserAdm where dsEmail=? and dsPassword=?").setString(0, email).setString(1, senha).uniqueResult();
             session.close();
 
-            if (user == null) {
+            if (userAdm == null) {
                 response.sendRedirect("erroLogin.html");
             } else {
                 HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("usuarioLogado", user);
+                httpSession.setAttribute("usuarioAdmLogado", userAdm);
                 // httpSession.setAttribute("nome", user.getNome());
+        
                 //response.sendRedirect("principal.jsp");
             }
-        }*/
-
+        } else {
+            System.out.println("Hacker detectado tentando fazer um login diferente.");
+        }
     }
 
     /**
