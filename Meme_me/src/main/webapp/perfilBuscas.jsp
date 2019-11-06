@@ -12,7 +12,6 @@
 <%@page import="org.hibernate.Session"%>
 <%@page import="java.util.List"%>
 <%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
-<%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -29,13 +28,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <%
+        <%  Session session2 = HibernateUtil.getSession();
+            String idUsuario = request.getParameter("cd");
+            String hql4 = "from UsuarioMeme u where u.id='" + idUsuario + "'";
+            UsuarioMeme usuario = (UsuarioMeme) session2.createQuery(hql4).uniqueResult();
+            session.setAttribute("buscado", usuario);
             UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             Follow seguida = (Follow) session.getAttribute("seguido");
-            UsuarioMeme usuario = (UsuarioMeme) session.getAttribute("buscado");
             byte[] fotoPerfilBusca = usuario.getFoto();
             String perfilFotoBusca = Base64.getEncoder().encodeToString(fotoPerfilBusca);
-            Session session2 = HibernateUtil.getSession();
             String hql = "select count(*) from Post where user_cd_user_meme='" + usuario.getCdUsuarioMeme() + "'";
             String hql2 = "select count(*) from Follow where followed_cd_user_meme='" + usuario.getCdUsuarioMeme() + "'";
             String hql3 = "select count(*) from Follow where follower_cd_user_meme='" + usuario.getCdUsuarioMeme() + "'";
@@ -46,9 +47,9 @@
             List listResult2 = query2.list();
             List listResult3 = query3.list();
             Number postagens = (Number) listResult.get(0);
-            Number seguidores = (Number) listResult2.get(0);
-             Number seguidos = (Number) listResult3.get(0);
-        %>
+            Number seguidos = (Number) listResult2.get(0);
+            Number seguidores = (Number) listResult3.get(0);
+            %>
 
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
@@ -99,12 +100,14 @@
                         if (user.getCdUsuarioMeme() == usuario.getCdUsuarioMeme()) {
                             out.print("<button type=" + "\"button\"" + "onclick=\"document.getElementById('alterar').style.display = 'block'; fe()\"" + "class=\"w3-button w3-large\"" + "style=\"position: relative; left: 60px;background-color: #28bfa0;color: #f5f6f7;\"" + ">Editar perfil" + "</button>");
                         } else {
-                            out.print("<button type=" + "\"button\"" + "class=\"w3-button w3-large\"" + "style=\"position: relative; left: 83px;background-color: #28bfa0;color: #f5f6f7;\"" + "id=\"muda\"" + ">" + "Seguir" + "</button>");
+                            out.print("<button type=" + "\"submit\"" + "class=\"w3-button w3-large\"" + "style=\"position: relative; left: 83px;background-color: #28bfa0;color: #f5f6f7;\"" + ">" + "Seguir" + "</button>");
                         }
+
                     %>
+                    
                 </form>
                 <div id="alterar" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:450px">
                         <form class="w3-container" action="AtualizarUsuario" method="POST" enctype="multipart/form-data">
                             <div class="w3-section" style="font-size:15px;">
                                 <label for="email" id="email">

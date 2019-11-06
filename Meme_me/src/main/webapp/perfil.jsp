@@ -35,7 +35,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
+        <%  
+            UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
             Session session2 = HibernateUtil.getSession();
@@ -50,7 +51,7 @@
             List listResult3 = query3.list();
             Number postagens = (Number) listResult.get(0);
             Number seguidores = (Number) listResult2.get(0);
-             Number seguidos = (Number) listResult3.get(0);
+            Number seguidos = (Number) listResult3.get(0);
             %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
@@ -70,7 +71,7 @@
                     Editar perfil
                 </button>
                 <div id="alterar" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:450px">
                         <form class="w3-container" action="AtualizarUsuario" method="POST" enctype="multipart/form-data">
                             <div class="w3-section" style="font-size:15px;">
                                 <label for="email" id="email">

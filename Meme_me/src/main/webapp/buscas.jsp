@@ -41,22 +41,23 @@
                 <ul style="list-style-type: none;" id="buscaUsuariosMeme">
                     <li>Usuários</li>
                         <%                            for (Iterator it = lista.iterator(); it.hasNext();) {
-                                UsuarioMeme usuario1 = (UsuarioMeme) it.next();
-                                UsuarioMeme usuario = usuario1;
+                                UsuarioMeme usuario = (UsuarioMeme) it.next();
                                 String nick = usuario.getNick();
+                                String cd = String.valueOf(usuario.getCdUsuarioMeme());
                                 System.out.println(nick);
                                 byte[] fotoPerfilBusca = usuario.getFoto();
                                 String perfilFotoBusca = Base64.getEncoder().encodeToString(fotoPerfilBusca);
-                                HttpSession httpSession = request.getSession();
-                                httpSession.setAttribute("buscado", usuario);
+                                
                         %>
                     <li>
-                        <div class="linha"onclick="window.location.replace('perfilBuscas.jsp')" >
+                        <a href="perfilBuscas.jsp?cd=<%=cd%>">
+                        <div class="linha">
                             <img src="data:image/png;base64,<%=perfilFotoBusca%>" class="perfil">
                             <span class="nick">
                                 <%=nick%>
                             </span>
                         </div>
+                        </a>
                     <li>
                         <%                        }
                         %>

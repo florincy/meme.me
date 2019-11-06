@@ -41,7 +41,7 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletSeguirUsuarioMeme</title>");            
+            out.println("<title>Servlet ServletSeguirUsuarioMeme</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletSeguirUsuarioMeme at " + request.getContextPath() + "</h1>");
@@ -76,7 +76,7 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Follow seguida = new Follow();
         /*String seguidor = request.getParameter("seguidor");
         String seguido = request.getParameter("seguido");*/
@@ -86,13 +86,27 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
         UsuarioMeme UserSeguidor = (UsuarioMeme) request.getSession().getAttribute("usuarioLogado");
         seguida.setSeguido(UserSeguido);
         seguida.setSeguidor(UserSeguidor);
-        session.saveOrUpdate(seguida);
-        tr.commit();
-        session.close();
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("seguido", seguida);
-        response.sendRedirect("perfilBuscas.jsp");
+        String cdSeguido = String.valueOf(UserSeguido.getCdUsuarioMeme());
+        String cdSeguidor = String.valueOf(UserSeguidor.getCdUsuarioMeme());
+        Follow seguidaExistente = (Follow) session.createQuery("from Follow where followed_cd_user_meme=? and follower_cd_user_meme=?").setString(0, cdSeguido).setString(1, cdSeguidor).uniqueResult();
+   
+            session.saveOrUpdate(seguida);
+            tr.commit();
+            session.close();
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("seguido", seguida);
+            response.sendRedirect("perfilBuscas.jsp?cd=" + UserSeguido.getCdUsuarioMeme());
+     
+            /*
+            session.delete(seguida);
+            tr.commit();
+            session.close();
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("seguido", seguida);
+            response.sendRedirect("perfilBuscas.jsp?cd=" + UserSeguido.getCdUsuarioMeme());
+            */
         
+
     }
 
     /**
