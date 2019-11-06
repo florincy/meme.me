@@ -40,10 +40,17 @@
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
             Session session2 = HibernateUtil.getSession();
             String hql = "select count(*) from Post where user_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+            String hql2 = "select count(*) from Follow where followed_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
+            String hql3 = "select count(*) from Follow where follower_cd_user_meme='" + user.getCdUsuarioMeme() + "'";
             Query query = session2.createQuery(hql);
+            Query query2 = session2.createQuery(hql2);
+            Query query3 = session2.createQuery(hql3);
             List listResult = query.list();
+            List listResult2 = query2.list();
+            List listResult3 = query3.list();
             Number postagens = (Number) listResult.get(0);
-            System.out.println(postagens.intValue());
+            Number seguidores = (Number) listResult2.get(0);
+             Number seguidos = (Number) listResult3.get(0);
             %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
@@ -324,12 +331,12 @@
                     <tr>
                         <td class="inf">
                             <b>
-                                500
+                                <%=seguidores%>
                             </b>
                         </td>
                         <td class="inf">
                             <b>
-                                200
+                                <%=seguidos%>
                             </b>
                         </td>
                         <td class="inf">

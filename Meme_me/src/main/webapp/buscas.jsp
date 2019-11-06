@@ -41,7 +41,8 @@
                 <ul style="list-style-type: none;" id="buscaUsuariosMeme">
                     <li>Usuários</li>
                         <%                            for (Iterator it = lista.iterator(); it.hasNext();) {
-                                UsuarioMeme usuario = (UsuarioMeme) it.next();
+                                UsuarioMeme usuario1 = (UsuarioMeme) it.next();
+                                UsuarioMeme usuario = usuario1;
                                 String nick = usuario.getNick();
                                 System.out.println(nick);
                                 byte[] fotoPerfilBusca = usuario.getFoto();

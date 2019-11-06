@@ -78,11 +78,9 @@ public class ServletBusca extends HttpServlet {
         Session session1 = HibernateUtil.getSession();
         String busca = request.getParameter("busca");
         String hql = "from UsuarioMeme where ds_nick like '%" + busca + "%'";
-        System.out.println(hql);
         List<UsuarioMeme> lista = (List) session1.createQuery(hql).list();
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("buscas", lista);
-        System.out.println(lista);
         session1.close();
         response.sendRedirect("buscas.jsp");
     }
