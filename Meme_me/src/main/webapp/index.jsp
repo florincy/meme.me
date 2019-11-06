@@ -59,8 +59,8 @@
                                            <input type="password" id="senha" class="w3-input w3-border" placeholder="Digite sua senha" name="senha" required>
                                             Usuário:
                                              </label>
-                                             <input type="radio" name="tipo" value="adm"/>administrador 
-                                             <input type="radio" name="tipo" value="meme"/>meme
+                                             <input type="radio" name="tipo" value="meme" checked="checked"/>meme
+                                             <input type="radio" name="tipo" value="adm"/>administrador
                                             <input class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="Enviar">
                                         </div>
                                     </form>
