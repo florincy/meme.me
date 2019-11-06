@@ -45,6 +45,9 @@
                                     </div>
                                     <form class="w3-container" action="ServletLogin" method="POST">
                                         <div class="w3-section">
+                                            <br
+                                           
+                             
                                             <label for="email" id="email">
                                                 Email:
                                             </label>
@@ -52,11 +55,17 @@
                                             <label for="senha" id="senha">
                                                 Senha:
                                             </label>
-                                            <input type="password" id="senha" class="w3-input w3-border" placeholder="Digite sua senha" name="senha" required>
+                                          
+                                           <input type="password" id="senha" class="w3-input w3-border" placeholder="Digite sua senha" name="senha" required>
+                                            Usuário:
+                                             </label>
+                                             <input type="radio" name="tipo" value="adm"/>administrador 
+                                             <input type="radio" name="tipo" value="meme"/>meme
                                             <input class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="Enviar">
                                         </div>
                                     </form>
                                     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                                          
                                         <button onclick="document.getElementById('id01').style.display = 'none'" type="button" class="w3-button w3-red">
                                             Cancelar
                                         </button>

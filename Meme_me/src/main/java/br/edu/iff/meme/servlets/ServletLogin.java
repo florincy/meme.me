@@ -39,7 +39,7 @@ public class ServletLogin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletLogin</title>");            
+            out.println("<title>Servlet ServletLogin</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletLogin at " + request.getContextPath() + "</h1>");
@@ -74,24 +74,38 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        String tipo = request.getParameter("tipo");
         Session session = HibernateUtil.getSession();
-        UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
-        session.close();
-        
-        if (user == null) {
-            response.sendRedirect("erroLogin.html");
-        } else {
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("usuarioLogado", user);
-           // httpSession.setAttribute("nome", user.getNome());
-            response.sendRedirect("principal.jsp");
-        }
-        
-        
-        
+        //equals.funcionando safe
+        if ("meme".equals(tipo)) {
+            UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
+            session.close();
+
+            if (user == null) {
+                response.sendRedirect("erroLogin.html");
+            } else {
+                HttpSession httpSession = request.getSession();
+                httpSession.setAttribute("usuarioLogado", user);
+                // httpSession.setAttribute("nome", user.getNome());
+                response.sendRedirect("principal.jsp");
+            }
+/*        } else if ("adm".equals(tipo)) {
+            UserAdm userAdm = (UsuarioAdm) session.createQuery("from UsuarioAdm where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
+            session.close();
+
+            if (user == null) {
+                response.sendRedirect("erroLogin.html");
+            } else {
+                HttpSession httpSession = request.getSession();
+                httpSession.setAttribute("usuarioLogado", user);
+                // httpSession.setAttribute("nome", user.getNome());
+                //response.sendRedirect("principal.jsp");
+            }
+        }*/
+
     }
 
     /**
