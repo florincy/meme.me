@@ -7,12 +7,12 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="br.edu.iff.meme.entidades.Post"%>
+<%@page import="br.edu.iff.meme.entidades.*"%>
+<%@page import="br.edu.iff.meme.servlets.*"%>
 <%@page import="br.edu.iff.meme.utilidades.HibernateUtil"%>
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="java.util.Base64"%>
-<%@page import="br.edu.iff.meme.entidades.UsuarioMeme"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%><!DOCTYPE html>
 <!DOCTYPE html>
@@ -82,9 +82,17 @@
                         </ul>
                     </div>
                     <span class="legenda">
-                        <%=postagem.getDsPost()%>
-
+                        <%=postagem.getDsPost()%><br>
                     </span>
+                    <form method="POST" action="ServletSalvarComentario">
+                        <input type="text" name="comentario">
+                        <div hidden>
+                            <input type="text" name="comentador" value="<%=user.getCdUsuarioMeme()%>">
+                            <input type="text" name="pid" value="">
+                            <input type="text" name="publicacao" value="<%=codigo%>">
+                        </div>
+                        <input type="submit">
+                    </form>
                 </div>
 
                 <%

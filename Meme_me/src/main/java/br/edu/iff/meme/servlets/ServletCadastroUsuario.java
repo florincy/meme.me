@@ -94,11 +94,11 @@ public class ServletCadastroUsuario extends HttpServlet {
         user.setPais(request.getParameter("pais"));
         user.setPrivado(Boolean.parseBoolean(request.getParameter("private")));
         user.setBio(request.getParameter("bio"));
-       final Part filePart = request.getPart("imagem");
-      if (filePart != null) {
-           InputStream inputStream = filePart.getInputStream();
-           user.setFoto(IOUtils.toByteArray(inputStream));
-          user.setExtensao(filePart.getContentType());
+        final Part filePart = request.getPart("imagem");
+        if (filePart != null) {
+            InputStream inputStream = filePart.getInputStream();
+            user.setFoto(IOUtils.toByteArray(inputStream));
+            user.setExtensao(filePart.getContentType());
         }
         /* final String path = "/home/aluno/meme.me/Meme_me/target/Meme.me-1.0-SNAPSHOT/imagens/";//request.getParameter("destination");
         final Part filePart = request.getPart("imagem");

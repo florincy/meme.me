@@ -25,18 +25,26 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "user_meme")
 public class UsuarioMeme implements Serializable {
 
+    @Column(name = "tp_private")
+    private Boolean tpPrivate;
+    //@Lob
+    @Column(name = "bb_photo")
+    private byte[] bbPhoto;
+    @OneToMany(mappedBy = "userCdUserMeme")
+    private Collection<Comment> commentCollection;
+
     /**
      * @return the foto
      */
     public byte[] getFoto() {
-        return foto;
+        return bbPhoto;
     }
 
     /**
      * @param foto the foto to set
      */
     public void setFoto(byte[] foto) {
-        this.foto = foto;
+        this.bbPhoto = foto;
     }
 
     /**
@@ -176,14 +184,14 @@ public class UsuarioMeme implements Serializable {
      * @return the privatePublic
      */
     public boolean isPrivado() {
-        return privado;
+        return tpPrivate;
     }
 
     /**
      * @param privatePublic the privatePublic to set
      */
     public void setPrivado(boolean privatePublic) {
-        this.privado = privatePublic;
+        this.tpPrivate = privatePublic;
     }
 
     /**
@@ -199,30 +207,36 @@ public class UsuarioMeme implements Serializable {
     public void setBio(String bio) {
         this.bio = bio;
     }
-    @Column(name="bb_photo")
-    private byte[] foto;
     @Column(name="nm_extension")
     private String extensao;
-    @Column(name="tp_private")
-    private boolean privado;
+    
     @OneToMany(mappedBy = "userCdUserMeme")
     private Collection<Post> postCollection;
+    
     @Column(name = "ds_email")
     private String email;
+    
     @Column(name = "nm_first")
     private String nome;
+    
     @Column(name = "nm_last")
     private String sobrenome;
+    
     @Column(name = "ds_nick")
     private String nick;
+    
     @Column(name = "ds_password")
     private String senha;
+    
     @Column(name = "ds_country")
     private String pais;
+    
     @Column(name = "ds_bios")
     private String bio;
+    
     @Column(name = "nm_birth")
     private String nascimento;
+    
     @Id
     @Column(name = "cd_user_meme")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_user_meme")
@@ -241,4 +255,29 @@ public class UsuarioMeme implements Serializable {
         this.postCollection = postCollection;
     }
   */
+
+    public Boolean getTpPrivate() {
+        return tpPrivate;
+    }
+
+    public void setTpPrivate(Boolean tpPrivate) {
+        this.tpPrivate = tpPrivate;
+    }
+
+    public byte[] getBbPhoto() {
+        return bbPhoto;
+    }
+
+    public void setBbPhoto(byte[] bbPhoto) {
+        this.bbPhoto = bbPhoto;
+    }
+
+    @XmlTransient
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
+    }
+
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
+    }
 }

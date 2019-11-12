@@ -6,6 +6,7 @@
 package br.edu.iff.meme.entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,6 +27,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,6 +42,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Post.findByTsMoments", query = "SELECT p FROM Post p WHERE p.tsMoments = :tsMoments")
     , @NamedQuery(name = "Post.findByDsPost", query = "SELECT p FROM Post p WHERE p.dsPost = :dsPost")})
 public class Post implements Serializable {
+
+    //@Lob
+    @Column(name = "bb_photo")
+    private byte[] bbPhoto;
+    @OneToMany(mappedBy = "postCdPost")
+    private Collection<Comment> commentCollection;
 
     /**
      * @return the cdPost
@@ -114,14 +123,14 @@ public class Post implements Serializable {
      * @return the foto
      */
     public byte[] getFoto() {
-        return foto;
+        return bbPhoto;
     }
 
     /**
      * @param foto the foto to set
      */
     public void setFoto(byte[] foto) {
-        this.foto = foto;
+        this.bbPhoto = foto;
     }
     @Id
     @Column(name = "cd_post")
@@ -138,8 +147,6 @@ public class Post implements Serializable {
     private UsuarioMeme userCdUserMeme;
     @Column(name="nm_extension")
     private String extensao;
-    @Column(name="bb_photo")
-    private byte[] foto;
 
   
    
@@ -167,6 +174,26 @@ public class Post implements Serializable {
     @Override
     public String toString() {
         return "br.edu.iff.meme.entidades.Post[ cdPost=" + getCdPost() + " ]";
+    }
+
+    public Post() {
+    }
+
+    public byte[] getBbPhoto() {
+        return bbPhoto;
+    }
+
+    public void setBbPhoto(byte[] bbPhoto) {
+        this.bbPhoto = bbPhoto;
+    }
+
+    @XmlTransient
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
+    }
+
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
     }
 }
 

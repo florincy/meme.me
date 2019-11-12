@@ -5,23 +5,22 @@
  */
 package br.edu.iff.meme.servlets;
 
-import br.edu.iff.meme.entidades.UserAdm;
+import br.edu.iff.meme.entidades.*;
 import br.edu.iff.meme.utilidades.HibernateUtil;
-import br.edu.iff.meme.entidades.UsuarioMeme;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author aluno
  */
-public class ServletLogin extends HttpServlet {
+public class ServletSalvarComentario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class ServletLogin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletLogin</title>");
+            out.println("<title>Servlet ComentarioServletSA</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletLogin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ComentarioServletSA at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,44 +74,36 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        String tipo = request.getParameter("tipo");
-        System.out.println("Tipo USUARIO: " + tipo);
-        Session session = HibernateUtil.getSession();
         
-        String tipoMeme = "meme";
-        String tipoAdm = "adm";
-        //equals.funcionando safe
-        if (tipo.equals(tipoMeme)) {
-            UsuarioMeme user = (UsuarioMeme) session.createQuery("from UsuarioMeme where email=? and senha=?").setString(0, email).setString(1, senha).uniqueResult();
-            session.close();
+        String idtext = request.getParameter("pid");
+        String conteudo = request.getParameter("comentario");
+        String idComentador = request.getParameter("comentador");
+        String idPublicacao = request.getParameter("publicacao");
 
-            if (user == null) {
-                response.sendRedirect("erroLogin.html");
-            } else {
-                HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("usuarioLogado", user);
-                // httpSession.setAttribute("nome", user.getNome());
-                response.sendRedirect("principal.jsp");
-            }
-        } else if (tipo.equals(tipoAdm)) {
-            UserAdm userAdm = (UserAdm) session.createQuery("from UserAdm where dsEmail=? and dsPassword=?").setString(0, email).setString(1, senha).uniqueResult();
-            session.close();
+        Comment comentario = new Comment();
+        Post publicacao = new Post();
+        UsuarioMeme usuario = new UsuarioMeme();
 
-            if (userAdm == null) {
-                response.sendRedirect("erroLogin.html");
-            } else {
-                HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("usuarioLogado", userAdm);
-                // httpSession.setAttribute("nome", user.getNome());
-        
-                //response.sendRedirect("principal.jsp");
-            }
-        } else {
-            System.out.println("Hacker detectado tentando fazer um login diferente.");
+        if (!idtext.isEmpty()) {
+            Integer id = Integer.parseInt(idtext);
+            comentario.setCdComment(id);
         }
+
+        publicacao.setCdPost(Integer.parseInt(idPublicacao));
+        usuario.setCdUsuarioMeme(Integer.parseInt(idComentador));
+        
+        comentario.setDsComment(conteudo);
+        comentario.setUserCdUserMeme(usuario);
+        comentario.setPostCdPost(publicacao);
+        
+        Session session = HibernateUtil.getSession();
+        Transaction tr = session.beginTransaction();
+        session.save(comentario);
+        tr.commit();
+        session.close();
+        
+        response.sendRedirect("principal.jsp");
+        
     }
 
     /**
