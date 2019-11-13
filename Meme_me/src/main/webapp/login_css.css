@@ -130,6 +130,7 @@ html{
     top: 10px;
 }
 .icone{
+    box-shadow: none;
     height: 30px;
     width: 30px;
 }
