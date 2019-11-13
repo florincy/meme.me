@@ -54,7 +54,12 @@ p {
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
+#ok{
+    font-size:15px;
+    color: #5e5e5e;
+}
 #footer{
+    font-size: 10px;
     color: #5e5e5e;
 }
 form{

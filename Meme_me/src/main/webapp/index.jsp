@@ -333,6 +333,11 @@
                             <!-- Footer -->
                             <footer class="container-fluid bg-4 text-center">
                                 <p>
+                                 
+                                    
+                                <div id="ok">
+                                    <a href="cadastro_adm.html">Trabalhe conosco, seja o Administrador-Meme! </a> 
+                                </div>
                                 <div id="footer">
                                     Bootstrap Theme Made By
                                     <a href="https://www.w3schools.com">www.w3schools.com</a>
