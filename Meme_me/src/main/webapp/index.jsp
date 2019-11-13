@@ -40,12 +40,12 @@
                                     <div class="w3-center">
                                         <br>
                                         <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">
-                                            X
+                                            
                                         </span>
                                     </div>
                                     <form class="w3-container" action="ServletLogin" method="POST">
                                         <div class="w3-section">
-                                          
+                                         
                                             <label for="email" id="email">
                                                 Email:
                                             </label>
