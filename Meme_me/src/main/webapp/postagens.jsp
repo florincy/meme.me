@@ -18,6 +18,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        
+        
+  <!-- começa aqui -->      
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+<script>
+function mostrar_abas(obj) {
+
+     document.getElementById('div_aba1').style.display="none";
+
+   switch (obj.id) {
+      case 'mostra_aba1':
+      document.getElementById('div_aba1').style.display="block";
+      break
+   }
+}
+
+</script>
+
+<!-- termina aqui --> 
+
+
+    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -68,9 +92,13 @@
                             <li>
                                 <img src="imagens/compartilhar.png" class="icone">
                             </li>
+                            
                             <li>
-                                <img src="imagens/comentar.png" class="icone" >
+                                <a onclick="mostrar_abas(this);" id="mostra_aba1">   
+                                    <img src="imagens/comentar.png" class="icone" > 
+                                </a>  
                             </li>
+                            
                             <li>
                                 <img src="imagens/denuncia.png" class="icone">
                             </li>
@@ -84,6 +112,9 @@
                     <span class="legenda">
                         <%=postagem.getDsPost()%><br>
                     </span>
+                    <div id="div_aba1" style="display:none;">
+
+
                     <form method="POST" action="ServletSalvarComentario">
                         <input type="text" name="comentario">
                         <div hidden>
@@ -93,6 +124,7 @@
                         </div>
                         <input type="submit">
                     </form>
+                        </div>
                 </div>
 
                 <%
