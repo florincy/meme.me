@@ -40,12 +40,12 @@
                                     <div class="w3-center">
                                         <br>
                                         <span onclick="document.getElementById('id01').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">
-                                            X
+                                            
                                         </span>
                                     </div>
                                     <form class="w3-container" action="ServletLogin" method="POST">
                                         <div class="w3-section">
-                                          
+                                         
                                             <label for="email" id="email">
                                                 Email:
                                             </label>
@@ -333,6 +333,11 @@
                             <!-- Footer -->
                             <footer class="container-fluid bg-4 text-center">
                                 <p>
+                                 
+                                    
+                                <div id="ok">
+                                    <a href="cadastro_adm.html">Trabalhe conosco, seja o Administrador-Meme! </a> 
+                                </div>
                                 <div id="footer">
                                     Bootstrap Theme Made By
                                     <a href="https://www.w3schools.com">www.w3schools.com</a>

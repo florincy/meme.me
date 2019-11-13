@@ -81,8 +81,7 @@ public class ServletCadastroAdm extends HttpServlet {
         session.save(user);
         tr.commit();
         session.close();
-        processRequest(request, response);
-        //response.sendRedirect("cadastroOK.html");
+        response.sendRedirect("cadastroOK.html");
     }
 
     /**

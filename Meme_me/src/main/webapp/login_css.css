@@ -54,7 +54,12 @@ p {
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
+#ok{
+    font-size:15px;
+    color: #5e5e5e;
+}
 #footer{
+    font-size: 10px;
     color: #5e5e5e;
 }
 form{
@@ -153,7 +158,7 @@ html{
     padding: 2px;
 }
 #menu{
-    z-index: 3;
+    z-index: 3;•••
     position: fixed;
     background-color: #f8f8f8;
 }
@@ -262,8 +267,5 @@ td{
     left: 20%;
 
 }
-.centro{
-    position: relative;
-    left: 5%;
-}
+
 
