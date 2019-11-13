@@ -18,30 +18,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-        
-        
-  <!-- começa aqui -->      
+
+
+
+        <!-- começa aqui -->      
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
-<script>
-function mostrar_abas(obj) {
+        <script>
+            function mostrar_abas(obj) {
+                var str = obj.id.toString();
+                var tipo = str.slice(0, 10);
+                var idPost = str.slice(10);
+               <!-- alert('tipo: '+tipo+' / idpoat: ' + idPost) -->
+                if ('mostra_aba' == tipo) {
+                        document.getElementById('div_aba'+idPost).style.display = "block";                       
+                }
+            }
 
-     document.getElementById('div_aba1').style.display="none";
+        </script>
 
-   switch (obj.id) {
-      case 'mostra_aba1':
-      document.getElementById('div_aba1').style.display="block";
-      break
-   }
-}
-
-</script>
-
-<!-- termina aqui --> 
+        <!-- termina aqui --> 
 
 
-    
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -56,7 +55,7 @@ function mostrar_abas(obj) {
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
-            %>
+        %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="feed">
@@ -75,6 +74,7 @@ function mostrar_abas(obj) {
                         String postagemFoto = Base64.getEncoder().encodeToString(fotoPostagem);
                         UsuarioMeme usuario = new UsuarioMeme();
                         usuario = postagem.getUserCdUserMeme();
+                        int idPost = postagem.getCdPost();
                 %>
 
                 <div class="postagem">
@@ -92,13 +92,11 @@ function mostrar_abas(obj) {
                             <li>
                                 <img src="imagens/compartilhar.png" class="icone">
                             </li>
-                            
+
                             <li>
-                                <a onclick="mostrar_abas(this);" id="mostra_aba1">   
-                                    <img src="imagens/comentar.png" class="icone" > 
-                                </a>  
+                                <img src="imagens/comentar.png" class="icone" onclick="mostrar_abas(this);" id="mostra_aba<%=idPost%>">                                 
                             </li>
-                            
+
                             <li>
                                 <img src="imagens/denuncia.png" class="icone">
                             </li>
@@ -112,19 +110,19 @@ function mostrar_abas(obj) {
                     <span class="legenda">
                         <%=postagem.getDsPost()%><br>
                     </span>
-                    <div id="div_aba1" style="display:none;">
+                    <div id="div_aba<%=idPost%>" style="display:none;">
 
-
-                    <form method="POST" action="ServletSalvarComentario">
-                        <input type="text" name="comentario">
-                        <div hidden>
-                            <input type="text" name="comentador" value="<%=user.getCdUsuarioMeme()%>">
-                            <input type="text" name="pid" value="">
-                            <input type="text" name="publicacao" value="<%=codigo%>">
-                        </div>
-                        <input type="submit">
-                    </form>
-                        </div>
+                        <br>
+                        <form method="POST" action="ServletSalvarComentario">
+                            <input type="text" name="comentario">
+                            <div hidden>
+                                <input type="text" name="comentador" value="<%=user.getCdUsuarioMeme()%>">
+                                <input type="text" name="pid" value="<%=idPost%>">
+                                <input type="text" name="publicacao" value="<%=codigo%>">
+                            </div>
+                            <input type="submit" value="Comentar">
+                        </form>
+                    </div>
                 </div>
 
                 <%

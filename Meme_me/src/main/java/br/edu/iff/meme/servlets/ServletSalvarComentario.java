@@ -102,7 +102,7 @@ public class ServletSalvarComentario extends HttpServlet {
         tr.commit();
         session.close();
         
-        response.sendRedirect("principal.jsp");
+       response.sendRedirect("postagens.jsp");
         
     }
 
