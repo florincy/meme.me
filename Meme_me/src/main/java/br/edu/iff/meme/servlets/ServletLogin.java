@@ -108,7 +108,7 @@ public class ServletLogin extends HttpServlet {
                 httpSession.setAttribute("usuarioLogado", userAdm);
                 // httpSession.setAttribute("nome", user.getNome());
         
-                //response.sendRedirect("principal.jsp");
+                response.sendRedirect("principalAdm.html");
             }
         } else {
             System.out.println("Hacker detectado tentando fazer um login diferente.");
