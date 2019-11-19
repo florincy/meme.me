@@ -74,7 +74,7 @@ public class ServletSalvarComentario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String idtext = request.getParameter("pid");
         String conteudo = request.getParameter("comentario");
         String idComentador = request.getParameter("comentador");
@@ -91,19 +91,19 @@ public class ServletSalvarComentario extends HttpServlet {
 
         publicacao.setCdPost(Integer.parseInt(idPublicacao));
         usuario.setCdUsuarioMeme(Integer.parseInt(idComentador));
-        
+
         comentario.setDsComment(conteudo);
         comentario.setUserCdUserMeme(usuario);
         comentario.setPostCdPost(publicacao);
-        
+
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
         session.save(comentario);
         tr.commit();
         session.close();
-        
-       response.sendRedirect("postagens.jsp");
-        
+
+        response.sendRedirect("postagens.jsp");
+
     }
 
     /**

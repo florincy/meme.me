@@ -29,12 +29,11 @@
                 var str = obj.id.toString();
                 var tipo = str.slice(0, 10);
                 var idPost = str.slice(10);
-               <!-- alert('tipo: '+tipo+' / idpoat: ' + idPost) -->
+<!-- alert('tipo: '+tipo+' / idpoat: ' + idPost) -->
                 if ('mostra_aba' == tipo) {
-                        document.getElementById('div_aba'+idPost).style.display = "block";                       
+                    document.getElementById('div_aba' + idPost).style.display = "block";
                 }
             }
-
         </script>
 
         <!-- termina aqui --> 
@@ -67,7 +66,6 @@
                     request.setAttribute("postagens", lista);
                     System.out.println(lista);
                     for (Iterator it = lista.iterator(); it.hasNext();) {
-
                         Post postagem = (Post) it.next();
                         String codigo = postagem.getCdPost().toString();
                         byte[] fotoPostagem = postagem.getFoto();
@@ -75,7 +73,14 @@
                         UsuarioMeme usuario = new UsuarioMeme();
                         usuario = postagem.getUserCdUserMeme();
                         int idPost = postagem.getCdPost();
+
+                        for (Iterator itC = lista.iterator(); it.hasNext();) {
+                            Comment comentario = (Comment) it.next();
+                            comentario.setPostCdPost(postagem);
+                            UsuarioMeme comentador = comentario.getUserCdUserMeme();
                 %>
+
+                <%=comentario.getDsComment()%>
 
                 <div class="postagem">
                     <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil">
@@ -110,6 +115,7 @@
                     <span class="legenda">
                         <%=postagem.getDsPost()%><br>
                     </span>
+
                     <div id="div_aba<%=idPost%>" style="display:none;">
 
                         <br>
