@@ -73,14 +73,9 @@
                         UsuarioMeme usuario = new UsuarioMeme();
                         usuario = postagem.getUserCdUserMeme();
                         int idPost = postagem.getCdPost();
-
-                        for (Iterator itC = lista.iterator(); it.hasNext();) {
-                            Comment comentario = (Comment) it.next();
-                            comentario.setPostCdPost(postagem);
-                            UsuarioMeme comentador = comentario.getUserCdUserMeme();
                 %>
 
-                <%=comentario.getDsComment()%>
+
 
                 <div class="postagem">
                     <img src="data:image/png;base64,<%=perfilFoto%>" class="perfil">
@@ -115,10 +110,19 @@
                     <span class="legenda">
                         <%=postagem.getDsPost()%><br>
                     </span>
+                    
+                    <b>Comentários:</b><br>
+                    <%
+                        for (Comment post : postagem.getCommentCollection()) {
+                            UsuarioMeme comentador = post.getUserCdUserMeme();
+                    %>
+                    <%=comentador.getNome()%>: <%=post.getDsComment()%><br>
+                    <%
+                        }
+                    %>
+
 
                     <div id="div_aba<%=idPost%>" style="display:none;">
-
-                        <br>
                         <form method="POST" action="ServletSalvarComentario">
                             <input type="text" name="comentario">
                             <div hidden>
@@ -131,9 +135,13 @@
                     </div>
                 </div>
 
+
+
                 <%
                     }
                 %>
+
+
             </div>
         </div>
     </body>
