@@ -1,0 +1,12 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="br.edu.iff.meme.entidades.UserAdm"%>
+<%@ page pageEncoding="UTF-8" %>
+<%UserAdm userr = (UserAdm) session.getAttribute("usuarioLogado");%>
+<div class="vertical-menu">
+    <br>
+    <span style="position: relative;left: 17px;">
+        <%=userr.getDsNick()%>
+    </span>
+    <a href="Denuncias.jsp">Denúncias</a>
+    <a href="perfilAdm.jsp">Perfil</a>
+</div>
