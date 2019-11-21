@@ -15,7 +15,8 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="" class="w3-button w3-large" id="botao1">
+                    
+                        <a href="ServletLogoutUsuarioMeme" class="w3-button w3-large" id="botao1">
                             Sair
                         </a>
                     </li>

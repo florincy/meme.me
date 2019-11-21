@@ -39,9 +39,6 @@
                 <br>
 
                 <br>
-                <button type="button" onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; left: 60px;background-color: #28bfa0;color: #f5f6f7;" >
-                    Editar perfil
-                </button>
                 <div id="alterar" class="w3-modal">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:550px">
                         <form class="w3-container" action="AtualizarUsuarioAdm" method="POST" enctype="multipart/form-data">
