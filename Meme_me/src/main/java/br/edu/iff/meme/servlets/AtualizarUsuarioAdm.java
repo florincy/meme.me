@@ -92,10 +92,10 @@ public class AtualizarUsuarioAdm extends HttpServlet {
 
         boolean tretaDeSenha = false;
         if (!(senhaAntiga == null || "".equals(senhaAntiga))) {
-            String dsPassword = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
+            String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
             System.out.println(senhaAntiga);
-            if (!"erro".equals(dsPassword)) {
-                user.setDsPassword(dsPassword);
+            if (!"erro".equals(senha)) {
+                user.setDsPassword(senha);
             } else {
                 tretaDeSenha= true;
             }
@@ -140,8 +140,8 @@ public class AtualizarUsuarioAdm extends HttpServlet {
     private String comparaSenha(String senhaAtual, String senhaAntiga, String senhaNova, String senhaConf) {
        if (senhaAtual.equals(senhaAntiga)) {
             if (senhaNova.equals(senhaConf)) {
-                String dsPassword = senhaNova;
-                return dsPassword;
+                String senha = senhaNova;
+                return senha;
             } else {
                 return "erro";
             }
