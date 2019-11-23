@@ -79,11 +79,11 @@ public class AtualizarUsuarioAdm extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         UserAdm user = new UserAdm();
-        user.setCdUserAdm(Integer.parseInt(request.getParameter("CdUserAdm")));
+        user.setCdUserAdm(Integer.parseInt(request.getParameter("id")));
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
-        String idUsuario = request.getParameter("CdUserAdm");
-        String hql = "from UsuarioMeme u where u.CdUserAdm='" + idUsuario + "'";
+        String idUsuario = request.getParameter("id");
+        String hql = "from UserAdm u where u.id='" + idUsuario + "'";
         user = (UserAdm) session.createQuery(hql).uniqueResult();
         String senhaAtual = user.dsPassword();
         String senhaAntiga = request.getParameter("dsPassword");
