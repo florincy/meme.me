@@ -42,4 +42,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/dd" object-type="user" pool-name="post-gre-sql_meme_me_floPool_1"/>
     <jdbc-resource enabled="true" jndi-name="java:app/fonteee" object-type="user" pool-name="post-gre-sql_meme_me_postgresPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/sovai" object-type="user" pool-name="post-gre-sql_meme_me_postgresPool"/>
 </resources>

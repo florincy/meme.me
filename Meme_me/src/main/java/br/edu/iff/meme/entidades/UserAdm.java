@@ -46,27 +46,35 @@ public class UserAdm implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_useradm")
     @SequenceGenerator(name = "sequence_useradm", sequenceName = "sq_cd_user_adm")
+    
     @Column(name = "cd_user_adm")
     private Integer cdUserAdm;
     @Size(max = 2147483647)
+    
     @Column(name = "nm_first")
     private String nmFirst;
     @Size(max = 2147483647)
+    
     @Column(name = "nm_last")
     private String nmLast;
     @Size(max = 2147483647)
+    
     @Column(name = "ds_nick")
     private String dsNick;
     @Size(max = 2147483647)
+    
     @Column(name = "ds_email")
     private String dsEmail;
     @Size(max = 2147483647)
+    
     @Column(name = "ds_password")
     private String dsPassword;
     @Size(max = 2147483647)
+    
     @Column(name = "ds_country")
     private String dsCountry;
     @Size(max = 2147483647)
+    
     @Column(name = "nm_birth")
     private String nmBirth;
 
@@ -166,4 +174,9 @@ public class UserAdm implements Serializable {
         return "br.edu.iff.meme.entidades.UserAdm[ cdUserAdm=" + cdUserAdm + " ]";
     }
 
+    public String dsPassword() {
+        return dsPassword;
+    }
+
+ 
 }

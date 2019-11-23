@@ -10,6 +10,7 @@
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroUsuario.java
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletBusca.java
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/utilidades/HibernateUtil.java
+/home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/AtualizarUsuarioAdm.java
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletLogoutUsuarioMeme.java
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/UsuarioMeme.java
 /home/talissoares/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/Post.java
