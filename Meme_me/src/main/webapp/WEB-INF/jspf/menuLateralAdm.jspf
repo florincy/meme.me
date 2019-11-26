@@ -10,11 +10,9 @@
     <%--será para alocar todos os posts independentes de serem publicos ou privados, por 
     enquanto, estára setando para o exemplo de feed já existente--%>
     <a href="feedGlobal.jsp">Feed Global</a>
-    <a href="Denuncias.jsp">Denúncias</a>
+    <a href="Denuncias.jsp" >Denúncias</a>
     <a href="usárioBloqueados.jsp">Usuários Bloqueados</a>
-    <a onclick="document.getElementById('alterar').style.display = 'block'; fe()" class="w3-button w3-large" style="position: relative; rus: 80px;background-color: #28bfa0;color: #f5f6f7;" >
-                    Editar Dados(Perfil)
-    </a>
+    <a onclick="document.getElementById('alterar').style.display = 'block'; fe()">Editar Dados</a>
     
 </div>
 S

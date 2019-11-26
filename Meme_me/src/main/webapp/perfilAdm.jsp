@@ -33,7 +33,7 @@
         <div id="feed">
             <div id="perfilbloco">
                 <span id="nome-usuario">
-                    <%=userAdm.getDsNick()%>
+                        Bem-vindo, <%=userAdm.getDsNick()%>!
                 </span>
                 <br>
                 <br>

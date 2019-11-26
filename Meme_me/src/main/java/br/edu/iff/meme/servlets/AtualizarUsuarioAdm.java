@@ -86,16 +86,19 @@ public class AtualizarUsuarioAdm extends HttpServlet {
         String hql = "from UserAdm u where u.id='" + idUsuario + "'";
         user = (UserAdm) session.createQuery(hql).uniqueResult();
         String senhaAtual = user.dsPassword();
-        String senhaAntiga = request.getParameter("dsPassword");
+        String senhaAntiga = request.getParameter("senha");
         String senhaNova = request.getParameter("senhaNova");
         String senhaConf = request.getParameter("senhaConf");
-
+        
         boolean tretaDeSenha = false;
         if (!(senhaAntiga == null || "".equals(senhaAntiga))) {
             String senha = comparaSenha(senhaAtual, senhaAntiga, senhaNova, senhaConf);
             System.out.println(senhaAntiga);
             if (!"erro".equals(senha)) {
                 user.setDsPassword(senha);
+                String a = senha;
+                System.out.println("Senha é "+user.getDsPassword());
+                
             } else {
                 tretaDeSenha= true;
             }
@@ -106,9 +109,8 @@ public class AtualizarUsuarioAdm extends HttpServlet {
         String data = request.getParameter("birth");
         user.setNmBirth(data);
         user.setDsNick(request.getParameter("nick"));
-        user.setDsPassword(request.getParameter("senha"));
         user.setDsCountry(request.getParameter("pais"));
-        
+        // Era coisa simples, às vezes, o simples é difícil, manjou?
     
      session.saveOrUpdate(user);
      tr.commit();
