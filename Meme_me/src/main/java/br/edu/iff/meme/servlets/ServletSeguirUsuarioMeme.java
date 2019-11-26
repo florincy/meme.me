@@ -96,6 +96,9 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
         Follow jaSeguida = (Follow) query.uniqueResult();
         try {
             int a = jaSeguida.getCdFollow();
+            session.delete(jaSeguida);
+            tr.commit();
+            session.close();
             response.sendRedirect("perfilBuscas.jsp");
         } catch (NullPointerException e) {
             session.saveOrUpdate(seguida);

@@ -329,7 +329,7 @@
                                 </h3>
                                 <img src="imagens/mme1.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
                                 <h3>
-                                    Aqui, você é o meme. Junte-se a comunidade!
+                                    Aqui, você é o meme. Junte-se à comunidade!
                                 </h3>
                             </div>
                             <!-- Footer -->
@@ -338,7 +338,7 @@
                                  
                                     
                                 <div id="ok">
-                                    <a href="cadastro_adm.html">Trabalhe conosco, seja o Administrador-Meme! </a> 
+                                    <a href="cadastro_adm.html">Trabalhe conosco, seja um Administrador-Meme! </a> 
                                 </div>
                                 <div id="footer">
                                     Bootstrap Theme Made By
