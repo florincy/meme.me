@@ -1,8 +1,10 @@
 <%-- 
+    Vou sentir saudade disso
     Document   : index
     Created on : 12/10/2019, 12:17:01
     Author     : florincy
 --%>
+<% System.out.println("Vou sentir saudades disso");%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
