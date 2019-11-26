@@ -14,8 +14,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import sun.awt.X11.XException;
 
 /**
  *
@@ -40,7 +43,7 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletSeguirUsuarioMeme</title>");            
+            out.println("<title>Servlet ServletSeguirUsuarioMeme</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletSeguirUsuarioMeme at " + request.getContextPath() + "</h1>");
@@ -75,21 +78,54 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Follow seguida = new Follow();
         /*String seguidor = request.getParameter("seguidor");
         String seguido = request.getParameter("seguido");*/
         Session session = HibernateUtil.getSession();
         Transaction tr = session.beginTransaction();
         UsuarioMeme UserSeguido = (UsuarioMeme) request.getSession().getAttribute("buscado");
+        String cdSeguido = String.valueOf(UserSeguido.getCdUsuarioMeme());
+        System.out.println(cdSeguido);
         UsuarioMeme UserSeguidor = (UsuarioMeme) request.getSession().getAttribute("usuarioLogado");
+        String cdSeguidor = String.valueOf(UserSeguidor.getCdUsuarioMeme());
+        System.out.println(cdSeguidor);
         seguida.setSeguido(UserSeguido);
         seguida.setSeguidor(UserSeguidor);
-        session.saveOrUpdate(seguida);
-        tr.commit();
-        session.close();
-        processRequest(request, response);
-        
+        Query query = session.createQuery("from Follow where follower_cd_user_meme='" + cdSeguidor + "'and followed_cd_user_meme='" + cdSeguido + "'");
+        Follow jaSeguida = (Follow) query.uniqueResult();
+        HttpSession httpSession = request.getSession();
+        try {
+            int a = jaSeguida.getCdFollow();
+            response.sendRedirect("perfilBuscas.jsp");
+            String botao = "seguindo";
+            httpSession.setAttribute("seguido", botao);
+        } catch (NullPointerException e) {
+            session.saveOrUpdate(seguida);
+            tr.commit();
+            session.close();
+            response.sendRedirect("perfilBuscas.jsp");
+            String botao = "seguir";
+            httpSession.setAttribute("seguido", botao);
+        }
+        /*
+       UsuarioMeme jaSeguidor = jaSeguida.getSeguidor();
+        String cdJaSeguidor = String.valueOf(jaSeguidor.getCdUsuarioMeme());
+        UsuarioMeme jaSeguido = jaSeguida.getSeguido();
+        System.out.println(cdJaSeguidor);
+        System.out.println(cdSeguidor);
+        String cdJaSeguido = String.valueOf(jaSeguido.getCdUsuarioMeme());
+        if (cdJaSeguido.equals(cdSeguido)&&cdJaSeguidor.equals(cdSeguidor) ){
+            System.out.println("Já tem essa seguida aí");
+            response.sendRedirect("perfilBuscas.jsp");
+        } else {
+            session.saveOrUpdate(seguida);
+            tr.commit();
+            session.close();
+            response.sendRedirect("perfilBuscas.jsp");
+        }
+         */
+
     }
 
     /**
