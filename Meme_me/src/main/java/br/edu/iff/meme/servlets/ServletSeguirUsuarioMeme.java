@@ -94,19 +94,14 @@ public class ServletSeguirUsuarioMeme extends HttpServlet {
         seguida.setSeguidor(UserSeguidor);
         Query query = session.createQuery("from Follow where follower_cd_user_meme='" + cdSeguidor + "'and followed_cd_user_meme='" + cdSeguido + "'");
         Follow jaSeguida = (Follow) query.uniqueResult();
-        HttpSession httpSession = request.getSession();
         try {
             int a = jaSeguida.getCdFollow();
             response.sendRedirect("perfilBuscas.jsp");
-            String botao = "seguindo";
-            httpSession.setAttribute("seguido", botao);
         } catch (NullPointerException e) {
             session.saveOrUpdate(seguida);
             tr.commit();
             session.close();
             response.sendRedirect("perfilBuscas.jsp");
-            String botao = "seguir";
-            httpSession.setAttribute("seguido", botao);
         }
         /*
        UsuarioMeme jaSeguidor = jaSeguida.getSeguidor();

@@ -74,14 +74,17 @@ public class ServletSalvarComentario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        UsuarioMeme logado = (UsuarioMeme) request.getSession().getAttribute("usuarioLogado");
+        int cdLogado = logado.getCdUsuarioMeme();
         String idtext = request.getParameter("pid");
         String conteudo = request.getParameter("comentario");
         String idComentador = request.getParameter("comentador");
         String idPublicacao = request.getParameter("publicacao");
-
+        Session session = HibernateUtil.getSession();
         Comment comentario = new Comment();
-        Post publicacao = new Post();
+        //Post publicacao = new Post();
+        String hql = "from Post where cd_post='" + idPublicacao + "'";
+        Post publicacao = (Post) session.createQuery(hql).uniqueResult();
         UsuarioMeme usuario = new UsuarioMeme();
 
         if (!idtext.isEmpty()) {
@@ -89,20 +92,26 @@ public class ServletSalvarComentario extends HttpServlet {
             comentario.setCdComment(id);
         }
 
-        publicacao.setCdPost(Integer.parseInt(idPublicacao));
+       // publicacao.setCdPost(Integer.parseInt(idPublicacao));
         usuario.setCdUsuarioMeme(Integer.parseInt(idComentador));
 
         comentario.setDsComment(conteudo);
         comentario.setUserCdUserMeme(usuario);
         comentario.setPostCdPost(publicacao);
 
-        Session session = HibernateUtil.getSession();
+        
         Transaction tr = session.beginTransaction();
         session.save(comentario);
         tr.commit();
         session.close();
-
-        response.sendRedirect("postagens.jsp");
+        UsuarioMeme publicador = publicacao.getUserCdUserMeme();
+        int cdPost = publicador.getCdUsuarioMeme();
+        System.out.println(cdLogado);
+        if (cdLogado==cdPost) {
+            response.sendRedirect("postagens.jsp");
+        }else{
+            response.sendRedirect("principal.jsp");
+        }
 
     }
 
