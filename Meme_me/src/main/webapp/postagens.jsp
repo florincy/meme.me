@@ -54,7 +54,7 @@
         <%UsuarioMeme user = (UsuarioMeme) session.getAttribute("usuarioLogado");
             byte[] fotoPerfil = user.getFoto();
             String perfilFoto = Base64.getEncoder().encodeToString(fotoPerfil);
-        %>
+            %>
         <%@include file="WEB-INF/jspf/menuPrincipal.jspf"%>
         <%@include file="WEB-INF/jspf/menuLateral.jspf"%>
         <div id="feed">
@@ -86,20 +86,29 @@
                     <br>
                     <div class="opcoes">
                         <ul>
-                            <li>
-                                <img src="imagens/curtir.png" class="icone">
-                            </li>
-                            <li>
-                                <img src="imagens/compartilhar.png" class="icone">
-                            </li>
+
+                            <form method="post" action="ServletCurtir">
+                                <input type="hidden" value="<%=postagem.getCdPost()%>" name="cdPost">
+                                <button type="submit" style="background-color: transparent;border:0;"><img src="imagens/curtir.png" class="icone"></button>
+                            </form>
+
+
+                            <form method="post" action="ServletCurtir">
+                                <input type="hidden" value="<%=postagem.getCdPost()%>" name="cdPost">
+                                <button type="submit" style="background-color: transparent;border:0;"><img src="imagens/compartilhar.png" class="icone"></button>
+                            </form>
+
+                            <form method="post" action="ServletCurtir">
+                                <input type="hidden" value="<%=postagem.getCdPost()%>" name="cdPost">
+                                <button type="submit" style="background-color: transparent;border:0;"><img src="imagens/denuncia.png" class="icone"></button>
+                            </form>
+
 
                             <li>
                                 <img src="imagens/comentar.png" class="icone" onclick="mostrar_abas(this);" id="mostra_aba<%=idPost%>">                                 
                             </li>
 
-                            <li>
-                                <img src="imagens/denuncia.png" class="icone">
-                            </li>
+
                             <li>
                                 <span class="dataHora">
                                     <%=postagem.getTsMoments()%>
@@ -110,7 +119,7 @@
                     <span class="legenda">
                         <%=postagem.getDsPost()%><br>
                     </span>
-                    
+
                     <b>Comentários:</b><br>
                     <%
                         for (Comment post : postagem.getCommentCollection()) {

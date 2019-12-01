@@ -3,11 +3,13 @@
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletSeguirUsuarioMeme.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/Follow.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/UserAdm.java
+/home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/Likes.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroUsuario.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletLogoutUsuarioMeme.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/AtualizarUsuarioAdm.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCadastroAdm.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/Comment.java
+/home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletCurtir.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/ServletBusca.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/servlets/SalvaPostagem.java
 /home/florincy/meme.me/Meme_me/src/main/java/br/edu/iff/meme/entidades/UsuarioMeme.java
